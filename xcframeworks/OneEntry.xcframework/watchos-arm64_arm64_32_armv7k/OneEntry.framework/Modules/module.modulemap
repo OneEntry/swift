@@ -1,0 +1,4 @@
+framework module OneEntry {
+  header "OneEntry-Swift.h"
+  requires objc
+}
