@@ -9,16 +9,15 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'Alamofire'
   spec.source = { 
-    :http => 'https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FOneEntry.zip?alt=media&token=f81a2957-92ff-4c30-87dc-c6d605165458',
-    :flatten => false    
-  } 
+    :http => 'https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=ca76d646-7ede-4fcf-835e-f474ff899dec' 
+} 
 
   spec.platform = :ios
   spec.platform = :osx
   spec.platform = :tvos
   spec.platform = :watchos
 
-  spec.vendored_frameworks = 'XCFrameworks/OneEntry.xcframework'
+  spec.vendored_frameworks = 'OneEntry.xcframework'
 
   spec.swift_version = '5.0'
   spec.ios.deployment_target = '13.0'
