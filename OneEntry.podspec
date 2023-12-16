@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'Alamofire'
   spec.source = { 
-    :http => 'https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=ca76d646-7ede-4fcf-835e-f474ff899dec' 
+    :http => 'https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=3e81adb9-e8a4-423e-a6e2-6a063ec55057' 
 } 
 
   spec.platform = :ios
