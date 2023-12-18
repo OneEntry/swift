@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'OneEntry'
-  spec.version = '1.0.0'
+  spec.version = '1.0.1'
   spec.license = { :type => 'OWN', :file => 'LICENSE.txt' }
   spec.homepage = 'https://github.com/OneEntry/oneentry-ios-sdk'
   spec.summary = 'Adds Swift classes for easy integration with OneEntry'
@@ -17,6 +17,8 @@ Pod::Spec.new do |spec|
   spec.platform = :tvos
   spec.platform = :watchos
 
+  spec.user_target_xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
+  spec.pod_target_xcconfig = { 'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES' }
   spec.vendored_frameworks = 'OneEntry.xcframework'
 
   spec.swift_version = '5.0'
