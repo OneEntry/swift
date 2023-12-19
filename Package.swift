@@ -29,8 +29,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "OneEntryFramework",
-            url: "https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FOneEntry.zip?alt=media&token=6ec91f40-416b-4cda-b48f-40e3cf8edb40",
-            checksum: "01a535388fa119597094bab597d840f01b8276b0501f326c74c7c038ead5cf35"
+            url: "https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=3e81adb9-e8a4-423e-a6e2-6a063ec55057",
+            checksum: "a46198ea545033ece0aeee24446994254acd8dd34ac62eba60eef3224ee6b3c3"
         ),
         .binaryTarget(
             name: "Alamofire",

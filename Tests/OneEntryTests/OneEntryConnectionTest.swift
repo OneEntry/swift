@@ -10,8 +10,8 @@ import OneEntry
 
 final class OneEntryConnectionTest: XCTestCase {
     
-    func testExample() throws {
+    func testExample() async throws {
         
-        
+        try await OneEntryProducts.shared.products(langCode: "en_US")
     }
 }
