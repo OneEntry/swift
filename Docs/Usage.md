@@ -1,4 +1,4 @@
-# OneEntry iOS SDK
+ # OneEntry iOS SDK
 
 - [OneEntry iOS SDK](#oneentry-ios-sdk)
   - [Add OneEntry SDK to your Swift project](#add-oneentry-sdk-to-your-swift-project)
@@ -97,19 +97,18 @@ If you have this error as a result of installing Sdk, via CocoaPods, add the fol
 
 ```ruby
 post_install do |installer|
-	installer.pods_project.targets.each do |target|
-		target.build_configurations.each do |config|
-			config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-		end
+  installer.pods_project.targets.each do |target|
+	target.build_configurations.each do |config|
+		config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
 	end
+  end
 end
 
 target 'OneEntrySDKTest' do
-	# Comment the next line if you don't want to use dynamic frameworks
-	use_frameworks!
-
-	# Pods for OneEntrySDKTest
-	pod 'OneEntry'
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  # Pods for OneEntrySDKTest
+  pod 'OneEntry'
 end
 ```
 
