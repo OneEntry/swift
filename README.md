@@ -1,13 +1,13 @@
 # OneEntry iOS Sdk
 
 - [OneEntry iOS Sdk](#oneentry-ios-sdk)
-	- [Supported platforms](#supported-platforms)
-	- [Installation](#installation)
-		- [CocoaPods](#cocoapods)
-			- [dyld\[\]: missing symbol called](#dyld-missing-symbol-called)
-		- [Swift Package Manager](#swift-package-manager)
-	- [Documentation](#documentation)
-	- [License](#license)
+  - [Supported platforms](#supported-platforms)
+  - [Installation](#installation)
+    - [CocoaPods](#cocoapods)
+      - [dyld\[\]: missing symbol called](#dyld-missing-symbol-called)
+    - [Swift Package Manager](#swift-package-manager)
+  - [Documentation](#documentation)
+  - [License](#license)
 
 HeadlessCMS OneEntry is based on many years of unique experience of CMS developers and users. We know what everyone needs and our product is created taking into account the needs of business, users and developers. All tools are designed for development and ease of interaction with your projects.
 
@@ -59,7 +59,7 @@ Once you have your Swift package set up, adding OneEntry as a dependency is as e
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.0.3"))
+    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.0.4"))
 ]
 ```
 

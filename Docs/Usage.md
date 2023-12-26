@@ -1,6 +1,6 @@
- # OneEntry iOS SDK
+# OneEntry Swift SDK
 
-- [OneEntry iOS SDK](#oneentry-ios-sdk)
+- [OneEntry Swift SDK](#oneentry-swift-sdk)
   - [Add OneEntry SDK to your Swift project](#add-oneentry-sdk-to-your-swift-project)
     - [Step 1: Create OneEntry project:](#step-1-create-oneentry-project)
     - [Step 2: Add OneEntry SDK to your app](#step-2-add-oneentry-sdk-to-your-app)
@@ -107,6 +107,7 @@ end
 target 'OneEntrySDKTest' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+
   # Pods for OneEntrySDKTest
   pod 'OneEntry'
 end
@@ -120,7 +121,7 @@ Once you have your Swift package set up, adding OneEntry as a dependency is as e
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.0.3"))
+    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.0.4"))
 ]
 ```
 
@@ -140,7 +141,7 @@ This is the final step you need to take in order to add OneEntry to your applica
    ```swift
    import Foundation
    import SwiftUI
-   import OneEntrySwift
+   import OneEntry
 
    // ...
    ```
@@ -148,7 +149,7 @@ This is the final step you need to take in order to add OneEntry to your applica
 
     ```swift
     let token = "..."
-    let url = "https://dev.oneentry.cloud"
+    let url = "https://sample.oneentry.cloud"
 
     OneEntryCore.initializeApp(url, token: token)
     ```
@@ -171,7 +172,7 @@ The following files will be inside:
 2. Initialize the application. The `application(_:didFinishLaunchingWithOptions:)` method is best suited for this.
    
 ```swift
-OneEntryCore.initializeApp("https://dev.oneentry.cloud", certificate: "certificate.p12", password: nil)
+OneEntryCore.initializeApp("https://sample.oneentry.cloud", certificate: "certificate.p12", password: nil)
 ```
 
 ##### Generation of your .p12 certificate
@@ -184,7 +185,7 @@ OneEntryCore.initializeApp("https://dev.oneentry.cloud", certificate: "certifica
 3.  Move the .p12 file to the project, make sure it is included in Target Membership
 4.  Using the certificate and password you specified when creating it, initialize the application. The `application(_:didFinishLaunchingWithOptions:)` method is best suited for this.
     ```swift
-    OneEntryCore.initializeApp("https://dev.oneentry.cloud", certificate: "certificate.p12", password: "password")
+    OneEntryCore.initializeApp("https://sample.oneentry.cloud", certificate: "certificate.p12", password: "password")
     ```
 
 ## Using OneEntry Swift SDK
@@ -433,7 +434,7 @@ Attribute types such as `image` and `groupOfImages` are treated by sdk in the sa
 let attributes = page.localizeAttribute("imagegroup", languageCode: langCode)?.imageValues
 ```
 
-В качестве ответа вернется массив `OneEntryImage`
+The `OneEntryImage` array will be returned as an answer
 
 ```swift
 /// OneEntry image model
