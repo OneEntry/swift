@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name = 'OneEntry'
-    spec.version = '1.0.3'
+    spec.version = '1.0.4'
     spec.license = { :type => 'OWN', :file => 'LICENSE.txt' }
     spec.homepage = 'https://github.com/OneEntry/oneentry-ios-sdk'
     spec.summary = 'Adds Swift classes for easy integration with OneEntry'
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     
     spec.dependency 'Alamofire'
     spec.source = { 
-      :http => 'https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=3e81adb9-e8a4-423e-a6e2-6a063ec55057' 
+      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.4/XCFrameworks.zip' 
     } 
 
     spec.platform = :ios

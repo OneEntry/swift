@@ -29,13 +29,13 @@ let package = Package(
         ),
         .binaryTarget(
             name: "OneEntryFramework",
-            url: "https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FXCFrameworks.zip?alt=media&token=3e81adb9-e8a4-423e-a6e2-6a063ec55057",
-            checksum: "a46198ea545033ece0aeee24446994254acd8dd34ac62eba60eef3224ee6b3c3"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.4/XCFrameworks.zip",
+            checksum: "adab7bcb98b98ff62ae4f6f87753e4d8e44f6c72540dfbcb354e82491b5e55d1"
         ),
         .binaryTarget(
             name: "Alamofire",
-            url: "https://firebasestorage.googleapis.com/v0/b/ar-garden-b5b0c.appspot.com/o/OneEntry%2FAlamofire.zip?alt=media&token=b499a741-bf20-4f70-9c1c-736d701690e6",
-            checksum: "5d76d1fdda8a1326829825bd3d9d14c273ad055961960d77623069d9b4811237"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.4/Alamofire.zip",
+            checksum: "bdb1c6c5c4babdb894eddf8ef25b685ffd41c5a809c8996a138a191ff909699e"
         ),
         .testTarget(
             name: "OneEntryTests",
