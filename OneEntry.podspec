@@ -1,15 +1,15 @@
 Pod::Spec.new do |spec|
     spec.name = 'OneEntry'
-    spec.version = '1.0.4'
+    spec.version = '1.0.5'
     spec.license = { :type => 'OWN', :file => 'LICENSE.txt' }
     spec.homepage = 'https://github.com/OneEntry/oneentry-ios-sdk'
     spec.summary = 'Adds Swift classes for easy integration with OneEntry'
     spec.authors = { 'ONEENTRY PORTAL CO' => 'swift@oneentry.cloud' }
     spec.documentation_url = 'https://github.com/OneEntry/oneentry-ios-sdk'    
     
-    spec.dependency 'Alamofire'
+    spec.dependency 'Moya'
     spec.source = { 
-      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.4/XCFrameworks.zip' 
+      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.5/XCFrameworks.zip' 
     } 
 
     spec.platform = :ios

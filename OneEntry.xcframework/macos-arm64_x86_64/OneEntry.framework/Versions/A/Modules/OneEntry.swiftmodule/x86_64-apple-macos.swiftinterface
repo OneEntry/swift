@@ -3,12 +3,18 @@
 // swift-module-flags: -target x86_64-apple-macos10.15 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OneEntry
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
+import Moya
 import Swift
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 import os.log
 import os
+final public class OneEntryTokenCredential : OneEntry.Credential {
+  public init(token: Swift.String)
+  final public func prepare(_ request: Foundation.URLRequest, target: any Moya.TargetType) -> Foundation.URLRequest
+  @objc deinit
+}
 public struct OneEntryProductStatus : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let updatedDate: Swift.String
@@ -52,6 +58,12 @@ public struct OneEntryPageConfig : Swift.Decodable {
   public let rowsPerPage: Swift.Int?
   public let productsPerRow: Swift.Int?
   public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers final public class OneEntryCore {
+  @objc deinit
+}
+extension OneEntry.OneEntryCore {
+  public static func initializeApp(host: Swift.String, credentials: any Moya.PluginType)
 }
 public protocol LocalizeContent {
   var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? { get }
@@ -119,6 +131,7 @@ extension OneEntry.OneEntryFile {
     get
   }
 }
+public typealias Credential = Moya.PluginType
 public struct OneEntryFilter : Swift.Encodable {
   public let attributeMarker: Swift.String
   public let conditionMarker: OneEntry.ConditionMarker
@@ -131,6 +144,8 @@ public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.Lo
   public let id: Swift.Int
   public let price: Swift.Double?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  public let relatedIds: [Swift.Int]
+  public let templateIdentifier: Swift.String?
   public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
@@ -295,6 +310,24 @@ extension OneEntry.OneEntryProject {
   final public func deleteFile(name: Swift.String, type: Swift.String, entity: Swift.String, id: Swift.Int) async throws
   #endif
 }
+final public class OneEntryCertificateCredential {
+  final public let name: Swift.String
+  final public let password: Swift.String
+  final public let bundle: Foundation.Bundle
+  public init(name: Swift.String, password: Swift.String? = nil, bundle: Foundation.Bundle = .main)
+  public enum OneEntryCredentialError : Foundation.LocalizedError {
+    case certificateImportFailed(Darwin.OSStatus)
+    case certificateNotFound(Swift.String)
+    case credentialExtractFailed
+    public var errorDescription: Swift.String? {
+      get
+    }
+  }
+  @objc deinit
+}
+extension OneEntry.OneEntryCertificateCredential : OneEntry.Credential {
+  final public func willSend(_ request: any Moya.RequestType, target: any Moya.TargetType)
+}
 public struct OneEntryAdmin : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let identifier: Swift.String
@@ -317,13 +350,6 @@ public struct OneEntryProportion : Swift.Decodable {
   public let marker: Swift.String
   public let alignmentType: Swift.String
   public init(from decoder: any Swift.Decoder) throws
-}
-@_hasMissingDesignatedInitializers final public class OneEntryCore {
-  @objc deinit
-}
-extension OneEntry.OneEntryCore {
-  public static func initializeApp(_ url: Swift.String, token: Swift.String)
-  public static func initializeApp(_ url: Swift.String, certificate name: Swift.String, password: Swift.String, bundle: Foundation.Bundle = .main)
 }
 public struct OneEntryError : Swift.Decodable {
   public let statusCode: Swift.Int
@@ -449,20 +475,6 @@ extension OneEntry.OneEntryAttribute {
   }
   public var fileValues: [OneEntry.OneEntryFile]? {
     get
-  }
-}
-public struct OneEntryCredential {
-  public init(token: Swift.String)
-  public init(certificate name: Swift.String, password: Swift.String, bundle: Foundation.Bundle) throws
-}
-extension OneEntry.OneEntryCredential {
-  public enum OneEntryCredentialError : Foundation.LocalizedError {
-    case certificateImportFailed(Darwin.OSStatus)
-    case certificateNotFound(Swift.String)
-    case credentialExtractFailed
-    public var errorDescription: Swift.String? {
-      get
-    }
   }
 }
 @_hasMissingDesignatedInitializers final public class OneEntryForms {

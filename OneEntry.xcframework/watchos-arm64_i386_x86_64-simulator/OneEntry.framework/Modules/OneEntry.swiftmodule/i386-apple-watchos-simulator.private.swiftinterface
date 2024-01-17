@@ -3,12 +3,18 @@
 // swift-module-flags: -target i386-apple-watchos6.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OneEntry
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import Foundation
+import Moya
 import Swift
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 import os.log
 import os
+final public class OneEntryTokenCredential : OneEntry.Credential {
+  public init(token: Swift.String)
+  final public func prepare(_ request: Foundation.URLRequest, target: any Moya.TargetType) -> Foundation.URLRequest
+  @objc deinit
+}
 public struct OneEntryImage : Swift.Decodable {
   public let size: Swift.Int
   public let filename: Swift.String
@@ -58,8 +64,7 @@ public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Decodable {
   @objc deinit
 }
 extension OneEntry.OneEntryCore {
-  public static func initializeApp(_ url: Swift.String, token: Swift.String)
-  public static func initializeApp(_ url: Swift.String, certificate name: Swift.String, password: Swift.String, bundle: Foundation.Bundle = .main)
+  public static func initializeApp(host: Swift.String, credentials: any Moya.PluginType)
 }
 public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
@@ -95,6 +100,8 @@ public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.Lo
   public let id: Swift.Int
   public let price: Swift.Double?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  public let relatedIds: [Swift.Int]
+  public let templateIdentifier: Swift.String?
   public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
@@ -119,6 +126,7 @@ public struct OneEntryResult<T> : Swift.Decodable where T : Swift.Decodable {
   public let total: Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
+public typealias Credential = Moya.PluginType
 public struct OneEntryGeneralType : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let type: Swift.String
@@ -175,20 +183,6 @@ public struct OneEntryAdmin : Swift.Identifiable, Swift.Decodable {
   public let position: Swift.Int?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntryCredential {
-  public init(token: Swift.String)
-  public init(certificate name: Swift.String, password: Swift.String, bundle: Foundation.Bundle) throws
-}
-extension OneEntry.OneEntryCredential {
-  public enum OneEntryCredentialError : Foundation.LocalizedError {
-    case certificateImportFailed(Darwin.OSStatus)
-    case certificateNotFound(Swift.String)
-    case credentialExtractFailed
-    public var errorDescription: Swift.String? {
-      get
-    }
-  }
 }
 public enum SortDirection : Swift.String {
   case desk
@@ -266,6 +260,24 @@ public struct InfoContent : Swift.Decodable {
   public let value: Swift.String
   public let isEditorDisabled: Swift.Bool
   public init(from decoder: any Swift.Decoder) throws
+}
+final public class OneEntryCertificateCredential {
+  final public let name: Swift.String
+  final public let password: Swift.String
+  final public let bundle: Foundation.Bundle
+  public init(name: Swift.String, password: Swift.String? = nil, bundle: Foundation.Bundle = .main)
+  public enum OneEntryCredentialError : Foundation.LocalizedError {
+    case certificateImportFailed(Darwin.OSStatus)
+    case certificateNotFound(Swift.String)
+    case credentialExtractFailed
+    public var errorDescription: Swift.String? {
+      get
+    }
+  }
+  @objc deinit
+}
+extension OneEntry.OneEntryCertificateCredential : OneEntry.Credential {
+  final public func willSend(_ request: any Moya.RequestType, target: any Moya.TargetType)
 }
 public enum ConditionMarker : Swift.String, Swift.Encodable {
   case `in`

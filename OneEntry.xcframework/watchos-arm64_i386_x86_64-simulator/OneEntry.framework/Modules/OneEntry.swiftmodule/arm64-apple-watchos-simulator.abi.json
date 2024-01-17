@@ -15,6 +15,108 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OneEntryTokenCredential",
+        "printedName": "OneEntryTokenCredential",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(token:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryTokenCredential",
+                "printedName": "OneEntry.OneEntryTokenCredential",
+                "usr": "s:8OneEntry0aB15TokenCredentialC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry0aB15TokenCredentialC5tokenACSS_tcfc",
+            "mangledName": "$s8OneEntry0aB15TokenCredentialC5tokenACSS_tcfc",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "prepare",
+            "printedName": "prepare(_:target:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URLRequest",
+                "printedName": "Foundation.URLRequest",
+                "usr": "s:10Foundation10URLRequestV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URLRequest",
+                "printedName": "Foundation.URLRequest",
+                "usr": "s:10Foundation10URLRequestV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TargetType",
+                "printedName": "Moya.TargetType",
+                "usr": "s:4Moya10TargetTypeP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry0aB15TokenCredentialC7prepare_6target10Foundation10URLRequestVAH_4Moya10TargetType_ptF",
+            "mangledName": "$s8OneEntry0aB15TokenCredentialC7prepare_6target10Foundation10URLRequestVAH_4Moya10TargetType_ptF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8OneEntry0aB15TokenCredentialC",
+        "mangledName": "$s8OneEntry0aB15TokenCredentialC",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "PluginType",
+            "printedName": "PluginType",
+            "usr": "s:4Moya10PluginTypeP",
+            "mangledName": "$s4Moya10PluginTypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryImage",
         "printedName": "OneEntryImage",
@@ -1584,23 +1686,10 @@
       },
       {
         "kind": "Import",
-        "name": "Alamofire",
-        "printedName": "Alamofire",
+        "name": "Moya",
+        "printedName": "Moya",
         "declKind": "Import",
-        "moduleName": "OneEntry",
-        "declAttributes": [
-          "ImplementationOnly"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "OneEntry",
-        "declAttributes": [
-          "RawDocComment"
-        ]
+        "moduleName": "OneEntry"
       },
       {
         "kind": "Import",
@@ -1610,16 +1699,6 @@
         "moduleName": "OneEntry"
       },
       {
-        "kind": "Import",
-        "name": "Alamofire",
-        "printedName": "Alamofire",
-        "declKind": "Import",
-        "moduleName": "OneEntry",
-        "declAttributes": [
-          "ImplementationOnly"
-        ]
-      },
-      {
         "kind": "TypeDecl",
         "name": "OneEntryCore",
         "printedName": "OneEntryCore",
@@ -1627,7 +1706,7 @@
           {
             "kind": "Function",
             "name": "initializeApp",
-            "printedName": "initializeApp(_:token:)",
+            "printedName": "initializeApp(host:credentials:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1642,63 +1721,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
+                "name": "PluginType",
+                "printedName": "Moya.PluginType",
+                "usr": "s:4Moya10PluginTypeP"
               }
             ],
             "declKind": "Func",
-            "usr": "s:8OneEntry0aB4CoreC13initializeApp_5tokenySS_SStFZ",
-            "mangledName": "$s8OneEntry0aB4CoreC13initializeApp_5tokenySS_SStFZ",
-            "moduleName": "OneEntry",
-            "static": true,
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "initializeApp",
-            "printedName": "initializeApp(_:certificate:password:bundle:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bundle",
-                "printedName": "Foundation.Bundle",
-                "hasDefaultArg": true,
-                "usr": "c:objc(cs)NSBundle"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8OneEntry0aB4CoreC13initializeApp_11certificate8password6bundleySS_S2SSo8NSBundleCtFZ",
-            "mangledName": "$s8OneEntry0aB4CoreC13initializeApp_11certificate8password6bundleySS_S2SSo8NSBundleCtFZ",
+            "usr": "s:8OneEntry0aB4CoreC13initializeApp4host11credentialsySS_4Moya10PluginType_ptFZ",
+            "mangledName": "$s8OneEntry0aB4CoreC13initializeApp4host11credentialsySS_4Moya10PluginType_ptFZ",
             "moduleName": "OneEntry",
             "static": true,
             "declAttributes": [
@@ -1715,8 +1745,7 @@
         "moduleName": "OneEntry",
         "declAttributes": [
           "Final",
-          "AccessControl",
-          "RawDocComment"
+          "AccessControl"
         ],
         "hasMissingDesignatedInitializers": true
       },
@@ -3450,6 +3479,128 @@
           },
           {
             "kind": "Var",
+            "name": "relatedIds",
+            "printedName": "relatedIds",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.Int]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB7ProductV10relatedIdsSaySiGvp",
+            "mangledName": "$s8OneEntry0aB7ProductV10relatedIdsSaySiGvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Swift.Int]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB7ProductV10relatedIdsSaySiGvg",
+                "mangledName": "$s8OneEntry0aB7ProductV10relatedIdsSaySiGvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "templateIdentifier",
+            "printedName": "templateIdentifier",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB7ProductV18templateIdentifierSSSgvp",
+            "mangledName": "$s8OneEntry0aB7ProductV18templateIdentifierSSSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB7ProductV18templateIdentifierSSSgvg",
+                "mangledName": "$s8OneEntry0aB7ProductV18templateIdentifierSSSgvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "attributeValues",
             "printedName": "attributeValues",
             "children": [
@@ -4139,6 +4290,40 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryResult",
         "printedName": "OneEntryResult",
@@ -4305,6 +4490,16 @@
             "usr": "s:Se",
             "mangledName": "$sSe"
           }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
         ]
       },
       {
@@ -4638,6 +4833,13 @@
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       },
       {
         "kind": "TypeDecl",
@@ -5414,325 +5616,10 @@
       },
       {
         "kind": "Import",
-        "name": "Alamofire",
-        "printedName": "Alamofire",
+        "name": "Moya",
+        "printedName": "Moya",
         "declKind": "Import",
-        "moduleName": "OneEntry",
-        "declAttributes": [
-          "ImplementationOnly"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "OneEntryCredential",
-        "printedName": "OneEntryCredential",
-        "children": [
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(token:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "OneEntryCredential",
-                "printedName": "OneEntry.OneEntryCredential",
-                "usr": "s:8OneEntry0aB10CredentialV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8OneEntry0aB10CredentialV5tokenACSS_tcfc",
-            "mangledName": "$s8OneEntry0aB10CredentialV5tokenACSS_tcfc",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(certificate:password:bundle:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "OneEntryCredential",
-                "printedName": "OneEntry.OneEntryCredential",
-                "usr": "s:8OneEntry0aB10CredentialV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Bundle",
-                "printedName": "Foundation.Bundle",
-                "usr": "c:objc(cs)NSBundle"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8OneEntry0aB10CredentialV11certificate8password6bundleACSS_SSSo8NSBundleCtKcfc",
-            "mangledName": "$s8OneEntry0aB10CredentialV11certificate8password6bundleACSS_SSSo8NSBundleCtKcfc",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "throwing": true,
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "TypeDecl",
-            "name": "OneEntryCredentialError",
-            "printedName": "OneEntryCredentialError",
-            "children": [
-              {
-                "kind": "Var",
-                "name": "certificateImportFailed",
-                "printedName": "certificateImportFailed",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(OneEntry.OneEntryCredential.OneEntryCredentialError.Type) -> (Swift.Int32) -> OneEntry.OneEntryCredential.OneEntryCredentialError",
-                    "children": [
-                      {
-                        "kind": "TypeFunc",
-                        "name": "Function",
-                        "printedName": "(Swift.Int32) -> OneEntry.OneEntryCredential.OneEntryCredentialError",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryCredentialError",
-                            "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Int32",
-                            "printedName": "Swift.Int32",
-                            "usr": "s:s5Int32V"
-                          }
-                        ]
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryCredentialError",
-                            "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO23certificateImportFailedyAEs5Int32VcAEmF",
-                "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO23certificateImportFailedyAEs5Int32VcAEmF",
-                "moduleName": "OneEntry"
-              },
-              {
-                "kind": "Var",
-                "name": "certificateNotFound",
-                "printedName": "certificateNotFound",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(OneEntry.OneEntryCredential.OneEntryCredentialError.Type) -> (Swift.String) -> OneEntry.OneEntryCredential.OneEntryCredentialError",
-                    "children": [
-                      {
-                        "kind": "TypeFunc",
-                        "name": "Function",
-                        "printedName": "(Swift.String) -> OneEntry.OneEntryCredential.OneEntryCredentialError",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryCredentialError",
-                            "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ]
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryCredentialError",
-                            "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO19certificateNotFoundyAESScAEmF",
-                "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO19certificateNotFoundyAESScAEmF",
-                "moduleName": "OneEntry"
-              },
-              {
-                "kind": "Var",
-                "name": "credentialExtractFailed",
-                "printedName": "credentialExtractFailed",
-                "children": [
-                  {
-                    "kind": "TypeFunc",
-                    "name": "Function",
-                    "printedName": "(OneEntry.OneEntryCredential.OneEntryCredentialError.Type) -> OneEntry.OneEntryCredential.OneEntryCredentialError",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OneEntryCredentialError",
-                        "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                        "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Metatype",
-                        "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError.Type",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryCredentialError",
-                            "printedName": "OneEntry.OneEntryCredential.OneEntryCredentialError",
-                            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ],
-                "declKind": "EnumElement",
-                "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO23credentialExtractFailedyA2EmF",
-                "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO23credentialExtractFailedyA2EmF",
-                "moduleName": "OneEntry"
-              },
-              {
-                "kind": "Var",
-                "name": "errorDescription",
-                "printedName": "errorDescription",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Var",
-                "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO16errorDescriptionSSSgvp",
-                "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO16errorDescriptionSSSgvp",
-                "moduleName": "OneEntry",
-                "declAttributes": [
-                  "AccessControl"
-                ],
-                "accessors": [
-                  {
-                    "kind": "Accessor",
-                    "name": "Get",
-                    "printedName": "Get()",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Optional",
-                        "printedName": "Swift.String?",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          }
-                        ],
-                        "usr": "s:Sq"
-                      }
-                    ],
-                    "declKind": "Accessor",
-                    "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO16errorDescriptionSSSgvg",
-                    "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO16errorDescriptionSSSgvg",
-                    "moduleName": "OneEntry",
-                    "accessorKind": "get"
-                  }
-                ]
-              }
-            ],
-            "declKind": "Enum",
-            "usr": "s:8OneEntry0aB10CredentialV0abC5ErrorO",
-            "mangledName": "$s8OneEntry0aB10CredentialV0abC5ErrorO",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "isFromExtension": true,
-            "conformances": [
-              {
-                "kind": "Conformance",
-                "name": "LocalizedError",
-                "printedName": "LocalizedError",
-                "usr": "s:10Foundation14LocalizedErrorP",
-                "mangledName": "$s10Foundation14LocalizedErrorP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "Error",
-                "printedName": "Error",
-                "usr": "s:s5ErrorP",
-                "mangledName": "$ss5ErrorP"
-              },
-              {
-                "kind": "Conformance",
-                "name": "Sendable",
-                "printedName": "Sendable",
-                "usr": "s:s8SendableP",
-                "mangledName": "$ss8SendableP"
-              }
-            ]
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:8OneEntry0aB10CredentialV",
-        "mangledName": "$s8OneEntry0aB10CredentialV",
-        "moduleName": "OneEntry",
-        "declAttributes": [
-          "AccessControl"
-        ]
+        "moduleName": "OneEntry"
       },
       {
         "kind": "Import",
@@ -5830,39 +5717,6 @@
             ]
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(rawValue:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "OneEntry.SortDirection?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "SortDirection",
-                    "printedName": "OneEntry.SortDirection",
-                    "usr": "s:8OneEntry13SortDirectionO"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8OneEntry13SortDirectionO8rawValueACSgSS_tcfc",
-            "mangledName": "$s8OneEntry13SortDirectionO8rawValueACSgSS_tcfc",
-            "moduleName": "OneEntry",
-            "implicit": true,
-            "init_kind": "Designated"
-          },
-          {
             "kind": "Var",
             "name": "rawValue",
             "printedName": "rawValue",
@@ -5900,6 +5754,39 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.SortDirection?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SortDirection",
+                    "printedName": "OneEntry.SortDirection",
+                    "usr": "s:8OneEntry13SortDirectionO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry13SortDirectionO8rawValueACSgSS_tcfc",
+            "mangledName": "$s8OneEntry13SortDirectionO8rawValueACSgSS_tcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "init_kind": "Designated"
           }
         ],
         "declKind": "Enum",
@@ -7296,6 +7183,13 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryTemplates",
         "printedName": "OneEntryTemplates",
@@ -7968,6 +7862,512 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "Import",
+        "name": "os.log",
+        "printedName": "os.log",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "OneEntryCertificateCredential",
+        "printedName": "OneEntryCertificateCredential",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "name",
+            "printedName": "name",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC4nameSSvp",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC4nameSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC4nameSSvg",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC4nameSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "password",
+            "printedName": "password",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC8passwordSSvp",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC8passwordSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC8passwordSSvg",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC8passwordSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bundle",
+            "printedName": "bundle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bundle",
+                "printedName": "Foundation.Bundle",
+                "usr": "c:objc(cs)NSBundle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC6bundleSo8NSBundleCvp",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC6bundleSo8NSBundleCvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC6bundleSo8NSBundleCvg",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC6bundleSo8NSBundleCvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(name:password:bundle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryCertificateCredential",
+                "printedName": "OneEntry.OneEntryCertificateCredential",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bundle",
+                "printedName": "Foundation.Bundle",
+                "hasDefaultArg": true,
+                "usr": "c:objc(cs)NSBundle"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC4name8password6bundleACSS_SSSgSo8NSBundleCtcfc",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC4name8password6bundleACSS_SSSgSo8NSBundleCtcfc",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "TypeDecl",
+            "name": "OneEntryCredentialError",
+            "printedName": "OneEntryCredentialError",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "certificateImportFailed",
+                "printedName": "certificateImportFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type) -> (Swift.Int32) -> OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int32) -> OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OneEntryCredentialError",
+                            "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Int32",
+                            "printedName": "Swift.Int32",
+                            "usr": "s:s5Int32V"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OneEntryCredentialError",
+                            "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO23certificateImportFailedyAEs5Int32VcAEmF",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO23certificateImportFailedyAEs5Int32VcAEmF",
+                "moduleName": "OneEntry"
+              },
+              {
+                "kind": "Var",
+                "name": "certificateNotFound",
+                "printedName": "certificateNotFound",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type) -> (Swift.String) -> OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.String) -> OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OneEntryCredentialError",
+                            "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OneEntryCredentialError",
+                            "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO19certificateNotFoundyAESScAEmF",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO19certificateNotFoundyAESScAEmF",
+                "moduleName": "OneEntry"
+              },
+              {
+                "kind": "Var",
+                "name": "credentialExtractFailed",
+                "printedName": "credentialExtractFailed",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type) -> OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryCredentialError",
+                        "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                        "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "OneEntryCredentialError",
+                            "printedName": "OneEntry.OneEntryCertificateCredential.OneEntryCredentialError",
+                            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO23credentialExtractFailedyA2EmF",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO23credentialExtractFailedyA2EmF",
+                "moduleName": "OneEntry"
+              },
+              {
+                "kind": "Var",
+                "name": "errorDescription",
+                "printedName": "errorDescription",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO16errorDescriptionSSSgvp",
+                "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO16errorDescriptionSSSgvp",
+                "moduleName": "OneEntry",
+                "declAttributes": [
+                  "AccessControl"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Optional",
+                        "printedName": "Swift.String?",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          }
+                        ],
+                        "usr": "s:Sq"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO16errorDescriptionSSSgvg",
+                    "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO16errorDescriptionSSSgvg",
+                    "moduleName": "OneEntry",
+                    "accessorKind": "get"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC0abD5ErrorO",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC0abD5ErrorO",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "LocalizedError",
+                "printedName": "LocalizedError",
+                "usr": "s:10Foundation14LocalizedErrorP",
+                "mangledName": "$s10Foundation14LocalizedErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Error",
+                "printedName": "Error",
+                "usr": "s:s5ErrorP",
+                "mangledName": "$ss5ErrorP"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "willSend",
+            "printedName": "willSend(_:target:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RequestType",
+                "printedName": "Moya.RequestType",
+                "usr": "s:4Moya11RequestTypeP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "TargetType",
+                "printedName": "Moya.TargetType",
+                "usr": "s:4Moya10TargetTypeP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry0aB21CertificateCredentialC8willSend_6targety4Moya11RequestType_p_AF06TargetJ0_ptF",
+            "mangledName": "$s8OneEntry0aB21CertificateCredentialC8willSend_6targety4Moya11RequestType_p_AF06TargetJ0_ptF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8OneEntry0aB21CertificateCredentialC",
+        "mangledName": "$s8OneEntry0aB21CertificateCredentialC",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "PluginType",
+            "printedName": "PluginType",
+            "usr": "s:4Moya10PluginTypeP",
+            "mangledName": "$s4Moya10PluginTypeP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "ConditionMarker",
         "printedName": "ConditionMarker",
@@ -8293,39 +8693,6 @@
             ]
           },
           {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(rawValue:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "OneEntry.ConditionMarker?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "ConditionMarker",
-                    "printedName": "OneEntry.ConditionMarker",
-                    "usr": "s:8OneEntry15ConditionMarkerO"
-                  }
-                ],
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:8OneEntry15ConditionMarkerO8rawValueACSgSS_tcfc",
-            "mangledName": "$s8OneEntry15ConditionMarkerO8rawValueACSgSS_tcfc",
-            "moduleName": "OneEntry",
-            "implicit": true,
-            "init_kind": "Designated"
-          },
-          {
             "kind": "Var",
             "name": "rawValue",
             "printedName": "rawValue",
@@ -8363,6 +8730,39 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.ConditionMarker?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConditionMarker",
+                    "printedName": "OneEntry.ConditionMarker",
+                    "usr": "s:8OneEntry15ConditionMarkerO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry15ConditionMarkerO8rawValueACSgSS_tcfc",
+            "mangledName": "$s8OneEntry15ConditionMarkerO8rawValueACSgSS_tcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "init_kind": "Designated"
           }
         ],
         "declKind": "Enum",
@@ -8419,6 +8819,23 @@
             "mangledName": "$sSE"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       },
       {
         "kind": "Import",
@@ -12230,6 +12647,13 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryTemplatePreviews",
         "printedName": "OneEntryTemplatePreviews",
@@ -12432,6 +12856,30 @@
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       },
       {
         "kind": "TypeDecl",
@@ -13178,6 +13626,30 @@
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       },
       {
         "kind": "TypeDecl",
@@ -14515,6 +14987,13 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryPages",
         "printedName": "OneEntryPages",
@@ -14878,416 +15357,622 @@
           "RawDocComment"
         ],
         "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       }
     ],
     "json_format_version": 8
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryTokenCredential.swift",
       "kind": "StringLiteral",
       "offset": 431,
-      "length": 17,
-      "value": "\"\""
+      "length": 6,
+      "value": "\"name\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Common\/OneEntryCore.swift",
       "kind": "StringLiteral",
-      "offset": 438,
-      "length": 1,
-      "value": "\"=\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 447,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 494,
-      "length": 3,
-      "value": "\"&\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 544,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 549,
-      "length": 16,
-      "value": "\"?\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 564,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 806,
+      "offset": 319,
       "length": 14,
       "value": "\"\/api\/content\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Common\/OneEntryCore.swift",
       "kind": "StringLiteral",
-      "offset": 1986,
-      "length": 10,
-      "value": "\"\""
+      "offset": 491,
+      "length": 48,
+      "value": "\"One Entry application has not been initialized\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 1995,
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 162,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 178,
       "length": 2,
-      "value": "\"\""
+      "value": "30"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 2041,
-      "length": 10,
-      "value": "\"\""
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 379,
+      "length": 1,
+      "value": "0"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 2050,
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 395,
       "length": 2,
-      "value": "\"\""
+      "value": "30"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "Dictionary",
-      "offset": 2284,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 2420,
-      "length": 48,
-      "value": "\"One Entry application has not been initialized\""
+      "offset": 638,
+      "length": 12,
+      "value": "\"\/form-data\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "Dictionary",
-      "offset": 3043,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 3238,
-      "length": 48,
-      "value": "\"One Entry application has not been initialized\""
+      "offset": 713,
+      "length": 8,
+      "value": "\"\/forms\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "Dictionary",
-      "offset": 3864,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 4004,
-      "length": 48,
-      "value": "\"One Entry application has not been initialized\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "Dictionary",
-      "offset": 4538,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 4677,
-      "length": 48,
-      "value": "\"One Entry application has not been initialized\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "Dictionary",
-      "offset": 5289,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCore.swift",
-      "kind": "StringLiteral",
-      "offset": 5425,
-      "length": 48,
-      "value": "\"One Entry application has not been initialized\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 857,
-      "length": 21,
-      "value": "\"\/locales\/active\/all\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 1254,
-      "length": 9,
-      "value": "\"\/admins\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 1655,
-      "length": 16,
-      "value": "\"\/general-types\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 1936,
-      "length": 17,
-      "value": "\"\/system\/test404\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 2208,
-      "length": 17,
-      "value": "\"\/system\/test500\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 2716,
+      "offset": 789,
       "length": 25,
-      "value": "\"\/menus\/marker\/\""
+      "value": "\"\/forms\/marker\/\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 2740,
-      "length": 10,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "BooleanLiteral",
-      "offset": 3811,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 3933,
-      "length": 6,
-      "value": "\"type\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 3959,
-      "length": 8,
-      "value": "\"entity\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 3989,
-      "length": 4,
-      "value": "\"id\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 4011,
-      "length": 7,
-      "value": "\"width\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 4039,
-      "length": 8,
-      "value": "\"height\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 4069,
-      "length": 10,
-      "value": "\"compress\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 4150,
-      "length": 8,
-      "value": "\"\/files\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 4166,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 5048,
-      "length": 10,
-      "value": "\"filename\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 5078,
-      "length": 6,
-      "value": "\"type\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 5104,
-      "length": 8,
-      "value": "\"entity\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 5134,
-      "length": 4,
-      "value": "\"id\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 5204,
-      "length": 8,
-      "value": "\"\/files\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 6050,
-      "length": 10,
-      "value": "\"filename\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 6080,
-      "length": 6,
-      "value": "\"type\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 6106,
-      "length": 8,
-      "value": "\"entity\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 6136,
-      "length": 4,
-      "value": "\"id\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
-      "kind": "StringLiteral",
-      "offset": 6195,
-      "length": 8,
-      "value": "\"\/files\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 487,
-      "length": 18,
-      "value": "\"application\/json\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 532,
-      "length": 13,
-      "value": "\"x-app-token\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 741,
-      "length": 5,
-      "value": "\"p12\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 888,
-      "length": 6,
-      "value": "\".p12\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 1659,
-      "length": 18,
-      "value": "\"application\/json\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 2078,
-      "length": 50,
-      "value": "\"Failed to import P12 file. Error code: \""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
-      "kind": "StringLiteral",
-      "offset": 2127,
+      "offset": 813,
       "length": 1,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 2189,
-      "length": 41,
-      "value": "\"Certificate with name \""
+      "offset": 885,
+      "length": 29,
+      "value": "\"\/form-data\/marker\/\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 2219,
-      "length": 3,
-      "value": "\" not found\""
+      "offset": 913,
+      "length": 1,
+      "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/OneEntryCredential.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
       "kind": "StringLiteral",
-      "offset": 2285,
-      "length": 60,
-      "value": "\"Failed to convert the certificate to be sent to the server\""
+      "offset": 1428,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "StringLiteral",
+      "offset": 1466,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "StringLiteral",
+      "offset": 1502,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "StringLiteral",
+      "offset": 1805,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2113,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2151,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/FormsService.swift",
+      "kind": "Dictionary",
+      "offset": 2502,
+      "length": 36,
+      "value": "[(\"Content-type\", \"application\/json\")]"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "StringLiteral",
+      "offset": 491,
+      "length": 20,
+      "value": "\"\/template-previews\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "StringLiteral",
+      "offset": 580,
+      "length": 26,
+      "value": "\"\/template-previews\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "StringLiteral",
+      "offset": 605,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "StringLiteral",
+      "offset": 683,
+      "length": 37,
+      "value": "\"\/template-previews\/marker\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "StringLiteral",
+      "offset": 719,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesPreviewService.swift",
+      "kind": "Dictionary",
+      "offset": 901,
+      "length": 36,
+      "value": "[(\"Content-type\", \"application\/json\")]"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3862,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 206,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2449,
+      "length": 11,
+      "value": "\"\/products\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2538,
+      "length": 22,
+      "value": "\"\/products\/empty-page\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2665,
+      "length": 22,
+      "value": "\"\/products\/page\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2686,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2794,
+      "length": 27,
+      "value": "\"\/products\/page\/url\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2820,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2925,
+      "length": 25,
+      "value": "\"\/products\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 2941,
+      "length": 1,
+      "value": "\"\/related\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3034,
+      "length": 17,
+      "value": "\"\/products\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3050,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3144,
+      "length": 29,
+      "value": "\"\/products\/conditions-filter\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3250,
+      "length": 24,
+      "value": "\"\/products\/quick\/search\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3338,
+      "length": 19,
+      "value": "\"\/product-statuses\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3431,
+      "length": 25,
+      "value": "\"\/product-statuses\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3455,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3538,
+      "length": 36,
+      "value": "\"\/product-statuses\/marker\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3573,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3657,
+      "length": 47,
+      "value": "\"\/product-statuses\/marker-validation\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 3703,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4177,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4213,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4251,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4293,
+      "length": 14,
+      "value": "\"statusMarker\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4343,
+      "length": 16,
+      "value": "\"conditionValue\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4397,
+      "length": 17,
+      "value": "\"attributeMarker\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4453,
+      "length": 17,
+      "value": "\"conditionMarker\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4519,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4559,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4930,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 4966,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5004,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5046,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5086,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5454,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5490,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5528,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5570,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5610,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 5979,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6015,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6053,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6095,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6135,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6502,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6538,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6576,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6618,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6658,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 6966,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7315,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7351,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7389,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7431,
+      "length": 9,
+      "value": "\"sortKey\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7471,
+      "length": 11,
+      "value": "\"sortOrder\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7786,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "StringLiteral",
+      "offset": 7820,
+      "length": 6,
+      "value": "\"lang\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProductsService.swift",
+      "kind": "Dictionary",
+      "offset": 8229,
+      "length": 36,
+      "value": "[(\"Content-type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Model\/OneEntry\/SortDirection.swift",
@@ -15325,25 +16010,228 @@
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplates.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
       "kind": "StringLiteral",
-      "offset": 891,
-      "length": 16,
-      "value": "\"\/templates\/all\""
+      "offset": 423,
+      "length": 2,
+      "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplates.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
       "kind": "StringLiteral",
-      "offset": 1912,
+      "offset": 590,
+      "length": 5,
+      "value": "\"p12\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 736,
+      "length": 6,
+      "value": "\".p12\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 1818,
+      "length": 50,
+      "value": "\"Failed to import P12 file. Error code: \""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 1867,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 1929,
+      "length": 35,
+      "value": "\"Certificate \"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 1951,
+      "length": 1,
+      "value": "\"\" not found\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 2019,
+      "length": 60,
+      "value": "\"Failed to convert the certificate to be sent to the server\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 2499,
+      "length": 31,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 2529,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 2575,
+      "length": 31,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Credentials\/OneEntryCertificateCredential.swift",
+      "kind": "StringLiteral",
+      "offset": 2605,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "BooleanLiteral",
+      "offset": 406,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 769,
+      "length": 21,
+      "value": "\"\/locales\/active\/all\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 824,
+      "length": 9,
+      "value": "\"\/admins\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 873,
+      "length": 16,
+      "value": "\"\/general-types\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 924,
+      "length": 17,
+      "value": "\"\/system\/test404\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 976,
+      "length": 17,
+      "value": "\"\/system\/test500\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1037,
+      "length": 25,
+      "value": "\"\/menus\/marker\/\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1061,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1120,
+      "length": 8,
+      "value": "\"\/files\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1557,
+      "length": 10,
+      "value": "\"filename\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1595,
       "length": 6,
       "value": "\"type\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplates.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
       "kind": "StringLiteral",
-      "offset": 1987,
-      "length": 12,
-      "value": "\"\/templates\""
+      "offset": 1629,
+      "length": 8,
+      "value": "\"entity\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1667,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 1998,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 2032,
+      "length": 8,
+      "value": "\"entity\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 2070,
+      "length": 4,
+      "value": "\"id\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 2100,
+      "length": 7,
+      "value": "\"width\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 2136,
+      "length": 8,
+      "value": "\"height\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "StringLiteral",
+      "offset": 2174,
+      "length": 10,
+      "value": "\"compress\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/ProjectService.swift",
+      "kind": "Dictionary",
+      "offset": 2511,
+      "length": 36,
+      "value": "[(\"Content-type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Model\/OneEntry\/OneEntryAttribute.swift",
@@ -15661,781 +16549,298 @@
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplatePreviews.swift",
-      "kind": "StringLiteral",
-      "offset": 901,
-      "length": 20,
-      "value": "\"\/template-previews\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplatePreviews.swift",
-      "kind": "StringLiteral",
-      "offset": 1349,
-      "length": 26,
-      "value": "\"\/template-previews\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplatePreviews.swift",
-      "kind": "StringLiteral",
-      "offset": 1374,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplatePreviews.swift",
-      "kind": "StringLiteral",
-      "offset": 1830,
-      "length": 37,
-      "value": "\"\/template-previews\/marker\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryTemplatePreviews.swift",
-      "kind": "StringLiteral",
-      "offset": 1866,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 1097,
+      "offset": 1196,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 1135,
+      "offset": 1234,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 1281,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 1311,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 1339,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 1422,
-      "length": 8,
-      "value": "\"\/forms\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 2017,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 2100,
-      "length": 25,
-      "value": "\"\/forms\/marker\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 2124,
-      "length": 26,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 2781,
-      "length": 12,
-      "value": "\"\/form-data\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 3196,
-      "length": 12,
-      "value": "\"\/form-data\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 3646,
+      "offset": 3648,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 3683,
+      "offset": 3685,
       "length": 2,
       "value": "30"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesService.swift",
       "kind": "StringLiteral",
-      "offset": 3816,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 3846,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 3923,
-      "length": 29,
-      "value": "\"\/form-data\/marker\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
-      "kind": "StringLiteral",
-      "offset": 3951,
-      "length": 26,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1642,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1683,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2190,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2218,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2248,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2282,
-      "length": 14,
-      "value": "\"statusMarker\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2324,
+      "offset": 438,
       "length": 16,
-      "value": "\"conditionValue\""
+      "value": "\"\/templates\/all\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesService.swift",
       "kind": "StringLiteral",
-      "offset": 2370,
-      "length": 17,
-      "value": "\"attributeMarker\""
+      "offset": 521,
+      "length": 12,
+      "value": "\"\/templates\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesService.swift",
       "kind": "StringLiteral",
-      "offset": 2418,
-      "length": 17,
-      "value": "\"conditionMarker\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2476,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2508,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 2603,
-      "length": 11,
-      "value": "\"\/products\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3516,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3566,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 3867,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 3895,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 3925,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 3959,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 3991,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 4076,
-      "length": 22,
-      "value": "\"\/products\/empty-page\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 5087,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 5128,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5402,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5430,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5460,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5494,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5526,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5611,
-      "length": 22,
-      "value": "\"\/products\/page\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 5632,
-      "length": 26,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6642,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6683,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 6957,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 6985,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 7015,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 7049,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 7081,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 7166,
-      "length": 27,
-      "value": "\"\/products\/page\/url\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 7192,
-      "length": 26,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 8188,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 8236,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8531,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8559,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8589,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8623,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8655,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8740,
-      "length": 25,
-      "value": "\"\/products\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 8756,
-      "length": 1,
-      "value": "\"\/related\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 9378,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 9461,
-      "length": 17,
-      "value": "\"\/products\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 9477,
-      "length": 26,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 10504,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 10551,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 10843,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 10871,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 10901,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 10935,
-      "length": 9,
-      "value": "\"sortKey\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 10967,
-      "length": 11,
-      "value": "\"sortOrder\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 11052,
-      "length": 29,
-      "value": "\"\/products\/conditions-filter\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 12138,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 12185,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 13493,
+      "offset": 850,
       "length": 6,
-      "value": "\"name\""
+      "value": "\"type\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 13519,
-      "length": 6,
-      "value": "\"lang\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 13598,
-      "length": 24,
-      "value": "\"\/products\/quick\/search\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 14060,
-      "length": 19,
-      "value": "\"\/product-statuses\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 14517,
-      "length": 25,
-      "value": "\"\/product-statuses\/\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 14541,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 15012,
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/TemplatesService.swift",
+      "kind": "Dictionary",
+      "offset": 1077,
       "length": 36,
-      "value": "\"\/product-statuses\/marker\/\""
+      "value": "[(\"Content-type\", \"application\/json\")]"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 15047,
+      "kind": "IntegerLiteral",
+      "offset": 1746,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1787,
       "length": 2,
-      "value": "\"\""
+      "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 15550,
-      "length": 47,
-      "value": "\"\/product-statuses\/marker-validation\/\""
+      "kind": "IntegerLiteral",
+      "offset": 3791,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "StringLiteral",
-      "offset": 15596,
+      "kind": "IntegerLiteral",
+      "offset": 3841,
       "length": 2,
-      "value": "\"\""
+      "value": "30"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 993,
-      "length": 10,
-      "value": "\"langCode\""
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5442,
+      "length": 1,
+      "value": "0"
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5483,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7157,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7198,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8866,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8914,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11232,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11279,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12957,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13004,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 1076,
+      "offset": 647,
       "length": 13,
       "value": "\"\/pages\/root\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 1778,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 1812,
-      "length": 7,
-      "value": "\"limit\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 1840,
-      "length": 8,
-      "value": "\"offset\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 1919,
+      "offset": 725,
       "length": 16,
       "value": "\"\/pages\/catalog\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 2413,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 2496,
+      "offset": 810,
       "length": 8,
       "value": "\"\/pages\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 3101,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 3184,
+      "offset": 898,
       "length": 14,
       "value": "\"\/pages\/\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 3197,
-      "length": 26,
+      "offset": 911,
+      "length": 1,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 3786,
-      "length": 10,
-      "value": "\"langCode\""
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 3869,
+      "offset": 994,
       "length": 19,
       "value": "\"\/pages\/url\/\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 3887,
-      "length": 26,
+      "offset": 1012,
+      "length": 1,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 4344,
+      "offset": 1089,
       "length": 22,
       "value": "\"\/pages\/\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 4358,
+      "offset": 1103,
       "length": 1,
       "value": "\"\/config\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 5089,
+      "offset": 1189,
+      "length": 21,
+      "value": "\"\/pages\/quick\/search\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 1456,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 1774,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 1816,
+      "length": 7,
+      "value": "\"limit\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 1852,
+      "length": 8,
+      "value": "\"offset\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 2144,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 2463,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 2783,
+      "length": 10,
+      "value": "\"langCode\""
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "StringLiteral",
+      "offset": 3174,
       "length": 6,
       "value": "\"lang\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
       "kind": "StringLiteral",
-      "offset": 5119,
+      "offset": 3212,
       "length": 6,
       "value": "\"name\""
     },
     {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
-      "kind": "StringLiteral",
-      "offset": 5194,
-      "length": 21,
-      "value": "\"\/pages\/quick\/search\""
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/Core\/Services\/PagesService.swift",
+      "kind": "Dictionary",
+      "offset": 3439,
+      "length": 36,
+      "value": "[(\"Content-type\", \"application\/json\")]"
     }
   ]
 }

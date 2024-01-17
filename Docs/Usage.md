@@ -150,8 +150,9 @@ This is the final step you need to take in order to add OneEntry to your applica
     ```swift
     let token = "..."
     let url = "https://sample.oneentry.cloud"
+    let credential = OneEntryTokenCredential(token: token)
 
-    OneEntryCore.initializeApp(url, token: token)
+    OneEntryCore.initializeApp(url, credentials: credential)
     ```
 
 #### Initialization with certificates
@@ -170,9 +171,15 @@ The following files will be inside:
 
 1. Move the .p12 file to the project, make sure it is included in Target Membership
 2. Initialize the application. The `application(_:didFinishLaunchingWithOptions:)` method is best suited for this.
+
+> By default, OneEntry certificates do not have a password
    
 ```swift
-OneEntryCore.initializeApp("https://sample.oneentry.cloud", certificate: "certificate.p12", password: nil)
+let url = "https://sample.oneentry.cloud"
+let name = "swift_certificate"
+let credential = OneEntryCertificateCredential(name: name)
+
+OneEntryCore.initializeApp(domain, credentials: credential)
 ```
 
 ##### Generation of your .p12 certificate
@@ -185,7 +192,12 @@ OneEntryCore.initializeApp("https://sample.oneentry.cloud", certificate: "certif
 3.  Move the .p12 file to the project, make sure it is included in Target Membership
 4.  Using the certificate and password you specified when creating it, initialize the application. The `application(_:didFinishLaunchingWithOptions:)` method is best suited for this.
     ```swift
-    OneEntryCore.initializeApp("https://sample.oneentry.cloud", certificate: "certificate.p12", password: "password")
+    let url = "https://sample.oneentry.cloud"
+    let name = "swift_certificate"
+    let password = "password"
+    let credential = OneEntryCertificateCredential(name: certificate, password: password)
+
+    OneEntryCore.initializeApp(domain, credentials: credential)
     ```
 
 ## Using OneEntry Swift SDK
@@ -657,8 +669,12 @@ public struct OneEntryProduct: Identifiable, Decodable, LocalizeContent {
     public let price: Double?
     /// Product localize info
     public let localizeInfos: [String : LocalizeInfo]?
+    /// ID of related products for this product
+    public let relatedIds: [Int]
+    /// Product template ID
+    public let templateIdentifier: String?
     /// Product attributes
-    public let attributeValues: [String : [String : Attribute]]?
+    public let attributeValues: [String : [String : OneEntryAttribute]]?
 }
 ```
 
