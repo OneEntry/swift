@@ -1,7 +1,1 @@
-// OneEntry
-// https://oneentry.cloud/
-import Foundation
-
-struct Empty {
-    
-}
+// OneEntry https://oneentry.cloud/
