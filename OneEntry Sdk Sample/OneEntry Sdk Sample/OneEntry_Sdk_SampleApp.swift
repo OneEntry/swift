@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct OneEntry_Sdk_SampleApp: App {
@@ -14,6 +15,11 @@ struct OneEntry_Sdk_SampleApp: App {
     var body: some Scene {
         WindowGroup {
             GreetingsView()
+                .modelContainer(
+                    for: [
+                        Favorite.self
+                    ]
+                )
         }
     }
 }

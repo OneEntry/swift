@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 enum Sticker: String {
     case newArrivals = "new_arrival"

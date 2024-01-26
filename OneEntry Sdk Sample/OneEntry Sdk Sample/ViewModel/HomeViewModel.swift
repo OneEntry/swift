@@ -13,10 +13,8 @@ import SwiftyBeaver
 @MainActor
 final class HomeViewModel: ObservableObject {    
     @Published private(set) var recent: [RecentProduct] = []
-    @Published private(set) var categories: [Category] = []
-    @Published private(set) var fetchingStatus: FetchingStatus = .loading
-    
-    @Published private var banners: [Int : [Banner]] = [:]
+    @Published private(set) var categories: [Category<Banner>] = []
+    @Published private(set) var fetchingStatus: FetchingStatus = .loading        
     
     private let menuHelper: OneEntryProject = .shared
     private let productsHelper: OneEntryProducts = .shared        
@@ -28,7 +26,7 @@ final class HomeViewModel: ObservableObject {
             
             guard let categories = menu.pages.first(where: { $0.pageUrl == "home_content" })?.children else { throw "Home content not found" }
                     
-            self.categories = categories.compactMap(\.asCategory)
+            self.categories = categories.compactMap { $0.category() }
             await self.fillCategoriesProducts()
             
             self.recent = try await productsHelper
@@ -43,18 +41,19 @@ final class HomeViewModel: ObservableObject {
             self.fetchingStatus = .failure
         }
     }
-    
-    func banner(for page: Category) -> [Banner]? {
-        return banners[page.id]
-    }
-    
+            
     private func fillCategoriesProducts() async {
         await withTaskGroup(of: Void.self) { group in
-            for page in categories {
-                let products = try? await productsHelper.products(page: page.id, langCode: "en_US")
-                
-                DispatchQueue.main.async {
-                    self.banners[page.id] = products?.items.compactMap(\.asBanner)
+            for i in categories.indices {
+                group.addTask {
+                    
+                    let id = await self.categories[i].categoryID
+                    
+                    guard let result = try? await self.productsHelper.products(page: id, langCode: "en_US") else { return }
+                    
+                    DispatchQueue.main.async {
+                        self.categories[i].children = result.items.compactMap(\.asBanner)
+                    }
                 }
             }
         }

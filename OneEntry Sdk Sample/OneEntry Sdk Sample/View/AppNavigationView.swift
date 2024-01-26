@@ -14,13 +14,17 @@ struct AppNavigationView: View {
     
     var body: some View {
         TabView(selection: $appViewModel.activeScreen) {
-            HomeView()
-                .tag(AppViewModel.AppScreen.home)
-                .tabItem { Label("Home", systemImage: "house") }
+            NavigationStack {
+                HomeView()
+            }
+            .tag(AppViewModel.AppScreen.home)
+            .tabItem { Label("Home", systemImage: "house") }
             
-            Text("Catalog")
-                .tag(AppViewModel.AppScreen.catalog)
-                .tabItem { Label("Catalog", systemImage: "square.grid.2x2") }
+            NavigationStack {
+                CatalogView()
+            }
+            .tag(AppViewModel.AppScreen.catalog)
+            .tabItem { Label("Catalog", systemImage: "square.grid.2x2") }
             
             Text("Favorite")
                 .tag(AppViewModel.AppScreen.favorites)

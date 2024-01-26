@@ -7,24 +7,21 @@
 //
 
 import SwiftUI
-import HMStickyHeader
 
 struct HomeView: View {
     
     @EnvironmentObject var homeViewModel: HomeViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    RecentProductsView()
-                    
-                    HomeContent()
-                }
+        ScrollView {
+            VStack {
+                RecentProductsView()
+                
+                HomeContent()
             }
-            .sticky(items: homeViewModel.categories)
-            .navigationTitle("Welcome")
         }
+        .sticky(items: homeViewModel.categories)
+        .navigationTitle("Welcome")
     }
     
     @ViewBuilder
@@ -46,7 +43,7 @@ struct HomeView: View {
         VStack {
             ForEach(homeViewModel.categories) { category in
                 VStack {
-                    ForEach(homeViewModel.banner(for: category) ?? []) { banner in
+                    ForEach(category.children) { banner in
                         BannerView(banner: banner)
                     }
                 }
@@ -55,19 +52,7 @@ struct HomeView: View {
         }
         .padding()
         .safeAreaInset(edge: .top) {
-            StickyHeader<Category> { item, isActive in
-                
-                Text(item.title)
-                    .font(.subheadline)
-                    .foregroundStyle(isActive ? Color.primary.opacity(0.5) : Color.gray)
-                    .padding(8)
-                    .background {
-                        Capsule()
-                            .fill(.gray.opacity(isActive ? 0.4 : 0))
-                            .stroke(.gray.opacity(isActive ? 0 : 0.4), style: .init(lineWidth: 2))
-                    }
-                    .clipShape(Capsule())
-            }
+            CustomStickyHeader<Banner>()
         }
     }
 }

@@ -15,13 +15,15 @@ final class DataFetchingViewModel: ObservableObject {
     
     @Published private(set) var fetchingStatus: FetchingStatus = .loading
     
-    let homeViewModel = HomeViewModel()
+    let homeModel = HomeViewModel()
+    let catalogModel = CatalogViewModel()
     
     private var cancellable: Set<AnyCancellable> = .init()
     private var loadingPublisher: AnyPublisher<FetchingStatus, Never> {
         
         let list = [
-            homeViewModel.$fetchingStatus.eraseToAnyPublisher(),
+            homeModel.$fetchingStatus.eraseToAnyPublisher(),
+            catalogModel.$fetchingStatus.eraseToAnyPublisher(),
         ]
         
         return list.dropFirst().reduce(into: AnyPublisher(list[0].map{[$0]})) { res, b in
@@ -49,7 +51,8 @@ final class DataFetchingViewModel: ObservableObject {
     @Sendable
     func fetch() async {
         await withTaskGroup(of: Void.self) { group in
-            group.addTask(operation: homeViewModel.fetch)
+            group.addTask(operation: homeModel.fetch)
+            group.addTask(operation: catalogModel.fetch)
         }
     }
 }

@@ -9,15 +9,19 @@
 import Foundation
 import OneEntry
 
-struct Category: Identifiable, Equatable {
-    let id: Int
-    let title: String
+struct Category<T: Equatable>: Identifiable, Equatable {
+    var id: UUID = .init()
+    
+    var categoryID: Int
+    var title: String
+    var children: [T] = []
 }
 
 extension OneEntryMenuPage {
-    var asCategory: Category? {
+    
+    func category<T: Equatable>(langCode: String = "en_US") -> Category<T>? {
         guard let title = localizeInfo(languageCode: "en_US")?.title else { return nil }
         
-        return .init(id: id, title: title)
+        return .init(categoryID: id, title: title)
     }
 }

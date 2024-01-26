@@ -15,7 +15,8 @@ struct ContentView: View {
         switch fetchingViewModel.fetchingStatus {
             case .success: 
                 AppNavigationView()
-                    .environmentObject(fetchingViewModel.homeViewModel)
+                    .environmentObject(fetchingViewModel.homeModel)
+                    .environmentObject(fetchingViewModel.catalogModel)
                 
             case .failure: 
                 Text("Error")
