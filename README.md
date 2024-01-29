@@ -65,6 +65,7 @@ dependencies: [
 
 ## Documentation
 - [GitHub](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/Docs/Usage.md)
+- [OneEntry](https://oneentry.cloud/en/instructions#SWIFT)
 
 ## [License](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/LICENSE.txt)
 Content management system OneEntry
