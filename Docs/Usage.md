@@ -47,6 +47,7 @@
         - [Status by marker](#status-by-marker)
         - [Status marker validation](#status-marker-validation)
     - [OneEntryPages](#oneentrypages)
+      - [Getting child pages](#getting-child-pages)
       - [Getting the root pages](#getting-the-root-pages)
       - [Getting all pages within the catalog](#getting-all-pages-within-the-catalog)
       - [Getting all the pages](#getting-all-the-pages)
@@ -824,6 +825,42 @@ let valid: Bool = try await status.markerValidation
 The answer will be the `true` or `false` 
 
 ### OneEntryPages
+
+#### Getting child pages
+In OneEntry it is possible to position pages in a flash style, which means that it is possible to get a list of child pages for the main entity
+
+```swift
+let rootURL = "dev"
+let children: [OneEntryPage] = try await OneEntryPages.shared.children(for: rootURL, langCode: "en_US")
+```
+
+The `OneEntryPage` array will be returned as an answer
+
+```swift
+/// OneEntry page object
+public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {        
+    /// Page id
+    public let id: Int
+    /// Page parent id
+    public var parentId: Int?
+    /// Page url
+    public let pageUrl: String
+    /// Page depth
+    public let depth: Int?
+    /// Is the page active
+    public let isVisible: Bool?
+    /// Page position
+    public let position: Int?
+    /// Page type
+    public let type: String?
+    /// Page template marker
+    public let templateIdentifier: String?
+    /// Page localize content
+    public let localizeInfos: [String : LocalizeInfo]?
+    /// Page attributes
+    public let attributeValues: [String : [String : OneEntryAttribute]]?
+}
+```
 
 #### Getting the root pages
 
