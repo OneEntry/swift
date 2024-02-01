@@ -686,25 +686,18 @@ The OneEntry product filter supports sorting through `sortOrder` and `sortKey`, 
 ```swift
 let filters: [OneEntryFilter] = [
     .init(attributeMarker: "price", conditionMarker: .mth, conditionValue: 500, pageId: 12),
-    .init(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12)
+    .init(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12),
+    .init(attributeMarker: "color", conditionMarker: .in, conditionValue: "blue", pageId: 12),
 ]
             
 let result = try await OneEntryProducts.shared.filterProducts(filters, langCode: "en_US")
-```
-
-```swift
-let jowerBoundary = OneEntryFilter(attributeMarker: "price", conditionMarker: .mth, conditionValue: 500, pageId: 12)
-let hightBoundary = OneEntryFilter(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12)
-
-let result = try await OneEntryProducts.shared.filterProducts(jowerBoundary, hightBoundary, langCode: "en_US")
 ```
 
 In all cases of filtering, the answer will be `OneEntryResult<OneEntryProduct>`
 
 ```swift
 /// The structure that comes when you request items
-public struct OneEntryResult<T: Decodable>: Decodable {
-    
+public struct OneEntryResult<T: Decodable>: Decodable {    
     /// All items
     public let items: [T]
     /// Number of items

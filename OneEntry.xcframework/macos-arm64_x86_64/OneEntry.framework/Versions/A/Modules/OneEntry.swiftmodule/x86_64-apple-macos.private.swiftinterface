@@ -140,9 +140,9 @@ public typealias Credential = Moya.PluginType
 public struct OneEntryFilter : Swift.Encodable {
   public let attributeMarker: Swift.String
   public let conditionMarker: OneEntry.ConditionMarker
-  public let conditionValue: Swift.Int
+  public let conditionValue: any Swift.Encodable
   public let pageId: Swift.Int
-  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: Swift.Int, pageId: Swift.Int)
+  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: some Encodable, pageId: Swift.Int)
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
@@ -434,9 +434,6 @@ extension OneEntry.OneEntryProducts {
   #endif
   #if compiler(>=5.3) && $AsyncAwait
   final public func filterProducts(_ filters: [OneEntry.OneEntryFilter], offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func filterProducts(_ filters: OneEntry.OneEntryFilter..., offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
   #if compiler(>=5.3) && $AsyncAwait
   final public func quickSearch(_ name: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntrySearchProduct]

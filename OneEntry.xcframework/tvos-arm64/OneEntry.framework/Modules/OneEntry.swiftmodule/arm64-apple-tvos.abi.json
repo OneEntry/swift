@@ -4238,14 +4238,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
+                "name": "Encodable",
+                "printedName": "Swift.Encodable",
+                "usr": "s:SE"
               }
             ],
             "declKind": "Var",
-            "usr": "s:8OneEntry0aB6FilterV14conditionValueSivp",
-            "mangledName": "$s8OneEntry0aB6FilterV14conditionValueSivp",
+            "usr": "s:8OneEntry0aB6FilterV14conditionValueSE_pvp",
+            "mangledName": "$s8OneEntry0aB6FilterV14conditionValueSE_pvp",
             "moduleName": "OneEntry",
             "declAttributes": [
               "HasStorage",
@@ -4262,14 +4262,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
+                    "name": "Encodable",
+                    "printedName": "Swift.Encodable",
+                    "usr": "s:SE"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB6FilterV14conditionValueSivg",
-                "mangledName": "$s8OneEntry0aB6FilterV14conditionValueSivg",
+                "usr": "s:8OneEntry0aB6FilterV14conditionValueSE_pvg",
+                "mangledName": "$s8OneEntry0aB6FilterV14conditionValueSE_pvg",
                 "moduleName": "OneEntry",
                 "implicit": true,
                 "accessorKind": "get"
@@ -4346,9 +4346,8 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
+                "name": "GenericTypeParam",
+                "printedName": "τ_0_0"
               },
               {
                 "kind": "TypeNominal",
@@ -4358,9 +4357,10 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8OneEntry0aB6FilterV15attributeMarker09conditionE00F5Value6pageIdACSS_AA09ConditionE0OS2itcfc",
-            "mangledName": "$s8OneEntry0aB6FilterV15attributeMarker09conditionE00F5Value6pageIdACSS_AA09ConditionE0OS2itcfc",
+            "usr": "s:8OneEntry0aB6FilterV15attributeMarker09conditionE00F5Value6pageIdACSS_AA09ConditionE0OxSitcSERzlufc",
+            "mangledName": "$s8OneEntry0aB6FilterV15attributeMarker09conditionE00F5Value6pageIdACSS_AA09ConditionE0OxSitcSERzlufc",
             "moduleName": "OneEntry",
+            "genericSig": "<τ_0_0 where τ_0_0 : Swift.Encodable>",
             "declAttributes": [
               "AccessControl"
             ],
@@ -4387,7 +4387,9 @@
             "usr": "s:8OneEntry0aB6FilterV6encode2toys7Encoder_p_tKF",
             "mangledName": "$s8OneEntry0aB6FilterV6encode2toys7Encoder_p_tKF",
             "moduleName": "OneEntry",
-            "implicit": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
           }
@@ -11373,103 +11375,6 @@
           },
           {
             "kind": "Function",
-            "name": "filterProducts",
-            "printedName": "filterProducts(_:offset:limit:langCode:sortOrder:sortKey:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "OneEntryResult",
-                "printedName": "OneEntry.OneEntryResult<OneEntry.OneEntryProduct>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OneEntryProduct",
-                    "printedName": "OneEntry.OneEntryProduct",
-                    "usr": "s:8OneEntry0aB7ProductV"
-                  }
-                ],
-                "usr": "s:8OneEntry0aB6ResultV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[OneEntry.OneEntryFilter]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OneEntryFilter",
-                    "printedName": "OneEntry.OneEntryFilter",
-                    "usr": "s:8OneEntry0aB6FilterV"
-                  }
-                ],
-                "usr": "s:Sa"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "hasDefaultArg": true,
-                "usr": "s:Si"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "hasDefaultArg": true,
-                "usr": "s:Si"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "OneEntry.SortDirection?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "SortDirection",
-                    "printedName": "OneEntry.SortDirection",
-                    "usr": "s:8OneEntry13SortDirectionO"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8OneEntry0aB8ProductsC06filterC0_6offset5limit8langCode9sortOrder0I3KeyAA0aB6ResultVyAA0aB7ProductVGAA0aB6FilterVd_S2iSSAA13SortDirectionOSgSSSgtYaKF",
-            "mangledName": "$s8OneEntry0aB8ProductsC06filterC0_6offset5limit8langCode9sortOrder0I3KeyAA0aB6ResultVyAA0aB7ProductVGAA0aB6FilterVd_S2iSSAA13SortDirectionOSgSSSgtYaKF",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "Final",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isFromExtension": true,
-            "throwing": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
             "name": "quickSearch",
             "printedName": "quickSearch(_:langCode:)",
             "children": [
@@ -16855,20 +16760,6 @@
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
       "offset": 11284,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 12962,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
-      "kind": "IntegerLiteral",
-      "offset": 13009,
       "length": 2,
       "value": "30"
     },
