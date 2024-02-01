@@ -30,18 +30,18 @@ let package = Package(
         ),
         .binaryTarget(
             name: "OneEntryFramework",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.7/XCFrameworks.zip",
-            checksum: "31e36717fbffda6745b4ff4dff74a8f3836cd080f075b1377f1d6773d2673c85"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.8/XCFrameworks.zip",
+            checksum: "47c3a97541468165d149ea9ad262c52aee3fce0a4da20dd79096d903b7ea4c43"
         ),
         .binaryTarget(
             name: "Alamofire",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.7/Alamofire.zip",
-            checksum: "6f2cfca72db76154ee395ced93b95757b9413dba38a8d9050220725c5cb743da"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.8/Alamofire.zip",
+            checksum: "9c4dcb7ea717bc5d6a11bf931300301c3b113916d9e4a12d02ce01f488e29b04"
         ),
         .binaryTarget(
             name: "Moya",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.7/Moya.zip",
-            checksum: "81f738d5116c91ab28eddf8001d9fcfe3b2ed008970f791cf8e35708bc8a486b"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.0.8/Moya.zip",
+            checksum: "fcd809c2579dd5f7d7b0ec97ed7adc8b89dcad69cbca8247f26fc8383de6e467"
         ),
         .testTarget(
             name: "OneEntryTests",
