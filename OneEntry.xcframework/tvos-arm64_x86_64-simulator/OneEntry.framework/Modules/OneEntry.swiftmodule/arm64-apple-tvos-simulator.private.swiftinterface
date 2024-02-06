@@ -282,7 +282,7 @@ public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.Local
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryError : Swift.Decodable {
-  public let statusCode: Swift.Int
+  public let statusCode: Swift.Int?
   public let message: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }

@@ -424,7 +424,7 @@ public struct OneEntryFilter : Swift.Encodable {
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct OneEntryError : Swift.Decodable {
-  public let statusCode: Swift.Int
+  public let statusCode: Swift.Int?
   public let message: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }

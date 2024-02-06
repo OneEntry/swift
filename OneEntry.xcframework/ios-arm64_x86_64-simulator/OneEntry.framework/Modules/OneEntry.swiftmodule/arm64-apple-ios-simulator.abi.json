@@ -10909,6 +10909,13 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
+      },
+      {
         "kind": "TypeDecl",
         "name": "OneEntryError",
         "printedName": "OneEntryError",
@@ -10920,14 +10927,22 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:8OneEntry0aB5ErrorV10statusCodeSivp",
-            "mangledName": "$s8OneEntry0aB5ErrorV10statusCodeSivp",
+            "usr": "s:8OneEntry0aB5ErrorV10statusCodeSiSgvp",
+            "mangledName": "$s8OneEntry0aB5ErrorV10statusCodeSiSgvp",
             "moduleName": "OneEntry",
             "declAttributes": [
               "HasStorage",
@@ -10944,14 +10959,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB5ErrorV10statusCodeSivg",
-                "mangledName": "$s8OneEntry0aB5ErrorV10statusCodeSivg",
+                "usr": "s:8OneEntry0aB5ErrorV10statusCodeSiSgvg",
+                "mangledName": "$s8OneEntry0aB5ErrorV10statusCodeSiSgvg",
                 "moduleName": "OneEntry",
                 "implicit": true,
                 "accessorKind": "get"
@@ -13141,6 +13164,23 @@
             "mangledName": "$sSe"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Moya",
+        "printedName": "Moya",
+        "declKind": "Import",
+        "moduleName": "OneEntry"
       },
       {
         "kind": "Import",
@@ -15569,7 +15609,7 @@
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
       "kind": "BooleanLiteral",
-      "offset": 3954,
+      "offset": 3464,
       "length": 5,
       "value": "false"
     },
@@ -16311,84 +16351,84 @@
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 1751,
+      "offset": 1681,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 1792,
+      "offset": 1722,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 3796,
+      "offset": 3656,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 3846,
+      "offset": 3706,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 5447,
+      "offset": 5237,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 5488,
+      "offset": 5278,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 7162,
+      "offset": 6882,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 7203,
+      "offset": 6923,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 8871,
+      "offset": 8521,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 8919,
+      "offset": 8569,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 11237,
+      "offset": 10747,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 11284,
+      "offset": 10794,
       "length": 2,
       "value": "30"
     },
@@ -16731,28 +16771,28 @@
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 1201,
+      "offset": 1131,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 1239,
+      "offset": 1169,
       "length": 2,
       "value": "30"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 3653,
+      "offset": 3508,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryForms.swift",
       "kind": "IntegerLiteral",
-      "offset": 3690,
+      "offset": 3545,
       "length": 2,
       "value": "30"
     },
