@@ -59,7 +59,7 @@ Once you have your Swift package set up, adding OneEntry as a dependency is as e
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.0.4"))
+    .package(url: "https://github.com/OneEntry/oneentry-ios-sdk", .upToNextMajor(from: "1.1.0"))
 ]
 ```
 
