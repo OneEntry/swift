@@ -64,7 +64,8 @@ dependencies: [
 ```
 
 ## Documentation
-- [GitHub](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/Docs/Usage.md)
+We provide documentation in several formats:
+- [DocC](https://oneentry.github.io/oneentry-ios-sdk/documentation/oneentry/)
 - [OneEntry](https://oneentry.cloud/en/instructions#SWIFT)
 
 ## [License](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/LICENSE.txt)
