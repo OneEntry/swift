@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name OneEntry
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.10.5 clang-1500.3.7.4)
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OneEntry
 import Foundation
 import Moya
 import Swift
@@ -10,11 +9,6 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 import os.log
 import os
-public struct OneEntryListItem : Swift.Decodable {
-  public let title: Swift.String
-  public let value: Swift.String
-  public init(from decoder: any Swift.Decoder) throws
-}
 @_hasMissingDesignatedInitializers final public class OneEntryTemplates {
   public static let shared: OneEntry.OneEntryTemplates
   @objc deinit
@@ -50,6 +44,20 @@ extension OneEntry.OneEntryFile {
 }
 extension OneEntry.OneEntryCore {
   public static func initializeApp(_ domain: Swift.String, credentials: any Moya.PluginType)
+}
+public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+  public var id: Swift.Int
+  public var identifier: Swift.String
+  public var position: Swift.Int
+  public var type: Swift.String
+  public var templateIdentifier: Swift.String?
+  public var productPageUrls: [Swift.String]?
+  public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
+  public var products: [OneEntry.OneEntryProduct]?
+  public var customSettings: OneEntry.OneEntryCustomSettings?
+  public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
 }
 public protocol LocalizeContent {
   var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? { get }
@@ -125,23 +133,6 @@ extension OneEntry.OneEntryPages {
 public struct OneEntryPageConfig : Swift.Decodable {
   public let rowsPerPage: Swift.Int?
   public let productsPerRow: Swift.Int?
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
-  public let id: Swift.Int
-  public let price: Swift.Double?
-  public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
-  public let relatedIds: [Swift.Int]
-  public let templateIdentifier: Swift.String?
-  public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
-  public typealias ID = Swift.Int
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable {
-  public let id: Swift.Int
-  public let title: Swift.String
-  public let pageId: Swift.Int
-  public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryFormDataRequest : Swift.Encodable {
@@ -226,6 +217,23 @@ public struct OneEntryResult<T> : Swift.Decodable where T : Swift.Decodable {
   public let total: Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
+public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+  public let id: Swift.Int
+  public let price: Swift.Double?
+  public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  public let relatedIds: [Swift.Int]
+  public let templateIdentifier: Swift.String?
+  public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
+  public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable {
+  public let id: Swift.Int
+  public let title: Swift.String
+  public let pageId: Swift.Int
+  public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct OneEntryImage : Swift.Decodable {
   public let size: Swift.Int
   public let filename: Swift.String
@@ -233,7 +241,7 @@ public struct OneEntryImage : Swift.Decodable {
   public let downloadLink: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }
-public enum SortDirection : Swift.String {
+public enum SortDirection : Swift.String, Swift.Decodable {
   case desk
   case asc
   public init?(rawValue: Swift.String)
@@ -365,6 +373,22 @@ public struct OneEntryProportion : Swift.Decodable {
   public let alignmentType: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }
+@_hasMissingDesignatedInitializers final public class OneEntryBlocks {
+  public static let shared: OneEntry.OneEntryBlocks
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func similarProducts(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func products(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func blocks(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> [OneEntry.OneEntryBlock]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func block(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryBlock
+  #endif
+  @objc deinit
+}
 public struct LocalizeInfo : Swift.Decodable {
   public let title: Swift.String?
   public let content: OneEntry.InfoContent?
@@ -411,7 +435,7 @@ extension OneEntry.OneEntryAttribute {
   public var fileValues: [OneEntry.OneEntryFile]? {
     get
   }
-  public var listValues: OneEntry.OneEntryListItem? {
+  public var listValues: OneEntry.OneEntryList? {
     get
   }
 }
@@ -433,7 +457,7 @@ extension OneEntry.OneEntryError : Foundation.LocalizedError {
     get
   }
 }
-public enum ConditionMarker : Swift.String, Swift.Encodable {
+public enum ConditionMarker : Swift.String, Swift.Codable {
   case `in`
   case nin
   case eq
@@ -447,6 +471,19 @@ public enum ConditionMarker : Swift.String, Swift.Encodable {
   public var rawValue: Swift.String {
     get
   }
+}
+public struct OneEntrySimilarProductRule : Swift.Decodable {
+  public let id: Swift.String
+  public let found: Swift.String?
+  public let pageId: Swift.String?
+  public let langCode: Swift.String
+  public let pageName: Swift.String?
+  public let attributeName: Swift.String
+  public let conditionName: Swift.String
+  public let conditionValue: Swift.String
+  public let attributeMarker: Swift.String
+  public let conditionMarker: OneEntry.ConditionMarker
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
@@ -500,6 +537,19 @@ extension OneEntry.OneEntryForms {
   #if compiler(>=5.3) && $AsyncAwait
   final public func data(with marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
   #endif
+}
+public struct OneEntryCustomSettings : Swift.Decodable {
+  public let productConfig: [Swift.String : OneEntry.OneEntryProductConfig]?
+  public let similarProductRules: [Swift.String : [OneEntry.OneEntrySimilarProductRule]]?
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OneEntryList : Swift.Decodable {
+  public let title: Swift.String
+  public let value: Swift.String
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OneEntryProductConfig : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryProductStatus : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int

@@ -1,8 +1,8 @@
 //
 //  One_Entry_SDK.h
-//  One Entry SDK
+//  OneEntry SDK
 //
-//  Created by Артур Данилов on 23.09.2023.
+//  Created by Archibbald on 23.09.2023.
 //
 
 #import <Foundation/Foundation.h>
