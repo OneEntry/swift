@@ -67,6 +67,7 @@ dependencies: [
 We provide documentation in several formats:
 - [DocC](https://oneentry.github.io/oneentry-ios-sdk/documentation/oneentry/)
 - [OneEntry](https://oneentry.cloud/en/instructions#SWIFT)
+- [Markdown](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/documentation)
 
 ## [License](https://github.com/OneEntry/oneentry-ios-sdk/blob/main/LICENSE.txt)
 Content management system OneEntry
