@@ -52,6 +52,7 @@ The full use of the entire sdk is described here
         - [Status by marker](#status-by-marker)
         - [Status marker validation](#status-marker-validation)
     - [OneEntryPages](#oneentrypages)
+      - [Getting all the blocks tied to the page](#getting-all-the-blocks-tied-to-the-page)
       - [Getting child pages](#getting-child-pages)
       - [Getting the root pages](#getting-the-root-pages)
       - [Getting all pages within the catalog](#getting-all-pages-within-the-catalog)
@@ -846,6 +847,14 @@ let valid: Bool = try await status.markerValidation
 The answer will be the `true` or `false` 
 
 ### OneEntryPages
+
+#### Getting all the blocks tied to the page
+
+To get all the blocks, you should use the ``OneEntryPages/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
+
+```swift
+let blocks = try await OneEntryPages.shared.blocks(page: "url", langCode: "en_US")
+```
 
 #### Getting child pages
 In OneEntry it is possible to position pages in a flash style, which means that it is possible to get a list of child pages for the main entity

@@ -8147,38 +8147,22 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Int?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
+                "name": "Int",
+                "printedName": "Swift.Int",
                 "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "usr": "s:Si"
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.Int?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
+                "name": "Int",
+                "printedName": "Swift.Int",
                 "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "usr": "s:Si"
               }
             ],
             "declKind": "Func",
-            "usr": "s:8OneEntry0aB5PagesC07catalogC08langCode5limit6offsetSayAA0aB4PageVGSS_SiSgAKtYaKF",
-            "mangledName": "$s8OneEntry0aB5PagesC07catalogC08langCode5limit6offsetSayAA0aB4PageVGSS_SiSgAKtYaKF",
+            "usr": "s:8OneEntry0aB5PagesC07catalogC08langCode5limit6offsetSayAA0aB4PageVGSS_S2itYaKF",
+            "mangledName": "$s8OneEntry0aB5PagesC07catalogC08langCode5limit6offsetSayAA0aB4PageVGSS_S2itYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",
@@ -8368,6 +8352,51 @@
             "declKind": "Func",
             "usr": "s:8OneEntry0aB5PagesC11quickSearch_8langCodeSayAA0abE4PageVGSS_SStYaKF",
             "mangledName": "$s8OneEntry0aB5PagesC11quickSearch_8langCodeSayAA0abE4PageVGSS_SStYaKF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "blocks",
+            "printedName": "blocks(page:langCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryBlock]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryBlock",
+                    "printedName": "OneEntry.OneEntryBlock",
+                    "usr": "s:8OneEntry0aB5BlockV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry0aB5PagesC6blocks4page8langCodeSayAA0aB5BlockVGSS_SStYaKF",
+            "mangledName": "$s8OneEntry0aB5PagesC6blocks4page8langCodeSayAA0aB5BlockVGSS_SStYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",
@@ -12278,6 +12307,354 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "OneEntryDate",
+        "printedName": "OneEntryDate",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "fullDate",
+            "printedName": "fullDate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB4DateV04fullC0SSvp",
+            "mangledName": "$s8OneEntry0aB4DateV04fullC0SSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV04fullC0SSvg",
+                "mangledName": "$s8OneEntry0aB4DateV04fullC0SSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV04fullC0SSvs",
+                "mangledName": "$s8OneEntry0aB4DateV04fullC0SSvs",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV04fullC0SSvM",
+                "mangledName": "$s8OneEntry0aB4DateV04fullC0SSvM",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "formatString",
+            "printedName": "formatString",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB4DateV12formatStringSSvp",
+            "mangledName": "$s8OneEntry0aB4DateV12formatStringSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV12formatStringSSvg",
+                "mangledName": "$s8OneEntry0aB4DateV12formatStringSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV12formatStringSSvs",
+                "mangledName": "$s8OneEntry0aB4DateV12formatStringSSvs",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV12formatStringSSvM",
+                "mangledName": "$s8OneEntry0aB4DateV12formatStringSSvM",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "formattedValue",
+            "printedName": "formattedValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB4DateV14formattedValueSSvp",
+            "mangledName": "$s8OneEntry0aB4DateV14formattedValueSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV14formattedValueSSvg",
+                "mangledName": "$s8OneEntry0aB4DateV14formattedValueSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV14formattedValueSSvs",
+                "mangledName": "$s8OneEntry0aB4DateV14formattedValueSSvs",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4DateV14formattedValueSSvM",
+                "mangledName": "$s8OneEntry0aB4DateV14formattedValueSSvM",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryDate",
+                "printedName": "OneEntry.OneEntryDate",
+                "usr": "s:8OneEntry0aB4DateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry0aB4DateV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8OneEntry0aB4DateV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "date",
+            "printedName": "date(format:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Date?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Date",
+                    "printedName": "Foundation.Date",
+                    "usr": "s:10Foundation4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry0aB4DateV4date6format10Foundation0C0VSgSS_tF",
+            "mangledName": "$s8OneEntry0aB4DateV4date6format10Foundation0C0VSgSS_tF",
+            "moduleName": "OneEntry",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry0aB4DateV",
+        "mangledName": "$s8OneEntry0aB4DateV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "OneEntryGeneralType",
         "printedName": "OneEntryGeneralType",
         "children": [
@@ -14418,21 +14795,21 @@
               {
                 "kind": "TypeNominal",
                 "name": "Optional",
-                "printedName": "Foundation.Date?",
+                "printedName": "OneEntry.OneEntryDate?",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Date",
-                    "printedName": "Foundation.Date",
-                    "usr": "s:10Foundation4DateV"
+                    "name": "OneEntryDate",
+                    "printedName": "OneEntry.OneEntryDate",
+                    "usr": "s:8OneEntry0aB4DateV"
                   }
                 ],
                 "usr": "s:Sq"
               }
             ],
             "declKind": "Var",
-            "usr": "s:8OneEntry0aB9AttributeV9dateValue10Foundation4DateVSgvp",
-            "mangledName": "$s8OneEntry0aB9AttributeV9dateValue10Foundation4DateVSgvp",
+            "usr": "s:8OneEntry0aB9AttributeV9dateValueAA0aB4DateVSgvp",
+            "mangledName": "$s8OneEntry0aB9AttributeV9dateValueAA0aB4DateVSgvp",
             "moduleName": "OneEntry",
             "declAttributes": [
               "AccessControl",
@@ -14448,21 +14825,21 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Optional",
-                    "printedName": "Foundation.Date?",
+                    "printedName": "OneEntry.OneEntryDate?",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "Date",
-                        "printedName": "Foundation.Date",
-                        "usr": "s:10Foundation4DateV"
+                        "name": "OneEntryDate",
+                        "printedName": "OneEntry.OneEntryDate",
+                        "usr": "s:8OneEntry0aB4DateV"
                       }
                     ],
                     "usr": "s:Sq"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB9AttributeV9dateValue10Foundation4DateVSgvg",
-                "mangledName": "$s8OneEntry0aB9AttributeV9dateValue10Foundation4DateVSgvg",
+                "usr": "s:8OneEntry0aB9AttributeV9dateValueAA0aB4DateVSgvg",
+                "mangledName": "$s8OneEntry0aB9AttributeV9dateValueAA0aB4DateVSgvg",
                 "moduleName": "OneEntry",
                 "isFromExtension": true,
                 "accessorKind": "get"
@@ -18080,6 +18457,20 @@
       "value": "30"
     },
     {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2133,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryPages.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2180,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProject.swift",
       "kind": "BooleanLiteral",
       "offset": 3449,
@@ -18148,6 +18539,13 @@
       "offset": 3467,
       "length": 2,
       "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Model\/OneEntry\/Attributes\/OneEntryDate.swift",
+      "kind": "StringLiteral",
+      "offset": 371,
+      "length": 28,
+      "value": "\"yyyy-MM-dd'T'HH:mm:ss.SSSZ\""
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",

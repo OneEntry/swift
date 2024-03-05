@@ -85,3 +85,11 @@ let result: [OneEntrySearchPage] = try await OneEntryPages.shared.quickSearch("D
 ```
 
 The ``OneEntrySearchPage`` array will be returned as an answer
+
+## Getting all the blocks tied to the page
+
+To get all the blocks, you should use the ``OneEntryPages/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
+
+```swift
+let blocks = try await OneEntryPages.shared.blocks(page: "url", langCode: "en_US")
+```
