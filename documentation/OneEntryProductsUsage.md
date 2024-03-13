@@ -98,16 +98,17 @@ The answer will return ``OneEntryProduct``
 
 ## Product filter
 
-The OneEntry product filter supports sorting through `sortOrder` and `sortKey`, as well as working with different types of collections
+The OneEntry filter allows you to get products that meet the specified parameters. Our sdk uses DSL to build the filter. All you need to do is use the right set of filters in `@resultBuilder`
 
-```swift
-let filters: [OneEntryFilter] = [
-    .init(attributeMarker: "price", conditionMarker: .mth, conditionValue: 500, pageId: 12),
-    .init(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12),
-    .init(attributeMarker: "color", conditionMarker: .in, conditionValue: "blue", pageId: 12),
-]
-            
-let result = try await OneEntryProducts.shared.filterProducts(filters, langCode: "en_US")
+```swift            
+let result = try await OneEntryProducts.shared.filterProducts(langCode: "en_US") {
+    OneEntryFilter(attributeMarker: "price", conditionMarker: .mth, conditionValue: 500, pageId: 12)
+    OneEntryFilter(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12)
+
+    if condition {
+        OneEntryFilter(attributeMarker: "color", conditionMarker: .in, conditionValue: "blue", pageId: 12)
+    }    
+}
 ```
 
 Returns an ``OneEntryResult`` object, where items - an array of ``OneEntryProduct`` objects

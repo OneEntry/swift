@@ -19,6 +19,7 @@ HeadlessCMS OneEntry is based on many years of unique experience of CMS develope
 | MacOS    |  10.15+  |
 | WatchOS  |   6.0+   |
 | tvOS     |  13.0+   |
+| VisionOS |   1.0+   |
 
 ## Installation
 

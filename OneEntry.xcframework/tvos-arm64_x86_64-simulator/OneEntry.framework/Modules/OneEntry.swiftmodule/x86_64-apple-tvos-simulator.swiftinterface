@@ -306,6 +306,13 @@ public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.Local
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
+@_functionBuilder public struct FilterBuilder {
+  public static func buildBlock(_ components: [OneEntry.OneEntryFilter]...) -> [OneEntry.OneEntryFilter]
+  public static func buildExpression(_ expression: OneEntry.OneEntryFilter) -> [OneEntry.OneEntryFilter]
+  public static func buildEither(first component: [OneEntry.OneEntryFilter]) -> [OneEntry.OneEntryFilter]
+  public static func buildEither(second component: [OneEntry.OneEntryFilter]) -> [OneEntry.OneEntryFilter]
+  public static func buildOptional(_ component: [OneEntry.OneEntryFilter]?) -> [OneEntry.OneEntryFilter]
+}
 public struct OneEntryError : Swift.Decodable {
   public let statusCode: Swift.Int?
   public let message: Swift.String
@@ -455,7 +462,7 @@ extension OneEntry.OneEntryProducts {
   final public func product(with id: Swift.Int, langCode: Swift.String) async throws -> OneEntry.OneEntryProduct
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  final public func filterProducts(_ filters: [OneEntry.OneEntryFilter], offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.FilterBuilder builder: @escaping () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
   #if compiler(>=5.3) && $AsyncAwait
   final public func quickSearch(_ name: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntrySearchProduct]

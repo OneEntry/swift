@@ -8060,6 +8060,260 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "FilterBuilder",
+        "printedName": "FilterBuilder",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "buildBlock",
+            "printedName": "buildBlock(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[OneEntry.OneEntryFilter]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFilter]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFilter",
+                        "printedName": "OneEntry.OneEntryFilter",
+                        "usr": "s:8OneEntry0aB6FilterV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry13FilterBuilderV10buildBlockySayAA0abC0VGAGd_tFZ",
+            "mangledName": "$s8OneEntry13FilterBuilderV10buildBlockySayAA0abC0VGAGd_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildExpression",
+            "printedName": "buildExpression(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryFilter",
+                "printedName": "OneEntry.OneEntryFilter",
+                "usr": "s:8OneEntry0aB6FilterV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry13FilterBuilderV15buildExpressionySayAA0abC0VGAFFZ",
+            "mangledName": "$s8OneEntry13FilterBuilderV15buildExpressionySayAA0abC0VGAFFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildEither",
+            "printedName": "buildEither(first:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry13FilterBuilderV11buildEither5firstSayAA0abC0VGAH_tFZ",
+            "mangledName": "$s8OneEntry13FilterBuilderV11buildEither5firstSayAA0abC0VGAH_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildEither",
+            "printedName": "buildEither(second:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry13FilterBuilderV11buildEither6secondSayAA0abC0VGAH_tFZ",
+            "mangledName": "$s8OneEntry13FilterBuilderV11buildEither6secondSayAA0abC0VGAH_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildOptional",
+            "printedName": "buildOptional(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFilter",
+                    "printedName": "OneEntry.OneEntryFilter",
+                    "usr": "s:8OneEntry0aB6FilterV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[OneEntry.OneEntryFilter]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFilter]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFilter",
+                        "printedName": "OneEntry.OneEntryFilter",
+                        "usr": "s:8OneEntry0aB6FilterV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry13FilterBuilderV13buildOptionalySayAA0abC0VGAGSgFZ",
+            "mangledName": "$s8OneEntry13FilterBuilderV13buildOptionalySayAA0abC0VGAGSgFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry13FilterBuilderV",
+        "mangledName": "$s8OneEntry13FilterBuilderV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl",
+          "ResultBuilder"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Treelike",
         "printedName": "Treelike",
         "children": [
@@ -16842,7 +17096,7 @@
           {
             "kind": "Function",
             "name": "filterProducts",
-            "printedName": "filterProducts(_:offset:limit:langCode:sortOrder:sortKey:)",
+            "printedName": "filterProducts(offset:limit:langCode:sortOrder:sortKey:builder:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -16857,20 +17111,6 @@
                   }
                 ],
                 "usr": "s:8OneEntry0aB6ResultV"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[OneEntry.OneEntryFilter]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "OneEntryFilter",
-                    "printedName": "OneEntry.OneEntryFilter",
-                    "usr": "s:8OneEntry0aB6FilterV"
-                  }
-                ],
-                "usr": "s:Sa"
               },
               {
                 "kind": "TypeNominal",
@@ -16921,11 +17161,37 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> [OneEntry.OneEntryFilter]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFilter]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFilter",
+                        "printedName": "OneEntry.OneEntryFilter",
+                        "usr": "s:8OneEntry0aB6FilterV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:8OneEntry0aB8ProductsC06filterC0_6offset5limit8langCode9sortOrder0I3KeyAA0aB6ResultVyAA0aB7ProductVGSayAA0aB6FilterVG_S2iSSAA13SortDirectionOSgSSSgtYaKF",
-            "mangledName": "$s8OneEntry0aB8ProductsC06filterC0_6offset5limit8langCode9sortOrder0I3KeyAA0aB6ResultVyAA0aB7ProductVGSayAA0aB6FilterVG_S2iSSAA13SortDirectionOSgSSSgtYaKF",
+            "usr": "s:8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyctYaKF",
+            "mangledName": "$s8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyctYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",
@@ -18662,14 +18928,14 @@
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 10637,
+      "offset": 10577,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Provider\/OneEntryProducts.swift",
       "kind": "IntegerLiteral",
-      "offset": 10684,
+      "offset": 10624,
       "length": 2,
       "value": "30"
     },
