@@ -8283,12 +8283,15 @@
                     "name": "Void",
                     "printedName": "()"
                   }
+                ],
+                "typeAttributes": [
+                  "noescape"
                 ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyctYaKF",
-            "mangledName": "$s8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyctYaKF",
+            "usr": "s:8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyXEtYaKF",
+            "mangledName": "$s8OneEntry0aB8ProductsC06filterC06offset5limit8langCode9sortOrder0I3Key7builderAA0aB6ResultVyAA0aB7ProductVGSi_SiSSAA13SortDirectionOSgSSSgSayAA0aB6FilterVGyXEtYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",

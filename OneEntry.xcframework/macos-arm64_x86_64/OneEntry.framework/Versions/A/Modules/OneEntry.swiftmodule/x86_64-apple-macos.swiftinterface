@@ -476,7 +476,7 @@ extension OneEntry.OneEntryProducts {
   final public func product(with id: Swift.Int, langCode: Swift.String) async throws -> OneEntry.OneEntryProduct
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.FilterBuilder builder: @escaping () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.FilterBuilder builder: () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
   #if compiler(>=5.3) && $AsyncAwait
   final public func quickSearch(_ name: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntrySearchProduct]
