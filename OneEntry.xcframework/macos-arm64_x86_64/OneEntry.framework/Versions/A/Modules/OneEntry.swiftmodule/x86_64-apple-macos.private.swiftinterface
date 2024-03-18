@@ -394,8 +394,9 @@ public struct OneEntryProportion : Swift.Decodable {
   @objc deinit
 }
 public struct OneEntryError : Swift.Decodable {
-  public let statusCode: Swift.Int?
-  public let message: Swift.String
+  public var statusCode: Swift.Int?
+  public var message: Swift.String
+  public var pageData: OneEntry.OneEntryPage?
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryError : Foundation.LocalizedError {

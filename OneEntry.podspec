@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     
     spec.dependency 'Moya'
     spec.source = { 
-      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.5/XCFrameworks.zip'
+      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.6/XCFrameworks.zip'
     }
 
     spec.platform = :ios
