@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name = 'OneEntry'
-    spec.version = '1.1.5'
+    spec.version = '1.1.6'
     spec.license = { :type => 'OWN', :file => 'LICENSE.txt' }
     spec.homepage = 'https://github.com/OneEntry/oneentry-ios-sdk'
     spec.summary = 'Adds Swift classes for easy integration with OneEntry'
