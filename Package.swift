@@ -24,24 +24,24 @@ let package = Package(
             name: "OneEntryTarget",
             dependencies: [
                 "OneEntryFramework",
-                "Moya",
+                "HMNetworking",
                 "Alamofire"
             ]
         ),
         .binaryTarget(
             name: "OneEntryFramework",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.6/XCFrameworks.zip",
-            checksum: "01864294b0b339df6baab5879ed4bf6144df823991c296adb56e36551d1def46"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.7/XCFrameworks.zip",
+            checksum: "7837fc20e02c8538431a137bbba319d0dfcfa637f00d46c3ec61434e1e433252"
         ),
         .binaryTarget(
             name: "Alamofire",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.6/Alamofire.zip",
-            checksum: "45b02277179fd4603070e383b780a75d5a0702aaa68038657a648d6d6dc4bc9c"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.7/Alamofire.zip",
+            checksum: "c062bc7a3742a7723af72512f8ebe8791f618212d7d6849ddab765b54d99801a"
         ),
         .binaryTarget(
-            name: "Moya",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.6/Moya.zip",
-            checksum: "a4c4701ab858d921172d3e750dde80ad5e3fbc048e4379f2b5cd9785883dbf3b"
+            name: "HMNetworking",
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.7/HMNetworking.zip",
+            checksum: "e14d476379ab72470f29592268030d429eac7c09a443b7902c09ad0dc1d72d70"
         ),
         .testTarget(
             name: "OneEntryTests",
