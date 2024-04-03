@@ -12,6 +12,6 @@ final class OneEntryConnectionTest: XCTestCase {
             
     func testExample() async throws {
         
-        let _ = try await OneEntryProducts.shared.products(langCode: "en_US")
+        let _ = try await CatalogService.shared.products(langCode: "en_US")
     }
 }

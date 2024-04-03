@@ -1,11 +1,11 @@
-# OneEntryForms
+# FormsService
 
 Controllers for working with form objects
 
 ## Getting all forms
 
 ```swift
-let forms = try await OneEntryForms.shared.forms(langCode: "en_US")
+let forms = try await FormsService.shared.forms(langCode: "en_US")
 ```
 
 ``OneEntryForm`` array will return as a result
@@ -13,7 +13,7 @@ let forms = try await OneEntryForms.shared.forms(langCode: "en_US")
 ## Getting a form by its marker
 
 ```swift
-let form = try await OneEntryForms.shared.form(with: "auth", langCode: "en_US")
+let form = try await FormsService.shared.form(with: "auth", langCode: "en_US")
 ```
 
 ``OneEntryForm`` will return as a result
@@ -28,7 +28,7 @@ let data: [String : [OneEntryFormData]] = [
     ]
 ]
 
-let reponse = try await OneEntryForms.shared.sendData(with: "auth", data: data)
+let reponse = try await FormsService.shared.sendData(with: "auth", data: data)
 ```
 
 ``OneEntryFormDataResponse`` will return as a response
@@ -36,7 +36,7 @@ let reponse = try await OneEntryForms.shared.sendData(with: "auth", data: data)
 ## Getting all form data
 
 ```swift
-let data = try await OneEntryForms.shared.data
+let data = try await FormsService.shared.data
 ```
 
 ``OneEntryFormDataResponse`` array will return as a response
@@ -44,7 +44,7 @@ let data = try await OneEntryForms.shared.data
 ## Getting form data from its marker
 
 ```swift
-let data = try await OneEntryForms.shared.data(with: "marker")
+let data = try await FormsService.shared.data(with: "marker")
 ```
 
 Returns an ``OneEntryResult`` object, where items - an array of ``OneEntryFormDataResponse`` objects

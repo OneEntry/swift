@@ -15,10 +15,10 @@ The full use of the entire sdk is described here
         - [Using the built-in certificate](#using-the-built-in-certificate)
         - [Generation of your .p12 certificate](#generation-of-your-p12-certificate)
   - [Using OneEntry Swift SDK](#using-oneentry-swift-sdk)
-    - [OneEntryBlocks](#oneentryblocks)
+    - [BlocksService](#blocksservice)
       - [Getting a block by its marker](#getting-a-block-by-its-marker)
       - [Getting all block objects with pagination](#getting-all-block-objects-with-pagination)
-    - [OneEntryForms](#oneentryforms)
+    - [FormsService](#formsservice)
       - [Getting all forms](#getting-all-forms)
       - [Getting a form by its marker](#getting-a-form-by-its-marker)
       - [Sending data to the form](#sending-data-to-the-form)
@@ -37,13 +37,14 @@ The full use of the entire sdk is described here
           - [String](#string)
           - [Text](#text)
           - [Text with header](#text-with-header)
-    - [OneEntryProducts](#oneentryproducts)
+    - [CatalogService](#catalogservice)
       - [Receiving all products with pagination](#receiving-all-products-with-pagination)
       - [Getting all products uncategorized, with pagination](#getting-all-products-uncategorized-with-pagination)
       - [Getting all products in the category by its id, with pagination](#getting-all-products-in-the-category-by-its-id-with-pagination)
       - [Getting all products in the category by its url, with pagination](#getting-all-products-in-the-category-by-its-url-with-pagination)
       - [Getting related products for another product by its id](#getting-related-products-for-another-product-by-its-id)
       - [Getting a product by its id](#getting-a-product-by-its-id)
+      - [Receiving blocks linked to the product](#receiving-blocks-linked-to-the-product)
       - [Product filter](#product-filter)
       - [Quick search](#quick-search)
       - [Product statuses](#product-statuses)
@@ -51,7 +52,7 @@ The full use of the entire sdk is described here
         - [Status by id](#status-by-id)
         - [Status by marker](#status-by-marker)
         - [Status marker validation](#status-marker-validation)
-    - [OneEntryPages](#oneentrypages)
+    - [PagesService](#pagesservice)
       - [Getting all the blocks tied to the page](#getting-all-the-blocks-tied-to-the-page)
       - [Getting child pages](#getting-child-pages)
       - [Getting the root pages](#getting-the-root-pages)
@@ -63,7 +64,7 @@ The full use of the entire sdk is described here
       - [Getting a page config](#getting-a-page-config)
         - [Receiving by URL](#receiving-by-url-1)
       - [Quick search](#quick-search-1)
-    - [OneEntryProject](#oneentryproject)
+    - [ProjectService](#projectservice)
       - [File uploading](#file-uploading)
       - [Deleting files](#deleting-files)
       - [Getting all administrators](#getting-all-administrators)
@@ -72,11 +73,11 @@ The full use of the entire sdk is described here
       - [Getting a menu item by its marker](#getting-a-menu-item-by-its-marker)
       - [Testing error 404](#testing-error-404)
       - [Testing error 500](#testing-error-500)
-    - [OneEntryTemplates](#oneentrytemplates)
+    - [TemplatesService](#templatesservice)
       - [Getting all templates](#getting-all-templates)
         - [Available types by properties](#available-types-by-properties)
       - [Request templates by type](#request-templates-by-type)
-    - [OneEntryTemplatePreviews](#oneentrytemplatepreviews)
+    - [TemplatePreviewsService](#templatepreviewsservice)
       - [Getting all preview templates](#getting-all-preview-templates)
       - [Getting a preview template by its id](#getting-a-preview-template-by-its-id)
       - [Getting a preview template by its marker](#getting-a-preview-template-by-its-marker)
@@ -209,17 +210,17 @@ OneEntryCore.initializeApp(domain, credentials: credential)
 
 ## Using OneEntry Swift SDK
 
-### OneEntryBlocks
+### BlocksService
 
 Controllers for working with block objects
 
 #### Getting a block by its marker
 
 > This method automatically detects the type and loads the data of the product blocks.
-> If you need manual control to get products, use ``OneEntryBlocks/products(_:offset:limit:langCode:)`` or ``OneEntryBlocks/similarProducts(_:offset:limit:langCode:)``
+> If you need manual control to get products, use ``BlocksService/products(_:offset:limit:langCode:)`` or ``BlocksService/similarProducts(_:offset:limit:langCode:)``
 
 ```swift
-let block = try await OneEntryBlocks.shared.block("dev", langCode: "en_US")
+let block = try await BlocksService.shared.block("dev", langCode: "en_US")
 ```
 
 ``OneEntryBlock`` will return as a result
@@ -229,17 +230,17 @@ let block = try await OneEntryBlocks.shared.block("dev", langCode: "en_US")
 > The result of this method does not include the content of product blocks
 
 ```swift
-let blocks = try await OneEntryBlocks.shared.blocks(langCode: "en_US")
+let blocks = try await BlocksService.shared.blocks(langCode: "en_US")
 ```
 
-### OneEntryForms
+### FormsService
 
 OneEntry forms allow you to send all kinds of data to the admin application
 
 #### Getting all forms
 
 ```swift
-let forms = try await OneEntryForms.shared.forms(langCode: "en_US")
+let forms = try await FormsService.shared.forms(langCode: "en_US")
 ```
 
 `OneEntryForm` array will return as a result`
@@ -259,7 +260,7 @@ public struct OneEntryForm: Identifiable, Decodable, LocalizeContent {
 #### Getting a form by its marker
 
 ```swift
-let form = try await OneEntryForms.shared.form(with: "auth", langCode: "en_US")
+let form = try await FormsService.shared.form(with: "auth", langCode: "en_US")
 ```
 
 `OneEntryForm` will return as a result`
@@ -286,7 +287,7 @@ let data: [String : [OneEntryFormData]] = [
     ]
 ]
 
-let reponse = try await OneEntryForms.shared.sendData(with: "auth", data: data)
+let reponse = try await FormsService.shared.sendData(with: "auth", data: data)
 ```
 
 `OneEntryFormDataResponse` will return as a response
@@ -308,7 +309,7 @@ public struct OneEntryFormDataResponse: Identifiable, Decodable {
 #### Getting all form data
 
 ```swift
-let data = try await OneEntryForms.shared.data
+let data = try await FormsService.shared.data
 ```
 
 `OneEntryFormDataResponse` array will return as a response
@@ -330,7 +331,7 @@ public struct OneEntryFormDataResponse: Identifiable, Decodable {
 #### Getting form data from its marker
 
 ```swift
-let data = try await OneEntryForms.shared.data(with: "marker")
+let data = try await FormsService.shared.data(with: "marker")
 ```
 
 `OneEntryResult<OneEntryFormDataResponse>` will return as a response
@@ -405,7 +406,7 @@ enum AttributeType: String, Decodable {
 Let's try to get the attributes from the page, for products and other entities the process will be similar
 
 ```swift
-let page = try await OneEntryPages.shared.page(with: "dev", langCode: "en_US")
+let page = try await PagesService.shared.page(with: "dev", langCode: "en_US")
 let attribute = page.localizeAttribute("int", languageCode: "en_US")
 ```
 
@@ -543,7 +544,7 @@ public struct OneEntryTextWithHeader: Identifiable, Decodable {
 }
 ```
 
-### OneEntryProducts
+### CatalogService
 
 #### Receiving all products with pagination
 
@@ -560,7 +561,7 @@ public struct OneEntryTextWithHeader: Identifiable, Decodable {
 |     offset      | Parameter for pagination, default 0                                   |
 
 ```swift
-let result = try await OneEntryProducts.shared.products(langCode: "en_US")
+let result = try await CatalogService.shared.products(langCode: "en_US")
 ```
 
 The `OneEntryProductResult` will come as an response
@@ -586,7 +587,7 @@ public struct OneEntryProductResult: Decodable {
 |  offset   | Parameter for pagination, default 0                       |
 
 ```swift
-let result = try await OneEntryProducts.shared.emptyPageProducts(langCode: "en_US")
+let result = try await CatalogService.shared.emptyPageProducts(langCode: "en_US")
 ```
 
 The `OneEntryProductResult` will come as an response
@@ -613,7 +614,7 @@ public struct OneEntryProductResult: Decodable {
 |  offset   | Parameter for pagination, default 0                       |
 
 ```swift
-let result = try await OneEntryProducts.shared.products(page: 12, langCode: "en_US")
+let result = try await CatalogService.shared.products(page: 12, langCode: "en_US")
 ```
 
 The `OneEntryProductResult` will come as an response
@@ -640,7 +641,7 @@ public struct OneEntryProductResult: Decodable {
 |  offset   | Parameter for pagination, default 0                       |
 
 ```swift
-let result = try await OneEntryProducts.shared.products(page: "dev", langCode: "en_US")
+let result = try await CatalogService.shared.products(page: "dev", langCode: "en_US")
 ```
 
 The `OneEntryProductResult` will come as an response
@@ -667,7 +668,7 @@ public struct OneEntryProductResult: Decodable {
 |   offset   | Parameter for pagination, default 0                              |
 
 ```swift
-let related = try await OneEntryProducts.shared.relatedProducts(product: 191, langCode: "en_US")
+let related = try await CatalogService.shared.relatedProducts(product: 191, langCode: "en_US")
 ```
 
 The `OneEntryProductResult` will come as an response
@@ -685,7 +686,7 @@ public struct OneEntryProductResult: Decodable {
 #### Getting a product by its id
 
 ```swift
-let product = try await OneEntryProducts.shared.product(with: id, langCode: "en_US")
+let product = try await CatalogService.shared.product(with: id, langCode: "en_US")
 ```
 
 The answer will return `OneEntryProduct`
@@ -708,12 +709,21 @@ public struct OneEntryProduct: Identifiable, Decodable, LocalizeContent {
 }
 ```
 
+#### Receiving blocks linked to the product
+
+> To get blocks tied to the product, you should use the method ``CatalogService/blocks(for:)``, as indicated in the example
+```swift
+let blocks = try await CatalogService.shared.blocks(for: 15)
+```
+
+The answer will return ``OneEntryBlock`` array
+
 #### Product filter
 
 The OneEntry filter allows you to get products that meet the specified parameters. Our sdk uses DSL to build the filter. All you need to do is use the right set of filters in `@resultBuilder`
 
 ```swift            
-let result = try await OneEntryProducts.shared.filterProducts(langCode: "en_US") {
+let result = try await CatalogService.shared.filterProducts(langCode: "en_US") {
     OneEntryFilter(attributeMarker: "price", conditionMarker: .mth, conditionValue: 500, pageId: 12)
     OneEntryFilter(attributeMarker: "price", conditionMarker: .lth, conditionValue: 1500, pageId: 12)
 
@@ -740,7 +750,7 @@ public struct OneEntryResult<T: Decodable>: Decodable {
 All you need to quickly find products is a search string and `langCode`
 
 ```swift
-let results = try await OneEntryProducts.shared.quickSearch("iPhone", langCode: "en_US")
+let results = try await CatalogService.shared.quickSearch("iPhone", langCode: "en_US")
 ```
 
 The answer will be the `OneEntrySearchProduct` array
@@ -761,7 +771,7 @@ public struct OneEntrySearchProduct: Identifiable, Decodable {
 ##### All statuses
 
 ```swift
-let statuses: [OneEntryProductStatus] = try await OneEntryProducts.shared.productStatuses
+let statuses: [OneEntryProductStatus] = try await CatalogService.shared.productStatuses
 ```
 
 The answer will be the `OneEntryProductStatus` array
@@ -785,7 +795,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
 ##### Status by id
 
 ```swift
-let status: OneEntryProductStatus = try await OneEntryProducts.shared.productStatus(with: 2)
+let status: OneEntryProductStatus = try await CatalogService.shared.productStatus(with: 2)
 ```
 
 The answer will be the `OneEntryProductStatus`
@@ -809,7 +819,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
 ##### Status by marker
 
 ```swift
-let status: OneEntryProductStatus = try await OneEntryProducts.shared.productStatus(with: "storage")
+let status: OneEntryProductStatus = try await CatalogService.shared.productStatus(with: "storage")
 ```
 
 The answer will be the `OneEntryProductStatus` 
@@ -835,7 +845,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
 You can check the validation of the token either using the appropriate method
 
 ```swift
-let valid: Bool = try await OneEntryProducts.shared.productStatusMarkerValidation("marker")
+let valid: Bool = try await CatalogService.shared.productStatusMarkerValidation("marker")
 ```
 
 Or, if you have already received the status of a product, call the property
@@ -847,14 +857,14 @@ let valid: Bool = try await status.markerValidation
 
 The answer will be the `true` or `false` 
 
-### OneEntryPages
+### PagesService
 
 #### Getting all the blocks tied to the page
 
-To get all the blocks, you should use the ``OneEntryPages/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
+To get all the blocks, you should use the ``PagesService/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
 
 ```swift
-let blocks = try await OneEntryPages.shared.blocks(page: "url", langCode: "en_US")
+let blocks = try await PagesService.shared.blocks(page: "url", langCode: "en_US")
 ```
 
 #### Getting child pages
@@ -862,7 +872,7 @@ In OneEntry it is possible to position pages in a flash style, which means that 
 
 ```swift
 let rootURL = "dev"
-let children: [OneEntryPage] = try await OneEntryPages.shared.children(for: rootURL, langCode: "en_US")
+let children: [OneEntryPage] = try await PagesService.shared.children(for: rootURL, langCode: "en_US")
 ```
 
 The `OneEntryPage` array will be returned as an answer
@@ -898,7 +908,7 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
 Getting top-level pages. These are the pages whose `parentId` is equal to `nil`
 
 ```swift
-let root: [OneEntryPage] = try await OneEntryPages.shared.rootPages(langCode: "en_US")
+let root: [OneEntryPage] = try await PagesService.shared.rootPages(langCode: "en_US")
 ```
 
 The `OneEntryPage` array will be returned as an answer
@@ -940,7 +950,7 @@ All pages that are contained in the 'catalog' tab. In other words, the categorie
 |  offset   | Pagination offset                     |
 
 ```swift
-let catalog: [OneEntryPage] = try await OneEntryPages.shared.catalogPages(langCode: "en_US")
+let catalog: [OneEntryPage] = try await PagesService.shared.catalogPages(langCode: "en_US")
 ```
 
 The `OneEntryPage` array will be returned as an answer
@@ -976,7 +986,7 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
 Getting all OneEntry pages
 
 ```swift
-let pages: [OneEntryPage] = try await OneEntryPages.shared.pages(langCode: "en_US")
+let pages: [OneEntryPage] = try await PagesService.shared.pages(langCode: "en_US")
 ```
 
 The `OneEntryPage` array will be returned as an answer
@@ -1012,7 +1022,7 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
 ##### Receiving by id
 
 ```swift
-let page: OneEntryPage = try await OneEntryPages.shared.page(with: 12, langCode: "en_US")
+let page: OneEntryPage = try await PagesService.shared.page(with: 12, langCode: "en_US")
 ```
 
 The `OneEntryPage` will be returned as an answer
@@ -1046,7 +1056,7 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
 ##### Receiving by URL
 
 ```swift
-let page: OneEntryPage = try await OneEntryPages.shared.page(with: "dev", langCode: "en_US")
+let page: OneEntryPage = try await PagesService.shared.page(with: "dev", langCode: "en_US")
 ```
 
 The `OneEntryPage` will be returned as an answer
@@ -1082,7 +1092,7 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
 ##### Receiving by URL
 
 ```swift
-let config: OneEntryPageConfig = try await OneEntryPages.shared.config(with: "dev")
+let config: OneEntryPageConfig = try await PagesService.shared.config(with: "dev")
 ```
 
 The `OneEntryPageConfig` will be returned as an answer
@@ -1102,7 +1112,7 @@ public struct OneEntryPageConfig: Decodable {
 This method searches for pages by keywords
 
 ```swift
-let result: [OneEntrySearchPage] = try await OneEntryPages.shared.quickSearch("Development", langCode: "en_US")
+let result: [OneEntrySearchPage] = try await PagesService.shared.quickSearch("Development", langCode: "en_US")
 ```
 
 The `OneEntrySearchPage` array will be returned as an answer
@@ -1117,7 +1127,7 @@ public struct OneEntrySearchPage: Identifiable, Decodable {
 }
 ```
 
-### OneEntryProject
+### ProjectService
 
 #### File uploading
 
@@ -1136,7 +1146,7 @@ OneEntry supports the ability to save your files to storage. To do this, you nee
 ```swift
 let path = ".../dev.png"
 let url = URL(fileURLWithPath: path)
-let result = try await OneEntryProject.shared.uploadFile(fileURL: url, type: "page", entity: "test", id: 15)
+let result = try await ProjectService.shared.uploadFile(fileURL: url, type: "page", entity: "test", id: 15)
 ```
 
 The `OneEntryFile` array will be returned as a response
@@ -1167,12 +1177,12 @@ This SDK method allows you to delete saved files. Additional fields must also be
 ```swift
 let name = "dev.png"
 
-try await OneEntryProject.shared.deleteFile(name: name, type: "page", entity: "test", id: 15)
+try await ProjectService.shared.deleteFile(name: name, type: "page", entity: "test", id: 15)
 ```
 
 #### Getting all administrators
 ```swift
-let admins = try await OneEntryProject.shared.admins
+let admins = try await ProjectService.shared.admins
 ```
 
 The answer will be array of `OneEntryAdmin`
@@ -1191,7 +1201,7 @@ public struct OneEntryAdmin: Identifiable, Decodable {
 
 #### Getting all active locales
 ```swift
-let locales = try await OneEntryProject.shared.activeLocales
+let locales = try await ProjectService.shared.activeLocales
 ```
 
 The answer will be array of `OneEntryLocale`
@@ -1219,7 +1229,7 @@ public struct OneEntryLocale: Identifiable, Decodable {
 
 #### Getting all general types
 ```swift
-let types = try await OneEntryProject.shared.generalTypes
+let types = try await ProjectService.shared.generalTypes
 ```
 The answer will be array of `OneEntryGeneralType`
 
@@ -1238,7 +1248,7 @@ public struct OneEntryGeneralType: Identifiable, Decodable {
 The menu is a very important essence of OneEntry. It allows you to group pages by features. These pages will be returned as a tree, and you can easily get all the subpages (children) of each page
 
 ```swift
-let menu = try await OneEntryProject.shared.menu(with: "dev")
+let menu = try await ProjectService.shared.menu(with: "dev")
 ```
 
 The answer will be the `OneEntryMenu` structure
@@ -1277,7 +1287,7 @@ public struct OneEntryMenuPage: Identifiable, Decodable, LocalizeContent, Treeli
 #### Testing error 404
 ```swift
 do {
-    try await OneEntryProject.shared.test404()
+    try await ProjectService.shared.test404()
 } catch let error as OneEntryError where error.statusCode == 404 {
     // handle 404 error
 } catch {
@@ -1289,7 +1299,7 @@ do {
 #### Testing error 500
 ```swift
 do {
-    try await OneEntryProject.shared.test500()
+    try await ProjectService.shared.test500()
 } catch let error as OneEntryError where error.statusCode == 500 {
     // handle 500 error
 } catch {
@@ -1297,25 +1307,25 @@ do {
 }
 ```
 
-### OneEntryTemplates
+### TemplatesService
 
 #### Getting all templates
 
 ```swift
-let templates = try await OneEntryTemplates.shared.templates
+let templates = try await TemplatesService.shared.templates
 ```
 
 This property returns an array of `OneEntryAllTemplates`. This model contains the `asDisctionary` field, which stores the data of all templates by key. 
 
 ```swift
-let templates = try await OneEntryTemplates.shared.templates
+let templates = try await TemplatesService.shared.templates
 template.asDictionary["forCatalogProducts"] // forCatalogProducts templates as array of OneEntryTemplate
 ```
 
 There are also have properties to quickly get basic templates
 
 ```swift
-let templates = try await OneEntryTemplates.shared.templates
+let templates = try await TemplatesService.shared.templates
 templates.forCatalogProducts // forCatalogProducts templates as array of OneEntryTemplate
 ```
 
@@ -1345,15 +1355,15 @@ templates.forCatalogProducts // forCatalogProducts templates as array of OneEntr
 In order not to request all the templates from the server and search for the right one among them, you can immediately send the data according to the desired type.
 
 ```swift
-let templates = try await OneEntryTemplates.shared.templates(with: "forCatalogProducts") 
+let templates = try await TemplatesService.shared.templates(with: "forCatalogProducts") 
 ```
 
-### OneEntryTemplatePreviews
+### TemplatePreviewsService
 
 #### Getting all preview templates
 
 ```swift
-let previews = try await OneEntryTemplatePreviews.shared.templates
+let previews = try await TemplatePreviewsService.shared.templates
 ```
 The `OneEntryTemplatePreview` array will be responsed
 
@@ -1374,7 +1384,7 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
 #### Getting a preview template by its id
 
 ```swift
-let preview = try await OneEntryTemplatePreviews.shared.template(with: 1)
+let preview = try await TemplatePreviewsService.shared.template(with: 1)
 ```
 
 The `OneEntryTemplatePreview` model will be responsed
@@ -1396,7 +1406,7 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
 #### Getting a preview template by its marker
 
 ```swift
-let preview = try await OneEntryTemplatePreviews.shared.template(with: "preview")
+let preview = try await TemplatePreviewsService.shared.template(with: "preview")
 ```
 
 The `OneEntryTemplatePreview` model will be responsed

@@ -61,7 +61,6 @@ public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.Loca
   public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
   public var products: [OneEntry.OneEntryProduct]?
-  public var customSettings: OneEntry.OneEntryCustomSettings?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -81,6 +80,7 @@ public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Decodable {
 }
 extension OneEntry.OneEntryCore {
   public static func initializeApp(_ domain: Swift.String, credentials: any OneEntry.Credential)
+  public static func reset()
 }
 public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
@@ -149,6 +149,7 @@ public struct OneEntryAdmin : Swift.Identifiable, Swift.Decodable {
 public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let price: Swift.Double?
+  public let sku: Swift.String?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let relatedIds: [Swift.Int]
   public let templateIdentifier: Swift.String?
@@ -432,19 +433,6 @@ extension OneEntry.OneEntryProductStatus {
   }
   #endif
 }
-public struct OneEntrySimilarProductRule : Swift.Decodable {
-  public let id: Foundation.UUID
-  public let found: Swift.String?
-  public let pageId: Swift.String?
-  public let langCode: Swift.String
-  public let pageName: Swift.String?
-  public let attributeName: Swift.String
-  public let conditionName: Swift.String
-  public let conditionValue: Swift.String
-  public let attributeMarker: Swift.String
-  public let conditionMarker: OneEntry.ConditionMarker
-  public init(from decoder: any Swift.Decoder) throws
-}
 public struct OneEntryMenu : Swift.Identifiable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let identifier: Swift.String
@@ -453,11 +441,6 @@ public struct OneEntryMenu : Swift.Identifiable, OneEntry.LocalizeContent {
   public typealias ID = Swift.Int
 }
 extension OneEntry.OneEntryMenu : Swift.Decodable {
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntryCustomSettings : Swift.Decodable {
-  public let productConfig: OneEntry.OneEntryProductConfig?
-  public let similarProductRules: [OneEntry.OneEntrySimilarProductRule]?
   public init(from decoder: any Swift.Decoder) throws
 }
 @_hasMissingDesignatedInitializers final public class PagesService {
@@ -640,9 +623,6 @@ public struct OneEntryCustomSettings : Swift.Decodable {
 public struct OneEntryList : Swift.Decodable {
   public let title: Swift.String
   public let value: Swift.String
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntryProductConfig : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.SortDirection : Swift.Equatable {}

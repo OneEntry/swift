@@ -55,7 +55,6 @@ public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.Loca
   public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
   public var products: [OneEntry.OneEntryProduct]?
-  public var customSettings: OneEntry.OneEntryCustomSettings?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -80,6 +79,7 @@ public struct OneEntryPageConfig : Swift.Decodable {
 }
 extension OneEntry.OneEntryCore {
   public static func initializeApp(_ domain: Swift.String, credentials: any OneEntry.Credential)
+  public static func reset()
 }
 public protocol LocalizeContent {
   var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? { get }
@@ -196,6 +196,7 @@ public struct OneEntryFormDataResponse : Swift.Identifiable, Swift.Decodable {
 public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let price: Swift.Double?
+  public let sku: Swift.String?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let relatedIds: [Swift.Int]
   public let templateIdentifier: Swift.String?
@@ -363,19 +364,6 @@ extension OneEntry.OneEntryAttribute {
     get
   }
 }
-public struct OneEntrySimilarProductRule : Swift.Decodable {
-  public let id: Foundation.UUID
-  public let found: Swift.String?
-  public let pageId: Swift.String?
-  public let langCode: Swift.String
-  public let pageName: Swift.String?
-  public let attributeName: Swift.String
-  public let conditionName: Swift.String
-  public let conditionValue: Swift.String
-  public let attributeMarker: Swift.String
-  public let conditionMarker: OneEntry.ConditionMarker
-  public init(from decoder: any Swift.Decoder) throws
-}
 public enum SortDirection : Swift.String, Swift.Decodable {
   case desk
   case asc
@@ -384,11 +372,6 @@ public enum SortDirection : Swift.String, Swift.Decodable {
   public var rawValue: Swift.String {
     get
   }
-}
-public struct OneEntryCustomSettings : Swift.Decodable {
-  public let productConfig: OneEntry.OneEntryProductConfig?
-  public let similarProductRules: [OneEntry.OneEntrySimilarProductRule]?
-  public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryList : Swift.Decodable {
   public let title: Swift.String
@@ -571,9 +554,6 @@ public struct OneEntryList : Swift.Decodable {
   final public func templates(with type: Swift.String) async throws -> [OneEntry.OneEntryTemplate]
   #endif
   @objc deinit
-}
-public struct OneEntryProductConfig : Swift.Decodable {
-  public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryTemplate : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int

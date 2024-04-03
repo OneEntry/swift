@@ -1,4 +1,4 @@
-# OneEntryProject
+# ProjectService
 
 With this class, you can configure work with projects: files, available locales and error testing
 
@@ -19,7 +19,7 @@ OneEntry supports the ability to save your files to storage. To do this, you nee
 ```swift
 let path = ".../dev.png"
 let url = URL(fileURLWithPath: path)
-let result = try await OneEntryProject.shared.uploadFile(fileURL: url, type: "page", entity: "test", id: 15)
+let result = try await ProjectService.shared.uploadFile(fileURL: url, type: "page", entity: "test", id: 15)
 ```
 
 The ``OneEntryFile`` array will be returned as a response
@@ -38,26 +38,26 @@ This SDK method allows you to delete saved files. Additional fields must also be
 ```swift
 let name = "dev.png"
 
-try await OneEntryProject.shared.deleteFile(name: name, type: "page", entity: "test", id: 15)
+try await ProjectService.shared.deleteFile(name: name, type: "page", entity: "test", id: 15)
 ```
 
 ## Getting all administrators
 ```swift
-let admins = try await OneEntryProject.shared.admins
+let admins = try await ProjectService.shared.admins
 ```
 
 The answer will be array of ``OneEntryAdmin``
 
 ## Getting all active locales
 ```swift
-let locales = try await OneEntryProject.shared.activeLocales
+let locales = try await ProjectService.shared.activeLocales
 ```
 
 The answer will be array of ``OneEntryLocale``
 
 ## Getting all general types
 ```swift
-let types = try await OneEntryProject.shared.generalTypes
+let types = try await ProjectService.shared.generalTypes
 ```
 The answer will be array of ``OneEntryGeneralType``
 
@@ -66,7 +66,7 @@ The answer will be array of ``OneEntryGeneralType``
 The menu is a very important essence of OneEntry. It allows you to group pages by features. These pages will be returned as a tree, and you can easily get all the subpages (children) of each page
 
 ```swift
-let menu = try await OneEntryProject.shared.menu(with: "dev")
+let menu = try await ProjectService.shared.menu(with: "dev")
 ```
 
 The answer will be the ``OneEntryMenu`` structure
@@ -74,7 +74,7 @@ The answer will be the ``OneEntryMenu`` structure
 ## Testing error 404
 ```swift
 do {
-    try await OneEntryProject.shared.test404()
+    try await ProjectService.shared.test404()
 } catch let error as OneEntryError where error.statusCode == 404 {
     // handle 404 error
 } catch {
@@ -85,7 +85,7 @@ do {
 ## Testing error 500
 ```swift
 do {
-    try await OneEntryProject.shared.test500()
+    try await ProjectService.shared.test500()
 } catch let error as OneEntryError where error.statusCode == 500 {
     // handle 500 error
 } catch {

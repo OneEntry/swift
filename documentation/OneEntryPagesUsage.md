@@ -1,4 +1,4 @@
-# OneEntryPages
+# PagesService
 
 Controllers for working with page objects, including catalog pages
 
@@ -7,7 +7,7 @@ In OneEntry it is possible to position pages in a flash style, which means that 
 
 ```swift
 let rootURL = "dev"
-let children: [OneEntryPage] = try await OneEntryPages.shared.children(for: rootURL, langCode: "en_US")
+let children: [OneEntryPage] = try await PagesService.shared.children(for: rootURL, langCode: "en_US")
 ```
 
 The ``OneEntryPage`` array will be returned as an answer
@@ -17,7 +17,7 @@ The ``OneEntryPage`` array will be returned as an answer
 Getting top-level pages. These are the pages whose `parentId` is equal to `nil`
 
 ```swift
-let root: [OneEntryPage] = try await OneEntryPages.shared.rootPages(langCode: "en_US")
+let root: [OneEntryPage] = try await PagesService.shared.rootPages(langCode: "en_US")
 ```
 
 The ``OneEntryPage`` array will be returned as an answer
@@ -33,7 +33,7 @@ All pages that are contained in the 'catalog' tab. In other words, the categorie
 |  offset   | Pagination offset                     |
 
 ```swift
-let catalog: [OneEntryPage] = try await OneEntryPages.shared.catalogPages(langCode: "en_US")
+let catalog: [OneEntryPage] = try await PagesService.shared.catalogPages(langCode: "en_US")
 ```
 
 The ``OneEntryPage`` array will be returned as an answer
@@ -43,7 +43,7 @@ The ``OneEntryPage`` array will be returned as an answer
 Getting all OneEntry pages
 
 ```swift
-let pages: [OneEntryPage] = try await OneEntryPages.shared.pages(langCode: "en_US")
+let pages: [OneEntryPage] = try await PagesService.shared.pages(langCode: "en_US")
 ```
 
 The ``OneEntryPage`` array will be returned as an answer
@@ -53,7 +53,7 @@ The ``OneEntryPage`` array will be returned as an answer
 ### Receiving by id
 
 ```swift
-let page: OneEntryPage = try await OneEntryPages.shared.page(with: 12, langCode: "en_US")
+let page: OneEntryPage = try await PagesService.shared.page(with: 12, langCode: "en_US")
 ```
 
 The ``OneEntryPage`` will be returned as an answer
@@ -61,7 +61,7 @@ The ``OneEntryPage`` will be returned as an answer
 ### Receiving by URL
 
 ```swift
-let page: OneEntryPage = try await OneEntryPages.shared.page(with: "dev", langCode: "en_US")
+let page: OneEntryPage = try await PagesService.shared.page(with: "dev", langCode: "en_US")
 ```
 
 The ``OneEntryPage`` will be returned as an answer
@@ -71,7 +71,7 @@ The ``OneEntryPage`` will be returned as an answer
 ### Receiving by URL
 
 ```swift
-let config: OneEntryPageConfig = try await OneEntryPages.shared.config(with: "dev")
+let config: OneEntryPageConfig = try await PagesService.shared.config(with: "dev")
 ```
 
 The ``OneEntryPageConfig`` will be returned as an answer
@@ -81,15 +81,15 @@ The ``OneEntryPageConfig`` will be returned as an answer
 This method searches for pages by keywords
 
 ```swift
-let result: [OneEntrySearchPage] = try await OneEntryPages.shared.quickSearch("Development", langCode: "en_US")
+let result: [OneEntrySearchPage] = try await PagesService.shared.quickSearch("Development", langCode: "en_US")
 ```
 
 The ``OneEntrySearchPage`` array will be returned as an answer
 
 ## Getting all the blocks tied to the page
 
-To get all the blocks, you should use the ``OneEntryPages/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
+To get all the blocks, you should use the ``PagesService/blocks(page:langCode:)`` method. To use it, you need to know the page address and language code. The ``OneEntryBlock`` array will return as the answer.
 
 ```swift
-let blocks = try await OneEntryPages.shared.blocks(page: "url", langCode: "en_US")
+let blocks = try await PagesService.shared.blocks(page: "url", langCode: "en_US")
 ```
