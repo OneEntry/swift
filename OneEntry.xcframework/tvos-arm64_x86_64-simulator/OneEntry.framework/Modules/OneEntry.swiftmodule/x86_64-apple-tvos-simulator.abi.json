@@ -7008,6 +7008,169 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "AttributesService",
+        "printedName": "AttributesService",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AttributesService",
+                "printedName": "OneEntry.AttributesService",
+                "usr": "s:8OneEntry17AttributesServiceC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry17AttributesServiceC6sharedACvpZ",
+            "mangledName": "$s8OneEntry17AttributesServiceC6sharedACvpZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributesService",
+                    "printedName": "OneEntry.AttributesService",
+                    "usr": "s:8OneEntry17AttributesServiceC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry17AttributesServiceC6sharedACvgZ",
+                "mangledName": "$s8OneEntry17AttributesServiceC6sharedACvgZ",
+                "moduleName": "OneEntry",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "attributes",
+            "printedName": "attributes(from:langCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.AttributeSet]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeSet",
+                    "printedName": "OneEntry.AttributeSet",
+                    "usr": "s:8OneEntry12AttributeSetV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry17AttributesServiceC10attributes4from8langCodeSayAA12AttributeSetVGSS_SStYaKF",
+            "mangledName": "$s8OneEntry17AttributesServiceC10attributes4from8langCodeSayAA12AttributeSetVGSS_SStYaKF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "attribute",
+            "printedName": "attribute(with:from:langCode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AttributeSet",
+                "printedName": "OneEntry.AttributeSet",
+                "usr": "s:8OneEntry12AttributeSetV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry17AttributesServiceC9attribute4with4from8langCodeAA12AttributeSetVSS_S2StYaKF",
+            "mangledName": "$s8OneEntry17AttributesServiceC9attribute4with4from8langCodeAA12AttributeSetVSS_S2StYaKF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8OneEntry17AttributesServiceC",
+        "mangledName": "$s8OneEntry17AttributesServiceC",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "Final",
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "OneEntryProduct",
         "printedName": "OneEntryProduct",
         "children": [
@@ -8288,166 +8451,6 @@
           },
           {
             "kind": "Var",
-            "name": "attributeValues",
-            "printedName": "attributeValues",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "[Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Dictionary",
-                    "printedName": "[Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[Swift.String : OneEntry.OneEntryAttribute]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "OneEntryAttribute",
-                            "printedName": "OneEntry.OneEntryAttribute",
-                            "usr": "s:8OneEntry0aB9AttributeV"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "usr": "s:SD"
-                  }
-                ],
-                "usr": "s:Sq"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8OneEntry0aB4FormV15attributeValuesSDySSSDySSAA0aB9AttributeVGGSgvp",
-            "mangledName": "$s8OneEntry0aB4FormV15attributeValuesSDySSSDySSAA0aB9AttributeVGGSgvp",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "[Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "String",
-                            "printedName": "Swift.String",
-                            "usr": "s:SS"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "Dictionary",
-                            "printedName": "[Swift.String : OneEntry.OneEntryAttribute]",
-                            "children": [
-                              {
-                                "kind": "TypeNominal",
-                                "name": "String",
-                                "printedName": "Swift.String",
-                                "usr": "s:SS"
-                              },
-                              {
-                                "kind": "TypeNominal",
-                                "name": "OneEntryAttribute",
-                                "printedName": "OneEntry.OneEntryAttribute",
-                                "usr": "s:8OneEntry0aB9AttributeV"
-                              }
-                            ],
-                            "usr": "s:SD"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "usr": "s:Sq"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB4FormV15attributeValuesSDySSSDySSAA0aB9AttributeVGGSgvg",
-                "mangledName": "$s8OneEntry0aB4FormV15attributeValuesSDySSSDySSAA0aB9AttributeVGGSgvg",
-                "moduleName": "OneEntry",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
-            "name": "version",
-            "printedName": "version",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8OneEntry0aB4FormV7versionSivp",
-            "mangledName": "$s8OneEntry0aB4FormV7versionSivp",
-            "moduleName": "OneEntry",
-            "declAttributes": [
-              "HasStorage",
-              "AccessControl"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB4FormV7versionSivg",
-                "mangledName": "$s8OneEntry0aB4FormV7versionSivg",
-                "moduleName": "OneEntry",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Var",
             "name": "identifier",
             "printedName": "identifier",
             "children": [
@@ -8492,27 +8495,27 @@
           },
           {
             "kind": "Var",
-            "name": "processingType",
-            "printedName": "processingType",
+            "name": "attributes",
+            "printedName": "attributes",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
+                "name": "Array",
+                "printedName": "[OneEntry.FormAttribute]",
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
+                    "name": "FormAttribute",
+                    "printedName": "OneEntry.FormAttribute",
+                    "usr": "s:8OneEntry13FormAttributeV"
                   }
                 ],
-                "usr": "s:Sq"
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Var",
-            "usr": "s:8OneEntry0aB4FormV14processingTypeSSSgvp",
-            "mangledName": "$s8OneEntry0aB4FormV14processingTypeSSSgvp",
+            "usr": "s:8OneEntry0aB4FormV10attributesSayAA0C9AttributeVGvp",
+            "mangledName": "$s8OneEntry0aB4FormV10attributesSayAA0C9AttributeVGvp",
             "moduleName": "OneEntry",
             "declAttributes": [
               "HasStorage",
@@ -8528,22 +8531,22 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "Optional",
-                    "printedName": "Swift.String?",
+                    "name": "Array",
+                    "printedName": "[OneEntry.FormAttribute]",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
+                        "name": "FormAttribute",
+                        "printedName": "OneEntry.FormAttribute",
+                        "usr": "s:8OneEntry13FormAttributeV"
                       }
                     ],
-                    "usr": "s:Sq"
+                    "usr": "s:Sa"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:8OneEntry0aB4FormV14processingTypeSSSgvg",
-                "mangledName": "$s8OneEntry0aB4FormV14processingTypeSSSgvg",
+                "usr": "s:8OneEntry0aB4FormV10attributesSayAA0C9AttributeVGvg",
+                "mangledName": "$s8OneEntry0aB4FormV10attributesSayAA0C9AttributeVGvg",
                 "moduleName": "OneEntry",
                 "implicit": true,
                 "accessorKind": "get"
@@ -8621,6 +8624,272 @@
             "printedName": "LocalizeContent",
             "usr": "s:8OneEntry15LocalizeContentP",
             "mangledName": "$s8OneEntry15LocalizeContentP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FormAttribute",
+        "printedName": "FormAttribute",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13FormAttributeV4typeSSvp",
+            "mangledName": "$s8OneEntry13FormAttributeV4typeSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV4typeSSvg",
+                "mangledName": "$s8OneEntry13FormAttributeV4typeSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "marker",
+            "printedName": "marker",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13FormAttributeV6markerSSvp",
+            "mangledName": "$s8OneEntry13FormAttributeV6markerSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV6markerSSvg",
+                "mangledName": "$s8OneEntry13FormAttributeV6markerSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isVisible",
+            "printedName": "isVisible",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13FormAttributeV9isVisibleSbvp",
+            "mangledName": "$s8OneEntry13FormAttributeV9isVisibleSbvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV9isVisibleSbvg",
+                "mangledName": "$s8OneEntry13FormAttributeV9isVisibleSbvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "localizeInfos",
+            "printedName": "localizeInfos",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "LocalizeInfo",
+                "printedName": "OneEntry.LocalizeInfo",
+                "usr": "s:8OneEntry12LocalizeInfoV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvp",
+            "mangledName": "$s8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LocalizeInfo",
+                    "printedName": "OneEntry.LocalizeInfo",
+                    "usr": "s:8OneEntry12LocalizeInfoV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvg",
+                "mangledName": "$s8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LocalizeInfo",
+                    "printedName": "OneEntry.LocalizeInfo",
+                    "usr": "s:8OneEntry12LocalizeInfoV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvs",
+                "mangledName": "$s8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvs",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvM",
+                "mangledName": "$s8OneEntry13FormAttributeV13localizeInfosAA12LocalizeInfoVvM",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FormAttribute",
+                "printedName": "OneEntry.FormAttribute",
+                "usr": "s:8OneEntry13FormAttributeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry13FormAttributeV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8OneEntry13FormAttributeV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry13FormAttributeV",
+        "mangledName": "$s8OneEntry13FormAttributeV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
           }
         ]
       },
@@ -10833,6 +11102,358 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "PaymentAccount",
+        "printedName": "PaymentAccount",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry14PaymentAccountV2idSivp",
+            "mangledName": "$s8OneEntry14PaymentAccountV2idSivp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry14PaymentAccountV2idSivg",
+                "mangledName": "$s8OneEntry14PaymentAccountV2idSivg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "localizeInfos",
+            "printedName": "localizeInfos",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : OneEntry.LocalizeInfo]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : OneEntry.LocalizeInfo]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LocalizeInfo",
+                        "printedName": "OneEntry.LocalizeInfo",
+                        "usr": "s:8OneEntry12LocalizeInfoV"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry14PaymentAccountV13localizeInfosSDySSAA12LocalizeInfoVGSgvp",
+            "mangledName": "$s8OneEntry14PaymentAccountV13localizeInfosSDySSAA12LocalizeInfoVGSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : OneEntry.LocalizeInfo]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : OneEntry.LocalizeInfo]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "LocalizeInfo",
+                            "printedName": "OneEntry.LocalizeInfo",
+                            "usr": "s:8OneEntry12LocalizeInfoV"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry14PaymentAccountV13localizeInfosSDySSAA12LocalizeInfoVGSgvg",
+                "mangledName": "$s8OneEntry14PaymentAccountV13localizeInfosSDySSAA12LocalizeInfoVGSgvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "identifier",
+            "printedName": "identifier",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry14PaymentAccountV10identifierSSvp",
+            "mangledName": "$s8OneEntry14PaymentAccountV10identifierSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry14PaymentAccountV10identifierSSvg",
+                "mangledName": "$s8OneEntry14PaymentAccountV10identifierSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry14PaymentAccountV4typeSSvp",
+            "mangledName": "$s8OneEntry14PaymentAccountV4typeSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry14PaymentAccountV4typeSSvg",
+                "mangledName": "$s8OneEntry14PaymentAccountV4typeSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isVisible",
+            "printedName": "isVisible",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry14PaymentAccountV9isVisibleSbvp",
+            "mangledName": "$s8OneEntry14PaymentAccountV9isVisibleSbvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry14PaymentAccountV9isVisibleSbvg",
+                "mangledName": "$s8OneEntry14PaymentAccountV9isVisibleSbvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PaymentAccount",
+                "printedName": "OneEntry.PaymentAccount",
+                "usr": "s:8OneEntry14PaymentAccountV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry14PaymentAccountV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8OneEntry14PaymentAccountV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry14PaymentAccountV",
+        "mangledName": "$s8OneEntry14PaymentAccountV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Identifiable",
+            "printedName": "Identifiable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ID",
+                "printedName": "ID",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12IdentifiableP",
+            "mangledName": "$ss12IdentifiableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LocalizeContent",
+            "printedName": "LocalizeContent",
+            "usr": "s:8OneEntry15LocalizeContentP",
+            "mangledName": "$s8OneEntry15LocalizeContentP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "OneEntryFile",
         "printedName": "OneEntryFile",
         "children": [
@@ -11074,6 +11695,992 @@
             "mangledName": "$sSe"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ExtendedValue",
+        "printedName": "ExtendedValue",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ExtendedValue",
+                "printedName": "OneEntry.ExtendedValue",
+                "usr": "s:8OneEntry13ExtendedValueV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry13ExtendedValueV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8OneEntry13ExtendedValueV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "stringValue",
+            "printedName": "stringValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV06stringD0SSSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV06stringD0SSSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV06stringD0SSSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV06stringD0SSSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "imageValue",
+            "printedName": "imageValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.OneEntryImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryImage",
+                    "printedName": "OneEntry.OneEntryImage",
+                    "usr": "s:8OneEntry0aB5ImageV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV05imageD0AA0aB5ImageVSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV05imageD0AA0aB5ImageVSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OneEntry.OneEntryImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryImage",
+                        "printedName": "OneEntry.OneEntryImage",
+                        "usr": "s:8OneEntry0aB5ImageV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV05imageD0AA0aB5ImageVSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV05imageD0AA0aB5ImageVSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doubleValue",
+            "printedName": "doubleValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Double?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV06doubleD0SdSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV06doubleD0SdSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Double?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Double",
+                        "printedName": "Swift.Double",
+                        "usr": "s:Sd"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV06doubleD0SdSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV06doubleD0SdSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "intValue",
+            "printedName": "intValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Int?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV03intD0SiSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV03intD0SiSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Int?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV03intD0SiSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV03intD0SiSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dateValue",
+            "printedName": "dateValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.OneEntryDate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryDate",
+                    "printedName": "OneEntry.OneEntryDate",
+                    "usr": "s:8OneEntry0aB4DateV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV04dateD0AA0aB4DateVSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV04dateD0AA0aB4DateVSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OneEntry.OneEntryDate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryDate",
+                        "printedName": "OneEntry.OneEntryDate",
+                        "usr": "s:8OneEntry0aB4DateV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV04dateD0AA0aB4DateVSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV04dateD0AA0aB4DateVSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fileValue",
+            "printedName": "fileValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.OneEntryFile?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFile",
+                    "printedName": "OneEntry.OneEntryFile",
+                    "usr": "s:8OneEntry0aB4FileV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13ExtendedValueV04fileD0AA0aB4FileVSgvp",
+            "mangledName": "$s8OneEntry13ExtendedValueV04fileD0AA0aB4FileVSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OneEntry.OneEntryFile?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFile",
+                        "printedName": "OneEntry.OneEntryFile",
+                        "usr": "s:8OneEntry0aB4FileV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13ExtendedValueV04fileD0AA0aB4FileVSgvg",
+                "mangledName": "$s8OneEntry13ExtendedValueV04fileD0AA0aB4FileVSgvg",
+                "moduleName": "OneEntry",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry13ExtendedValueV",
+        "mangledName": "$s8OneEntry13ExtendedValueV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AttributeSet",
+        "printedName": "AttributeSet",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry12AttributeSetV4typeSSvp",
+            "mangledName": "$s8OneEntry12AttributeSetV4typeSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry12AttributeSetV4typeSSvg",
+                "mangledName": "$s8OneEntry12AttributeSetV4typeSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "marker",
+            "printedName": "marker",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry12AttributeSetV6markerSSvp",
+            "mangledName": "$s8OneEntry12AttributeSetV6markerSSvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry12AttributeSetV6markerSSvg",
+                "mangledName": "$s8OneEntry12AttributeSetV6markerSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "position",
+            "printedName": "position",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry12AttributeSetV8positionSivp",
+            "mangledName": "$s8OneEntry12AttributeSetV8positionSivp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry12AttributeSetV8positionSivg",
+                "mangledName": "$s8OneEntry12AttributeSetV8positionSivg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "listTitles",
+            "printedName": "listTitles",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryList]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryList",
+                    "printedName": "OneEntry.OneEntryList",
+                    "usr": "s:8OneEntry0aB4ListV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry12AttributeSetV10listTitlesSayAA0aB4ListVGvp",
+            "mangledName": "$s8OneEntry12AttributeSetV10listTitlesSayAA0aB4ListVGvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryList]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryList",
+                        "printedName": "OneEntry.OneEntryList",
+                        "usr": "s:8OneEntry0aB4ListV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry12AttributeSetV10listTitlesSayAA0aB4ListVGvg",
+                "mangledName": "$s8OneEntry12AttributeSetV10listTitlesSayAA0aB4ListVGvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "localizeInfos",
+            "printedName": "localizeInfos",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.LocalizeInfo?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "LocalizeInfo",
+                    "printedName": "OneEntry.LocalizeInfo",
+                    "usr": "s:8OneEntry12LocalizeInfoV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry12AttributeSetV13localizeInfosAA12LocalizeInfoVSgvp",
+            "mangledName": "$s8OneEntry12AttributeSetV13localizeInfosAA12LocalizeInfoVSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OneEntry.LocalizeInfo?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "LocalizeInfo",
+                        "printedName": "OneEntry.LocalizeInfo",
+                        "usr": "s:8OneEntry12LocalizeInfoV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry12AttributeSetV13localizeInfosAA12LocalizeInfoVSgvg",
+                "mangledName": "$s8OneEntry12AttributeSetV13localizeInfosAA12LocalizeInfoVSgvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AttributeSet",
+                "printedName": "OneEntry.AttributeSet",
+                "usr": "s:8OneEntry12AttributeSetV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry12AttributeSetV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8OneEntry12AttributeSetV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8OneEntry12AttributeSetV",
+        "mangledName": "$s8OneEntry12AttributeSetV",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FormDataRequestBuilder",
+        "printedName": "FormDataRequestBuilder",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "buildEither",
+            "printedName": "buildEither(first:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry22FormDataRequestBuilderC11buildEither5firstSayAA0abcD0VGAH_tFZ",
+            "mangledName": "$s8OneEntry22FormDataRequestBuilderC11buildEither5firstSayAA0abcD0VGAH_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildEither",
+            "printedName": "buildEither(second:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry22FormDataRequestBuilderC11buildEither6secondSayAA0abcD0VGAH_tFZ",
+            "mangledName": "$s8OneEntry22FormDataRequestBuilderC11buildEither6secondSayAA0abcD0VGAH_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildOptional",
+            "printedName": "buildOptional(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[OneEntry.OneEntryFormData]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFormData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFormData",
+                        "printedName": "OneEntry.OneEntryFormData",
+                        "usr": "s:8OneEntry0aB8FormDataV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry22FormDataRequestBuilderC13buildOptionalySayAA0abcD0VGAGSgFZ",
+            "mangledName": "$s8OneEntry22FormDataRequestBuilderC13buildOptionalySayAA0abcD0VGAGSgFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildBlock",
+            "printedName": "buildBlock(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[OneEntry.OneEntryFormData]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFormData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFormData",
+                        "printedName": "OneEntry.OneEntryFormData",
+                        "usr": "s:8OneEntry0aB8FormDataV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry22FormDataRequestBuilderC10buildBlockySayAA0abcD0VGAGd_tFZ",
+            "mangledName": "$s8OneEntry22FormDataRequestBuilderC10buildBlockySayAA0abcD0VGAGd_tFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "buildExpression",
+            "printedName": "buildExpression(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.OneEntryFormData]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OneEntryFormData",
+                    "printedName": "OneEntry.OneEntryFormData",
+                    "usr": "s:8OneEntry0aB8FormDataV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryFormData",
+                "printedName": "OneEntry.OneEntryFormData",
+                "usr": "s:8OneEntry0aB8FormDataV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8OneEntry22FormDataRequestBuilderC15buildExpressionySayAA0abcD0VGAFFZ",
+            "mangledName": "$s8OneEntry22FormDataRequestBuilderC15buildExpressionySayAA0abcD0VGAFFZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8OneEntry22FormDataRequestBuilderC",
+        "mangledName": "$s8OneEntry22FormDataRequestBuilderC",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "Final",
+          "AccessControl",
+          "ResultBuilder"
+        ],
+        "hasMissingDesignatedInitializers": true
       },
       {
         "kind": "Import",
@@ -12126,6 +13733,61 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(formIdentifier:formData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "OneEntryFormDataRequest",
+                "printedName": "OneEntry.OneEntryFormDataRequest",
+                "usr": "s:8OneEntry0aB15FormDataRequestV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : [OneEntry.OneEntryFormData]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.OneEntryFormData]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OneEntryFormData",
+                        "printedName": "OneEntry.OneEntryFormData",
+                        "usr": "s:8OneEntry0aB8FormDataV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry0aB15FormDataRequestV14formIdentifier0fD0ACSS_SDySSSayAA0abcD0VGGtcfc",
+            "mangledName": "$s8OneEntry0aB15FormDataRequestV14formIdentifier0fD0ACSS_SDySSSayAA0abcD0VGGtcfc",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
           },
           {
             "kind": "Function",
@@ -14297,6 +15959,67 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "extended",
+            "printedName": "extended",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.ExtendedValue?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ExtendedValue",
+                    "printedName": "OneEntry.ExtendedValue",
+                    "usr": "s:8OneEntry13ExtendedValueV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry0aB4ListV8extendedAA13ExtendedValueVSgvp",
+            "mangledName": "$s8OneEntry0aB4ListV8extendedAA13ExtendedValueVSgvp",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "OneEntry.ExtendedValue?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ExtendedValue",
+                        "printedName": "OneEntry.ExtendedValue",
+                        "usr": "s:8OneEntry13ExtendedValueV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry0aB4ListV8extendedAA13ExtendedValueVSgvg",
+                "mangledName": "$s8OneEntry0aB4ListV8extendedAA13ExtendedValueVSgvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(from:)",
@@ -15691,7 +17414,7 @@
           {
             "kind": "Function",
             "name": "sendData",
-            "printedName": "sendData(with:data:)",
+            "printedName": "sendData(with:locale:data:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -15707,15 +17430,15 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Dictionary",
-                "printedName": "[Swift.String : [OneEntry.OneEntryFormData]]",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> [OneEntry.OneEntryFormData]",
                 "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  },
                   {
                     "kind": "TypeNominal",
                     "name": "Array",
@@ -15729,14 +17452,21 @@
                       }
                     ],
                     "usr": "s:Sa"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
                   }
                 ],
-                "usr": "s:SD"
+                "typeAttributes": [
+                  "noescape"
+                ]
               }
             ],
             "declKind": "Func",
-            "usr": "s:8OneEntry12FormsServiceC8sendData4with4dataAA0ab4FormF8ResponseVSS_SDySSSayAA0abiF0VGGtYaKF",
-            "mangledName": "$s8OneEntry12FormsServiceC8sendData4with4dataAA0ab4FormF8ResponseVSS_SDySSSayAA0abiF0VGGtYaKF",
+            "usr": "s:8OneEntry12FormsServiceC8sendData4with6locale4dataAA0ab4FormF8ResponseVSS_SSSayAA0abjF0VGyXEtYaKF",
+            "mangledName": "$s8OneEntry12FormsServiceC8sendData4with6locale4dataAA0ab4FormF8ResponseVSS_SSSayAA0abjF0VGyXEtYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",
@@ -15747,14 +17477,14 @@
             "funcSelfKind": "NonMutating"
           },
           {
-            "kind": "Var",
-            "name": "data",
-            "printedName": "data",
+            "kind": "Function",
+            "name": "fetchData",
+            "printedName": "fetchData(langCode:limit:offset:)",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[OneEntry.OneEntryFormDataResponse]",
+                "name": "OneEntryResult",
+                "printedName": "OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -15763,50 +17493,40 @@
                     "usr": "s:8OneEntry0aB16FormDataResponseV"
                   }
                 ],
-                "usr": "s:Sa"
+                "usr": "s:8OneEntry0aB6ResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
               }
             ],
-            "declKind": "Var",
-            "usr": "s:8OneEntry12FormsServiceC4dataSayAA0aB16FormDataResponseVGvp",
-            "mangledName": "$s8OneEntry12FormsServiceC4dataSayAA0aB16FormDataResponseVGvp",
+            "declKind": "Func",
+            "usr": "s:8OneEntry12FormsServiceC9fetchData8langCode5limit6offsetAA0aB6ResultVyAA0ab4FormF8ResponseVGSS_S2itYaKF",
+            "mangledName": "$s8OneEntry12FormsServiceC9fetchData8langCode5limit6offsetAA0aB6ResultVyAA0ab4FormF8ResponseVGSS_S2itYaKF",
             "moduleName": "OneEntry",
             "declAttributes": [
               "Final",
               "AccessControl",
               "RawDocComment"
             ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Array",
-                    "printedName": "[OneEntry.OneEntryFormDataResponse]",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "OneEntryFormDataResponse",
-                        "printedName": "OneEntry.OneEntryFormDataResponse",
-                        "usr": "s:8OneEntry0aB16FormDataResponseV"
-                      }
-                    ],
-                    "usr": "s:Sa"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8OneEntry12FormsServiceC4dataSayAA0aB16FormDataResponseVGvg",
-                "mangledName": "$s8OneEntry12FormsServiceC4dataSayAA0aB16FormDataResponseVGvg",
-                "moduleName": "OneEntry",
-                "declAttributes": [
-                  "Final"
-                ],
-                "throwing": true,
-                "accessorKind": "get"
-              }
-            ]
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Function",
@@ -17306,6 +19026,876 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "AttributeType",
+        "printedName": "AttributeType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "integer",
+            "printedName": "integer",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO7integeryA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO7integeryA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "date",
+            "printedName": "date",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4dateyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4dateyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "file",
+            "printedName": "file",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4fileyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4fileyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "list",
+            "printedName": "list",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4listyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4listyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "real",
+            "printedName": "real",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4realyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4realyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "spam",
+            "printedName": "spam",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4spamyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4spamyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "text",
+            "printedName": "text",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4textyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4textyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "time",
+            "printedName": "time",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO4timeyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO4timeyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "float",
+            "printedName": "float",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO5floatyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO5floatyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "button",
+            "printedName": "button",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO6buttonyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO6buttonyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "image",
+            "printedName": "image",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO5imageyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO5imageyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "string",
+            "printedName": "string",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO6stringyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO6stringyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "dateTime",
+            "printedName": "dateTime",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO8dateTimeyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO8dateTimeyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "textWithHeader",
+            "printedName": "textWithHeader",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO14textWithHeaderyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO14textWithHeaderyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "groupOfImages",
+            "printedName": "groupOfImages",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO13groupOfImagesyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO13groupOfImagesyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "radioButton",
+            "printedName": "radioButton",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(OneEntry.AttributeType.Type) -> OneEntry.AttributeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "OneEntry.AttributeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8OneEntry13AttributeTypeO11radioButtonyA2CmF",
+            "mangledName": "$s8OneEntry13AttributeTypeO11radioButtonyA2CmF",
+            "moduleName": "OneEntry",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "OneEntry.AttributeType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8OneEntry13AttributeTypeO8rawValueACSgSS_tcfc",
+            "mangledName": "$s8OneEntry13AttributeTypeO8rawValueACSgSS_tcfc",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13AttributeTypeO8rawValueSSvp",
+            "mangledName": "$s8OneEntry13AttributeTypeO8rawValueSSvp",
+            "moduleName": "OneEntry",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13AttributeTypeO8rawValueSSvg",
+                "mangledName": "$s8OneEntry13AttributeTypeO8rawValueSSvg",
+                "moduleName": "OneEntry",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[OneEntry.AttributeType]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AttributeType",
+                    "printedName": "OneEntry.AttributeType",
+                    "usr": "s:8OneEntry13AttributeTypeO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8OneEntry13AttributeTypeO8allCasesSayACGvpZ",
+            "mangledName": "$s8OneEntry13AttributeTypeO8allCasesSayACGvpZ",
+            "moduleName": "OneEntry",
+            "static": true,
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.AttributeType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8OneEntry13AttributeTypeO8allCasesSayACGvgZ",
+                "mangledName": "$s8OneEntry13AttributeTypeO8allCasesSayACGvgZ",
+                "moduleName": "OneEntry",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:8OneEntry13AttributeTypeO",
+        "mangledName": "$s8OneEntry13AttributeTypeO",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "enumRawTypeName": "String",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[OneEntry.AttributeType]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AttributeType",
+                        "printedName": "OneEntry.AttributeType",
+                        "usr": "s:8OneEntry13AttributeTypeO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "OneEntryProductStatus",
         "printedName": "OneEntryProductStatus",
         "children": [
@@ -17711,6 +20301,16 @@
             "mangledName": "$s8OneEntry15LocalizeContentP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "OneEntry",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       }
     ],
     "json_format_version": 8
@@ -17810,14 +20410,28 @@
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Services\/FormsService.swift",
       "kind": "IntegerLiteral",
-      "offset": 3520,
+      "offset": 3337,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3363,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Services\/FormsService.swift",
       "kind": "IntegerLiteral",
-      "offset": 3557,
+      "offset": 3965,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/artur\/Developer\/Swift\/OneEntry\/Source code\/OneEntry\/Sources\/Services\/FormsService.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4002,
       "length": 2,
       "value": "30"
     },

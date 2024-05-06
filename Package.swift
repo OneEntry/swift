@@ -30,18 +30,18 @@ let package = Package(
         ),
         .binaryTarget(
             name: "OneEntry",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.8/XCFrameworks.zip",
-            checksum: "1dadddd4505ff07f6f27fd554607745003ab00aa1290a4fe5f21dae6ef9e6c1c"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.9/XCFrameworks.zip",
+            checksum: "0ab87ebd66b2af7ad2f9ae989334c22cec2530bbb80b36bd678c79addcc1d4e1"
         ),
         .binaryTarget(
             name: "Alamofire",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.8/Alamofire.zip",
-            checksum: "b9a250cc448892fcbff1e5988667aeaae4fa7e359a211cb94079672b94ee63ab"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.9/Alamofire.zip",
+            checksum: "7ba5c66e8da20c501dd2c35217e960b42b7aa68fc7cf05fcb9e481046bc649e8"
         ),
         .binaryTarget(
             name: "HMNetworking",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.8/HMNetworking.zip",
-            checksum: "0dfb71f20d0d12c5bacdbe814d9e89a622d504c129e64a69e21b4d643a7c604c"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.9/HMNetworking.zip",
+            checksum: "13310f76d4ea723dbfc13a35ceec67d54df33c649543cc6fdf750c9a35d97e8d"
         ),
         .testTarget(
             name: "OneEntryTests",

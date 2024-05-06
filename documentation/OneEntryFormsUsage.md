@@ -21,14 +21,10 @@ let form = try await FormsService.shared.form(with: "auth", langCode: "en_US")
 ## Sending data to the form
 
 ```swift
-let data: [String : [OneEntryFormData]] = [
-    "en_US": [
-        .init(marker: "login", value: "Archibbald"),
-        .init(marker: "password", value: "password")
-    ]
-]
-
-let reponse = try await FormsService.shared.sendData(with: "auth", data: data)
+let response = try await FormsService.shared..sendData(with: identifier, locale: "en_US") {
+    OneEntryFormData(marker: "address", value: "San Francisco, California, USA")
+    OneEntryFormData(marker: "comment", value: "Comment")
+}
 ```
 
 ``OneEntryFormDataResponse`` will return as a response
@@ -36,7 +32,7 @@ let reponse = try await FormsService.shared.sendData(with: "auth", data: data)
 ## Getting all form data
 
 ```swift
-let data = try await FormsService.shared.data
+let data = try await FormsService.shared.fetchData(langCode: "en_US")
 ```
 
 ``OneEntryFormDataResponse`` array will return as a response
@@ -44,7 +40,7 @@ let data = try await FormsService.shared.data
 ## Getting form data from its marker
 
 ```swift
-let data = try await FormsService.shared.data(with: "marker")
+let data = try await FormsService.shared.data(with: "identifier")
 ```
 
 Returns an ``OneEntryResult`` object, where items - an array of ``OneEntryFormDataResponse`` objects

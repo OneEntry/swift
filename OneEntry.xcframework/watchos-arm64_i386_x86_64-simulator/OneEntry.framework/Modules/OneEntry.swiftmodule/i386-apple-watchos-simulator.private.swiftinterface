@@ -164,6 +164,16 @@ public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable {
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
+@_hasMissingDesignatedInitializers final public class AttributesService {
+  public static let shared: OneEntry.AttributesService
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func attributes(from set: Swift.String, langCode: Swift.String) async throws -> [OneEntry.AttributeSet]
+  #endif
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func attribute(with marker: Swift.String, from set: Swift.String, langCode: Swift.String) async throws -> OneEntry.AttributeSet
+  #endif
+  @objc deinit
+}
 public enum SortDirection : Swift.String, Swift.Decodable {
   case desk
   case asc
@@ -187,11 +197,16 @@ extension OneEntry.OneEntryFile {
 public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
-  public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
-  public let version: Swift.Int
   public let identifier: Swift.String
-  public let processingType: Swift.String?
+  public let attributes: [OneEntry.FormAttribute]
   public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct FormAttribute : Swift.Decodable {
+  public let type: Swift.String
+  public let marker: Swift.String
+  public let isVisible: Swift.Bool
+  public var localizeInfos: OneEntry.LocalizeInfo
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryPageConfig : Swift.Decodable {
@@ -291,6 +306,15 @@ extension OneEntry.OneEntryAttribute {
     get
   }
 }
+public struct PaymentAccount : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+  public let id: Swift.Int
+  public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  public let identifier: Swift.String
+  public let type: Swift.String
+  public let isVisible: Swift.Bool
+  public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct OneEntryError : Swift.Decodable {
   public var statusCode: Swift.Int?
   public var message: Swift.String
@@ -301,6 +325,45 @@ extension OneEntry.OneEntryError : Foundation.LocalizedError {
   public var errorDescription: Swift.String? {
     get
   }
+}
+public struct ExtendedValue : Swift.Decodable {
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.ExtendedValue {
+  public var stringValue: Swift.String? {
+    get
+  }
+  public var imageValue: OneEntry.OneEntryImage? {
+    get
+  }
+  public var doubleValue: Swift.Double? {
+    get
+  }
+  public var intValue: Swift.Int? {
+    get
+  }
+  public var dateValue: OneEntry.OneEntryDate? {
+    get
+  }
+  public var fileValue: OneEntry.OneEntryFile? {
+    get
+  }
+}
+public struct AttributeSet : Swift.Decodable {
+  public let type: Swift.String
+  public let marker: Swift.String
+  public let position: Swift.Int
+  public let listTitles: [OneEntry.OneEntryList]
+  public let localizeInfos: OneEntry.LocalizeInfo?
+  public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @_functionBuilder final public class FormDataRequestBuilder {
+  public static func buildEither(first component: [OneEntry.OneEntryFormData]) -> [OneEntry.OneEntryFormData]
+  public static func buildEither(second component: [OneEntry.OneEntryFormData]) -> [OneEntry.OneEntryFormData]
+  public static func buildOptional(_ component: [OneEntry.OneEntryFormData]?) -> [OneEntry.OneEntryFormData]
+  public static func buildBlock(_ components: [OneEntry.OneEntryFormData]...) -> [OneEntry.OneEntryFormData]
+  public static func buildExpression(_ expression: OneEntry.OneEntryFormData) -> [OneEntry.OneEntryFormData]
+  @objc deinit
 }
 public struct OneEntryTemplate : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
@@ -384,6 +447,7 @@ extension OneEntry.OneEntryDate {
 public struct OneEntryFormDataRequest : Swift.Encodable {
   public let formIdentifier: Swift.String
   public let formData: [Swift.String : [OneEntry.OneEntryFormData]]
+  public init(formIdentifier: Swift.String, formData: [Swift.String : [OneEntry.OneEntryFormData]])
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct OneEntryFormData : Swift.Codable {
@@ -535,12 +599,10 @@ extension OneEntry.OneEntryMenu : Swift.Decodable {
   final public func form(with marker: Swift.String, langCode: Swift.String) async throws -> OneEntry.OneEntryForm
   #endif
   #if compiler(>=5.3) && $AsyncAwait
-  final public func sendData(with identifier: Swift.String, data: [Swift.String : [OneEntry.OneEntryFormData]]) async throws -> OneEntry.OneEntryFormDataResponse
+  final public func sendData(with identifier: Swift.String, locale: Swift.String, @OneEntry.FormDataRequestBuilder data: () -> [OneEntry.OneEntryFormData]) async throws -> OneEntry.OneEntryFormDataResponse
   #endif
-  #if compiler(>=5.3) && $EffectfulProp
-  final public var data: [OneEntry.OneEntryFormDataResponse] {
-    get async throws
-  }
+  #if compiler(>=5.3) && $AsyncAwait
+  final public func fetchData(langCode: Swift.String, limit: Swift.Int = 30, offset: Swift.Int = 0) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
   #endif
   #if compiler(>=5.3) && $AsyncAwait
   final public func data(with marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
@@ -620,9 +682,37 @@ extension OneEntry.OneEntryMenu : Swift.Decodable {
   #endif
   @objc deinit
 }
+public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable {
+  case integer
+  case date
+  case file
+  case list
+  case real
+  case spam
+  case text
+  case time
+  case float
+  case button
+  case image
+  case string
+  case dateTime
+  case textWithHeader
+  case groupOfImages
+  case radioButton
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [OneEntry.AttributeType]
+  public typealias RawValue = Swift.String
+  public static var allCases: [OneEntry.AttributeType] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
 public struct OneEntryList : Swift.Decodable {
   public let title: Swift.String
   public let value: Swift.String
+  public let extended: OneEntry.ExtendedValue?
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.SortDirection : Swift.Equatable {}
@@ -631,3 +721,6 @@ extension OneEntry.SortDirection : Swift.RawRepresentable {}
 extension OneEntry.ConditionMarker : Swift.Equatable {}
 extension OneEntry.ConditionMarker : Swift.Hashable {}
 extension OneEntry.ConditionMarker : Swift.RawRepresentable {}
+extension OneEntry.AttributeType : Swift.Equatable {}
+extension OneEntry.AttributeType : Swift.Hashable {}
+extension OneEntry.AttributeType : Swift.RawRepresentable {}

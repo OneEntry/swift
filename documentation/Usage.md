@@ -15,6 +15,9 @@ The full use of the entire sdk is described here
         - [Using the built-in certificate](#using-the-built-in-certificate)
         - [Generation of your .p12 certificate](#generation-of-your-p12-certificate)
   - [Using OneEntry Swift SDK](#using-oneentry-swift-sdk)
+    - [AttributesService](#attributesservice)
+      - [Getting all attributes within the set](#getting-all-attributes-within-the-set)
+      - [Getting a single attribute within a set](#getting-a-single-attribute-within-a-set)
     - [BlocksService](#blocksservice)
       - [Getting a block by its marker](#getting-a-block-by-its-marker)
       - [Getting all block objects with pagination](#getting-all-block-objects-with-pagination)
@@ -33,6 +36,7 @@ The full use of the entire sdk is described here
         - [Date and time processing](#date-and-time-processing)
         - [Files processing](#files-processing)
         - [Images processing](#images-processing)
+        - [List with extended values](#list-with-extended-values)
         - [Text data types](#text-data-types)
           - [String](#string)
           - [Text](#text)
@@ -210,6 +214,26 @@ OneEntryCore.initializeApp(domain, credentials: credential)
 
 ## Using OneEntry Swift SDK
 
+### AttributesService
+
+Sometimes you need to be able to get information about an attribute. Most often, this requires to get all the elements of the list: all colors, stickers, etc. This service will help to solve this problem
+
+#### Getting all attributes within the set
+
+This method allows you to get all the attributes within the set. Sets are tied to OneEntry entities (products, blocks, pages, etc.)
+
+```swift
+let attributes = try await AttributesService.shared.attributes(from: "all", langCode: "en_US")
+```
+
+#### Getting a single attribute within a set
+
+This method can be useful if you know where to look for the necessary attribute and need to get information about it
+
+```swift
+let attribute = try await AttributesService.shared.attribute(with: "list", from: "all", langCode: "en_US")
+```
+
 ### BlocksService
 
 Controllers for working with block objects
@@ -280,17 +304,13 @@ public struct OneEntryForm: Identifiable, Decodable, LocalizeContent {
 #### Sending data to the form
 
 ```swift
-let data: [String : [OneEntryFormData]] = [
-    "en_US": [
-        .init(marker: "login", value: "Archibbald"),
-        .init(marker: "password", value: "password")
-    ]
-]
-
-let reponse = try await FormsService.shared.sendData(with: "auth", data: data)
+let response = try await FormsService.shared..sendData(with: identifier, locale: "en_US") {
+    OneEntryFormData(marker: "address", value: "San Francisco, California, USA")
+    OneEntryFormData(marker: "comment", value: "Comment")
+}
 ```
 
-`OneEntryFormDataResponse` will return as a response
+``OneEntryFormDataResponse`` will return as a response
 
 ```swift
 /// Represents a response containing form data for a single entry with an identity and time.
@@ -478,6 +498,17 @@ let attributes = page.localizeAttribute("imagegroup", languageCode: langCode)?.i
 ```
 
 The `OneEntryImage` array will be returned as an answer
+
+##### List with extended values
+
+OneEntry has a list attribute. It allows you to create a drop-down list in the admin panel and select some basic product settings (color sticker, etc.). For ease of use, any element of the list can be expanded with an additional parameter.
+
+> You can get the element that expands the list through the model field ``OneEntryList/extended``
+
+```swift
+let attribute: OneEntryList = ...
+let extended: String? = attribute.extended?.stringValue
+```
 
 ```swift
 /// OneEntry image model
@@ -1424,3 +1455,5 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
     public let localizeInfos: [String : LocalizeInfo]?
 }
 ```
+
+

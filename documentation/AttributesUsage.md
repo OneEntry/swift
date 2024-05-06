@@ -68,9 +68,20 @@ let attributes = page.localizeAttribute("imagegroup", languageCode: langCode)?.i
 
 The ``OneEntryImage`` array will be returned as an answer
 
+### List with extended values
+
+OneEntry has a list attribute. It allows you to create a drop-down list in the admin panel and select some basic product settings (color sticker, etc.). For ease of use, any element of the list can be expanded with an additional parameter.
+
+> You can get the element that expands the list through the model field ``OneEntryList/extended``
+
+```swift
+let attribute: OneEntryList = ...
+let extended: String? = attribute.extended?.stringValue
+```
+
 ### Text data types
 
-## String
+#### String
 
 Most types of attributes can be obtained as a string
 
@@ -78,7 +89,7 @@ Most types of attributes can be obtained as a string
 let value = page.localizeAttribute("string", languageCode: "en_US")?.stringValue
 ```
 
-## Text
+#### Text
 
 ```swift
 let attribute = page.localizeAttribute("text", languageCode: langCode)?.textValues
@@ -86,7 +97,7 @@ let attribute = page.localizeAttribute("text", languageCode: langCode)?.textValu
 
 The ``OneEntryText`` structure will be returned as an answer
 
-## Text with header
+#### Text with header
 
 ```swift
 let attribute = page.localizeAttribute("header_text", languageCode: langCode)?.textWithHeaderValues

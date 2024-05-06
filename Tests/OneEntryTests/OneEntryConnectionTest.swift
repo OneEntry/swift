@@ -9,9 +9,7 @@ import XCTest
 import OneEntry
 
 final class OneEntryConnectionTest: XCTestCase {
-            
     func testExample() async throws {
-        
         let _ = try await CatalogService.shared.products(langCode: "en_US")
     }
 }
