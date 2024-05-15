@@ -178,6 +178,7 @@ public struct OneEntryResult<T> : Swift.Decodable where T : Swift.Decodable {
 public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let price: Swift.Double?
+  public let statusId: Swift.Int?
   public let sku: Swift.String?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let relatedIds: [Swift.Int]

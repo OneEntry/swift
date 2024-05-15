@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name = 'OneEntry'
-    spec.version = '1.1.9'
+    spec.version = '1.2.0'
     spec.license = { :type => 'OWN', :file => 'LICENSE.txt' }
     spec.homepage = 'https://github.com/OneEntry/oneentry-ios-sdk'
     spec.summary = 'Adds Swift classes for easy integration with OneEntry'
@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
     
     spec.dependency 'HMNetworking'
     spec.source = {
-      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.1.9/XCFrameworks.zip'
+      :http => 'https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.0/XCFrameworks.zip'
     }
 
     spec.platform = :ios
