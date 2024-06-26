@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target arm64-apple-macos10.15 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name OneEntry
+// swift-compiler-version: Apple Swift version 6.0 (swiftlang-6.0.0.3.300 clang-1600.0.20.10)
+// swift-module-flags: -target arm64-apple-macos10.15 -enable-objc-interop -enable-library-evolution -swift-version 6 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -module-name OneEntry
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import Alamofire
 import Foundation
 import HMNetworking
@@ -10,6 +11,17 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 import os.log
 import os
+public struct User : Swift.Identifiable, Swift.Sendable, Swift.Decodable {
+  public let id: Swift.Int
+  public let identifier: Swift.String
+  public let formIdentifier: Swift.String
+  public let authProviderIdentifier: Swift.String
+  public let groups: [Swift.String]
+  public let formData: [Swift.String : [OneEntry.FormData]]
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public typealias ID = Swift.Int
+  public init(from decoder: any Swift.Decoder) throws
+}
 final public class OneEntryTokenCredential : OneEntry.Credential {
   public init(token: Swift.String)
   final public var client: HMNetworking.HttpClient {
@@ -23,15 +35,14 @@ public struct OneEntryProductStatus : Swift.Identifiable, Swift.Decodable, OneEn
   public let version: Swift.Int
   public let identifier: Swift.String
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryProductStatus {
-  #if compiler(>=5.3) && $EffectfulProp
   public var markerValidation: Swift.Bool {
     get async throws
   }
-  #endif
 }
 public struct OneEntryLocale : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
@@ -42,10 +53,11 @@ public struct OneEntryLocale : Swift.Identifiable, Swift.Decodable {
   public let isActive: Swift.Bool
   public let image: Swift.String?
   public let position: Swift.Int?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent, Swift.Sendable {
   public var id: Swift.Int
   public var identifier: Swift.String
   public var position: Swift.Int
@@ -55,10 +67,60 @@ public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.Loca
   public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
   public var products: [OneEntry.OneEntryProduct]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Decodable {
+@_hasMissingDesignatedInitializers final public class AuthService : @unchecked Swift.Sendable {
+  public static let shared: OneEntry.AuthService
+  final public var accessToken: Swift.String? {
+    get
+  }
+  final public var refreshToken: Swift.String? {
+    get
+  }
+  final public var marker: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+extension OneEntry.AuthService {
+  final public var user: OneEntry.User {
+    get async throws
+  }
+  @discardableResult
+  final public func changeUser(form identifier: Swift.String, langCode: Swift.String, @OneEntry.ResultBuilder<any OneEntry.AuthDataType> data: @_Concurrency.MainActor @Sendable () -> [any OneEntry.AuthDataType]) async throws -> Swift.Bool
+  @discardableResult
+  final public func changePassword(user identifier: Swift.String, code: Swift.String, password: Swift.String, confirmation: Swift.String, with marker: Swift.String) async throws -> Swift.Bool
+  @discardableResult
+  final public func auth(_ marker: Swift.String, @OneEntry.ResultBuilder<OneEntry.AuthData> data: @_Concurrency.MainActor @Sendable () -> [OneEntry.AuthData]) async throws -> OneEntry.UserTokenType
+  @discardableResult
+  final public func signUp(marker: Swift.String, form identifier: Swift.String, langCode: Swift.String, @OneEntry.AuthBuilder data: @_Concurrency.MainActor @Sendable () -> [any OneEntry.AuthDataType]) async throws -> OneEntry.CreatedUserDto
+  @discardableResult
+  final public func activate(user identifier: Swift.String, code: Swift.String, with marker: Swift.String) async throws -> Swift.Bool
+  @discardableResult
+  final public func logout() async throws -> Swift.Bool
+  @available(*, deprecated, message: "Use refresh(refresh token: String) instead")
+  @discardableResult
+  final public func refresh(refresh token: Swift.String, marker: Swift.String) async throws -> OneEntry.UserTokenType
+  final public func generateCode(_ user: Swift.String, event: Swift.String, with marker: Swift.String) async throws
+  @discardableResult
+  final public func check(_ user: Swift.String, code: Swift.String, with marker: Swift.String) async throws -> Swift.Bool
+}
+public struct FormDataContainer : OneEntry.AuthDataType {
+  public var formData: [OneEntry.FormData]?
+  public var authData: [OneEntry.AuthData]
+  public var notification: OneEntry.NotificationData?
+  public init(@OneEntry.ResultBuilder<OneEntry.FormData> data: () -> [OneEntry.FormData])
+}
+public struct UserTokenType : Swift.Decodable, Swift.Sendable {
+  public let userIdentifier: Swift.String
+  public let authProviderIdentifier: Swift.String
+  public let accessToken: Swift.String
+  public let refreshToken: Swift.String
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Codable, Swift.Sendable {
   public var id: Foundation.UUID {
     get
   }
@@ -66,7 +128,9 @@ public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Decodable {
   public let header: Swift.String
   public let htmlValue: Swift.String
   public let plainValue: Swift.String
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Foundation.UUID
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryPageConfig : Swift.Decodable {
@@ -74,29 +138,92 @@ public struct OneEntryPageConfig : Swift.Decodable {
   public let productsPerRow: Swift.Int?
   public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers final public class OneEntryCore {
+@_hasMissingDesignatedInitializers final public class OneEntryCore : @unchecked Swift.Sendable {
   @objc deinit
 }
 extension OneEntry.OneEntryCore {
   public static func initializeApp(_ domain: Swift.String, credentials: any OneEntry.Credential)
   public static func reset()
 }
+public protocol AuthDataType : Swift.Sendable {
+  var authData: [OneEntry.AuthData] { get }
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  var formData: [OneEntry.FormData]? { get }
+  #else
+  var formData: [OneEntry.FormData]? { get }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  var notification: OneEntry.NotificationData? { get }
+  #else
+  var notification: OneEntry.NotificationData? { get }
+  #endif
+}
+@_hasMissingDesignatedInitializers @_functionBuilder final public class ResultBuilder<Result> {
+  public static func buildEither(first component: [Result]) -> [Result]
+  public static func buildEither(second component: [Result]) -> [Result]
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  public static func buildOptional(_ component: [Result]?) -> [Result]
+  #else
+  public static func buildOptional(_ component: [Result]?) -> [Result]
+  #endif
+  public static func buildBlock(_ components: [Result]...) -> [Result]
+  public static func buildExpression(_ expression: Result) -> [Result]
+  @objc deinit
+}
 public protocol LocalizeContent {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? { get }
+  #else
+  var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? { get }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]? { get }
+  #else
+  var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]? { get }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   func localizeAttribute(_ marker: Swift.String, languageCode: Swift.String) -> OneEntry.OneEntryAttribute?
+  #else
+  func localizeAttribute(_ marker: Swift.String, languageCode: Swift.String) -> OneEntry.OneEntryAttribute?
+  #endif
 }
 extension OneEntry.LocalizeContent {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public func localizeAttribute(_ marker: Swift.String, languageCode: Swift.String) -> OneEntry.OneEntryAttribute?
+  #else
+  public func localizeAttribute(_ marker: Swift.String, languageCode: Swift.String) -> OneEntry.OneEntryAttribute?
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public func localizeInfo(languageCode: Swift.String) -> OneEntry.LocalizeInfo?
+  #else
+  public func localizeInfo(languageCode: Swift.String) -> OneEntry.LocalizeInfo?
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? {
     get
   }
+  #else
+  public var localizeInfos: [Swift.String : OneEntry.LocalizeInfo]? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]? {
     get
   }
+  #else
+  public var attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]? {
+    get
+  }
+  #endif
 }
-public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+public struct AuthDataContainer : OneEntry.AuthDataType {
+  public var formData: [OneEntry.FormData]?
+  public var authData: [OneEntry.AuthData]
+  public var notification: OneEntry.NotificationData?
+  public init(@OneEntry.ResultBuilder<OneEntry.AuthData> data: () -> [OneEntry.AuthData])
+}
+public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent, Swift.Sendable {
   public let id: Swift.Int
   public var parentId: Swift.Int?
   public let pageUrl: Swift.String
@@ -107,6 +234,7 @@ public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.Local
   public let templateIdentifier: Swift.String?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -117,12 +245,14 @@ public struct OneEntryMenuPage : Swift.Identifiable, Swift.Decodable, OneEntry.L
   public let position: Swift.Int
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public var children: [OneEntry.OneEntryMenuPage]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntrySearchPage : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let title: Swift.String
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -131,6 +261,7 @@ public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.Local
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let identifier: Swift.String
   public let attributes: [OneEntry.FormAttribute]
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -141,31 +272,46 @@ public struct FormAttribute : Swift.Decodable {
   public var localizeInfos: OneEntry.LocalizeInfo
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryFile : Swift.Decodable {
+public struct OneEntryFile : Swift.Codable, Swift.Sendable {
   public let filename: Swift.String
   public let downloadLink: Swift.String
   public let size: Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryFile {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var url: Foundation.URL? {
     get
   }
+  #else
+  public var url: Foundation.URL? {
+    get
+  }
+  #endif
 }
 public protocol Credential {
   var client: HMNetworking.HttpClient { get }
 }
-public struct OneEntryFilter : Swift.Encodable {
+public struct OneEntryFilter : Swift.Encodable, Swift.Sendable {
   public let attributeMarker: Swift.String
   public let conditionMarker: OneEntry.ConditionMarker
-  public let conditionValue: any Swift.Encodable
+  public let conditionValue: (any Swift.Encodable & Swift.Sendable)
   public let pageUrl: [Swift.String]
-  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: some Encodable, pageUrl: [Swift.String] = [])
+  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: some (Encodable & Sendable), pageUrl: [Swift.String] = [])
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public protocol Treelike : Swift.Identifiable {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   var parentId: Swift.Int? { get set }
+  #else
+  var parentId: Swift.Int? { get set }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   var children: [Self]? { get set }
+  #else
+  var children: [Self]? { get set }
+  #endif
   func toNode() -> OneEntry.Node<Self>
 }
 extension OneEntry.Treelike {
@@ -178,74 +324,74 @@ public class Node<T> where T : OneEntry.Treelike {
 @_hasMissingDesignatedInitializers public class OneEntryTree<T> where T : OneEntry.Treelike {
   @objc deinit
 }
-public struct OneEntryFormDataRequest : Swift.Encodable {
+public struct OneEntryFormDataRequest : Swift.Encodable, Swift.Sendable {
   public let formIdentifier: Swift.String
-  public let formData: [Swift.String : [OneEntry.OneEntryFormData]]
-  public init(formIdentifier: Swift.String, formData: [Swift.String : [OneEntry.OneEntryFormData]])
+  public let formData: [Swift.String : [OneEntry.FormData]]
+  public init(formIdentifier: Swift.String, formData: [Swift.String : [OneEntry.FormData]])
   public func encode(to encoder: any Swift.Encoder) throws
 }
-public struct OneEntryFormData : Swift.Codable {
-  public let marker: Swift.String
-  public let value: Swift.String
-  public init(marker: Swift.String, value: Swift.String)
-  public func encode(to encoder: any Swift.Encoder) throws
-  public init(from decoder: any Swift.Decoder) throws
-}
-public struct OneEntryFormDataResponse : Swift.Identifiable, Swift.Decodable {
+public struct OneEntryFormDataResponse : Swift.Identifiable, Swift.Decodable, Swift.Sendable {
   public let id: Swift.Int
   public let time: Swift.String
   public let formIdentifier: Swift.String
-  public let formData: [Swift.String : [OneEntry.OneEntryFormData]]
+  public let formData: [Swift.String : [OneEntry.FormData]]
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers final public class AttributesService {
+@_hasMissingDesignatedInitializers final public class AttributesService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.AttributesService
-  #if compiler(>=5.3) && $AsyncAwait
   final public func attributes(from set: Swift.String, langCode: Swift.String) async throws -> [OneEntry.AttributeSet]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func attribute(with marker: Swift.String, from set: Swift.String, langCode: Swift.String) async throws -> OneEntry.AttributeSet
-  #endif
   @objc deinit
 }
-public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent, Swift.Sendable {
   public let id: Swift.Int
   public let price: Swift.Double?
-  public let statusId: Swift.Int?
+  public let statusIdentifier: Swift.String?
+  public let statusLocalizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let sku: Swift.String?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
-  public let relatedIds: [Swift.Int]
+  public let relatedIds: [Swift.Int]?
   public let templateIdentifier: Swift.String?
   public let attributeValues: [Swift.String : [Swift.String : OneEntry.OneEntryAttribute]]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable {
+public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable, Swift.Sendable {
   public let id: Swift.Int
   public let title: Swift.String
   public let pageId: Swift.Int
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryText : Swift.Decodable {
+public struct CreatedUserDto : Swift.Codable, Swift.Sendable {
+  public let id: Swift.Int
+  public let updatedDate: Swift.String
+  public let version: Swift.Int
+  public let identifier: Swift.String
+  public let isActive: Swift.Bool
+  public let authProviderId: Swift.Int?
+  public let formData: [Swift.String : [OneEntry.FormData]]
+  public let notificationData: OneEntry.NotificationData
+  public let locale: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct OneEntryText : Swift.Codable, Swift.Sendable {
   public let htmlValue: Swift.String
   public let plainValue: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryResult<T> : Swift.Decodable where T : Swift.Decodable {
-  public let items: [T]
-  public let total: Swift.Int
+public struct OneEntryResult<T> : Swift.Decodable, Swift.Sendable where T : Swift.Decodable, T : Swift.Sendable {
+  public var items: [T]
+  public var total: Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-@_functionBuilder public struct FilterBuilder {
-  public static func buildBlock(_ components: [OneEntry.OneEntryFilter]...) -> [OneEntry.OneEntryFilter]
-  public static func buildExpression(_ expression: OneEntry.OneEntryFilter) -> [OneEntry.OneEntryFilter]
-  public static func buildEither(first component: [OneEntry.OneEntryFilter]) -> [OneEntry.OneEntryFilter]
-  public static func buildEither(second component: [OneEntry.OneEntryFilter]) -> [OneEntry.OneEntryFilter]
-  public static func buildOptional(_ component: [OneEntry.OneEntryFilter]?) -> [OneEntry.OneEntryFilter]
-}
-public enum ConditionMarker : Swift.String, Swift.Codable {
+public enum ConditionMarker : Swift.String, Swift.Codable, Swift.Sendable {
   case `in`
   case nin
   case eq
@@ -254,7 +400,11 @@ public enum ConditionMarker : Swift.String, Swift.Codable {
   case lth
   case exs
   case nexs
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public init?(rawValue: Swift.String)
+  #else
+  public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
@@ -265,25 +415,75 @@ public struct OneEntryMenu : Swift.Identifiable, OneEntry.LocalizeContent {
   public let identifier: Swift.String
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let pages: [OneEntry.OneEntryMenuPage]
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
 }
 extension OneEntry.OneEntryMenu : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
+#if compiler(>=5.3) && $RetroactiveAttribute
+extension CoreFoundation.CFString : @unchecked @retroactive Swift.Sendable {
+}
+#else
+extension CoreFoundation.CFString : @unchecked Swift.Sendable {
+}
+#endif
+public enum KeychainItemAccessibility : Swift.Sendable {
+  @available(iOS 4, *)
+  case afterFirstUnlock
+  @available(iOS 4, *)
+  case afterFirstUnlockThisDeviceOnly
+  @available(iOS 4, *)
+  case always
+  @available(iOS 8, *)
+  case whenPasscodeSetThisDeviceOnly
+  @available(iOS 4, *)
+  case alwaysThisDeviceOnly
+  @available(iOS 4, *)
+  case whenUnlocked
+  @available(iOS 4, *)
+  case whenUnlockedThisDeviceOnly
+  public static func == (a: OneEntry.KeychainItemAccessibility, b: OneEntry.KeychainItemAccessibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 final public class OneEntryCertificateCredential : OneEntry.Credential {
   final public let name: Swift.String
   final public let password: Swift.String
   final public let bundle: Foundation.Bundle
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public init(name: Swift.String, password: Swift.String? = nil, bundle: Foundation.Bundle = .main)
+  #else
+  public init(name: Swift.String, password: Swift.String? = nil, bundle: Foundation.Bundle = .main)
+  #endif
   final public var client: HMNetworking.HttpClient {
     get
   }
   @objc deinit
 }
+extension OneEntry.OneEntryCertificateCredential {
+  public enum OneEntryCredentialError : Foundation.LocalizedError {
+    case certificateImportFailed(Darwin.OSStatus)
+    case certificateNotFound(Swift.String)
+    case credentialExtractFailed
+    #if compiler(>=5.3) && $NoncopyableGenerics
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #else
+    public var errorDescription: Swift.String? {
+      get
+    }
+    #endif
+  }
+}
 public struct OneEntryAdmin : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let identifier: Swift.String
   public let position: Swift.Int?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -292,6 +492,7 @@ public struct OneEntryTemplatePreview : Swift.Identifiable, Swift.Decodable, One
   public let version: Swift.Int?
   public let identifier: Swift.String
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -303,59 +504,123 @@ public struct OneEntryProportion : Swift.Decodable {
   public let alignmentType: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryError : Swift.Decodable {
+public struct OneEntryError : Swift.Decodable, Swift.Sendable {
   public var statusCode: Swift.Int?
   public var message: Swift.String
   public var pageData: OneEntry.OneEntryPage?
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryError : Foundation.LocalizedError {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var errorDescription: Swift.String? {
     get
   }
+  #else
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
 }
-public struct PaymentAccount : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+public struct PaymentAccount : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent, Swift.Sendable {
   public let id: Swift.Int
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
   public let identifier: Swift.String
   public let type: Swift.String
   public let isVisible: Swift.Bool
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryDate : Swift.Decodable {
+public struct OneEntryDate : Swift.Codable, Swift.Sendable {
   public var fullDate: Swift.String
   public var formatString: Swift.String
   public var formattedValue: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryDate {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public func date(format: Swift.String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Foundation.Date?
+  #else
+  public func date(format: Swift.String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Foundation.Date?
+  #endif
 }
-public struct ExtendedValue : Swift.Decodable {
+@_hasMissingDesignatedInitializers @_functionBuilder final public class AuthBuilder {
+  public static func buildBlock(_ auth: OneEntry.AuthDataContainer, _ components: any OneEntry.AuthDataType...) -> [any OneEntry.AuthDataType]
+  @available(*, unavailable, message: "AuthDataContainer must be present when building authentication data")
+  public static func buildBlock(_ components: any OneEntry.AuthDataType...) -> [any OneEntry.AuthDataType]
+  @objc deinit
+}
+public struct AuthData : Swift.Sendable, Swift.Codable {
+  public var marker: Swift.String
+  public var value: Swift.String
+  public init(marker: Swift.String, value: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct ExtendedValue : Swift.Sendable {
+}
+extension OneEntry.ExtendedValue : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.ExtendedValue {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var stringValue: Swift.String? {
     get
   }
+  #else
+  public var stringValue: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var imageValue: OneEntry.OneEntryImage? {
     get
   }
+  #else
+  public var imageValue: OneEntry.OneEntryImage? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var doubleValue: Swift.Double? {
     get
   }
+  #else
+  public var doubleValue: Swift.Double? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var intValue: Swift.Int? {
     get
   }
+  #else
+  public var intValue: Swift.Int? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var dateValue: OneEntry.OneEntryDate? {
     get
   }
+  #else
+  public var dateValue: OneEntry.OneEntryDate? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var fileValue: OneEntry.OneEntryFile? {
     get
   }
+  #else
+  public var fileValue: OneEntry.OneEntryFile? {
+    get
+  }
+  #endif
 }
-public struct AttributeSet : Swift.Decodable {
+public struct AttributeSet : Swift.Decodable, Swift.Sendable {
   public let type: Swift.String
   public let marker: Swift.String
   public let position: Swift.Int
@@ -363,28 +628,74 @@ public struct AttributeSet : Swift.Decodable {
   public let localizeInfos: OneEntry.LocalizeInfo?
   public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers @_functionBuilder final public class FormDataRequestBuilder {
-  public static func buildEither(first component: [OneEntry.OneEntryFormData]) -> [OneEntry.OneEntryFormData]
-  public static func buildEither(second component: [OneEntry.OneEntryFormData]) -> [OneEntry.OneEntryFormData]
-  public static func buildOptional(_ component: [OneEntry.OneEntryFormData]?) -> [OneEntry.OneEntryFormData]
-  public static func buildBlock(_ components: [OneEntry.OneEntryFormData]...) -> [OneEntry.OneEntryFormData]
-  public static func buildExpression(_ expression: OneEntry.OneEntryFormData) -> [OneEntry.OneEntryFormData]
-  @objc deinit
+public enum AuthError : Swift.String, Foundation.LocalizedError {
+  case userTokenNotFound
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #else
+  public var errorDescription: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  public init?(rawValue: Swift.String)
+  #else
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
 }
 public struct OneEntryGeneralType : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let type: Swift.String
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryImage : Swift.Decodable {
+public struct OneEntryImage : Swift.Codable, Swift.Sendable {
   public let size: Swift.Int
   public let filename: Swift.String
   public let previewLink: Swift.String
   public let downloadLink: Swift.String
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct LocalizeInfo : Swift.Decodable {
+public struct NotificationData : Swift.Codable, Swift.Sendable {
+  public var email: Swift.String
+  public var phonePush: Swift.String
+  public var phoneSMS: Swift.String
+  public init(email: Swift.String, phonePush: Swift.String, phoneSMS: Swift.String)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.NotificationData : OneEntry.AuthDataType {
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  public var formData: [OneEntry.FormData]? {
+    get
+  }
+  #else
+  public var formData: [OneEntry.FormData]? {
+    get
+  }
+  #endif
+  public var authData: [OneEntry.AuthData] {
+    get
+  }
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  public var notification: OneEntry.NotificationData? {
+    get
+  }
+  #else
+  public var notification: OneEntry.NotificationData? {
+    get
+  }
+  #endif
+}
+public struct LocalizeInfo : Swift.Decodable, Swift.Sendable {
   public let title: Swift.String?
   public let content: OneEntry.InfoContent?
   public let menuTitle: Swift.String?
@@ -392,234 +703,237 @@ public struct LocalizeInfo : Swift.Decodable {
   public let plainContent: Swift.String?
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct InfoContent : Swift.Decodable {
+public struct InfoContent : Swift.Decodable, Swift.Sendable {
   public let value: Swift.String
   public let isEditorDisabled: Swift.Bool
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct OneEntryAttribute : Swift.Decodable {
+public struct OneEntryAttribute : Swift.Sendable {
+  public var type: Swift.String
+  public var value: (any Swift.Codable & Swift.Sendable)?
+}
+extension OneEntry.OneEntryAttribute : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryAttribute {
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var stringValue: Swift.String? {
     get
   }
+  #else
+  public var stringValue: Swift.String? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var imageValues: [OneEntry.OneEntryImage]? {
     get
   }
+  #else
+  public var imageValues: [OneEntry.OneEntryImage]? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var doubleValue: Swift.Double? {
     get
   }
+  #else
+  public var doubleValue: Swift.Double? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var intValue: Swift.Int? {
     get
   }
+  #else
+  public var intValue: Swift.Int? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var dateValue: OneEntry.OneEntryDate? {
     get
   }
+  #else
+  public var dateValue: OneEntry.OneEntryDate? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var textWithHeaderValues: [OneEntry.OneEntryTextWithHeader]? {
     get
   }
+  #else
+  public var textWithHeaderValues: [OneEntry.OneEntryTextWithHeader]? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var textValues: [OneEntry.OneEntryText]? {
     get
   }
+  #else
+  public var textValues: [OneEntry.OneEntryText]? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var fileValues: [OneEntry.OneEntryFile]? {
     get
   }
+  #else
+  public var fileValues: [OneEntry.OneEntryFile]? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public var listValues: OneEntry.OneEntryList? {
     get
   }
+  #else
+  public var listValues: OneEntry.OneEntryList? {
+    get
+  }
+  #endif
 }
-public enum SortDirection : Swift.String, Swift.Decodable {
+public enum SortDirection : Swift.String, Swift.Decodable, Swift.Sendable {
   case desk
   case asc
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public init?(rawValue: Swift.String)
+  #else
+  public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
-public struct OneEntryList : Swift.Decodable {
+public struct OneEntryList : Swift.Codable, Swift.Sendable {
   public let title: Swift.String
   public let value: Swift.String
   public let extended: OneEntry.ExtendedValue?
+  public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
-@_hasMissingDesignatedInitializers final public class PagesService {
+@_hasMissingDesignatedInitializers final public class PagesService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.PagesService
-  #if compiler(>=5.3) && $AsyncAwait
   final public func rootPages(langCode: Swift.String) async throws -> [OneEntry.OneEntryPage]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func children(for pageURL: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntryPage]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func catalogPages(langCode: Swift.String, limit: Swift.Int = 30, offset: Swift.Int = 0) async throws -> [OneEntry.OneEntryPage]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
+  final public func catalogPages(langCode: Swift.String) async throws -> [OneEntry.OneEntryPage]
   final public func pages(langCode: Swift.String) async throws -> [OneEntry.OneEntryPage]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func page(with id: Swift.Int, langCode: Swift.String) async throws -> OneEntry.OneEntryPage
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func page(with url: Swift.String, langCode: Swift.String) async throws -> OneEntry.OneEntryPage
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func config(with url: Swift.String) async throws -> OneEntry.OneEntryPageConfig
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func quickSearch(_ name: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntrySearchPage]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func blocks(page url: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntryBlock]
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class TemplatesPreviewService {
+@_hasMissingDesignatedInitializers final public class TemplatesPreviewService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.TemplatesPreviewService
-  #if compiler(>=5.3) && $EffectfulProp
   final public var templates: [OneEntry.OneEntryTemplatePreview] {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func template(with id: Swift.Int) async throws -> OneEntry.OneEntryTemplatePreview
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func template(with marker: Swift.String) async throws -> OneEntry.OneEntryTemplatePreview
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class ProjectService {
+@_hasMissingDesignatedInitializers final public class ProjectService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.ProjectService
-  #if compiler(>=5.3) && $EffectfulProp
   final public var activeLocales: [OneEntry.OneEntryLocale] {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $EffectfulProp
   final public var admins: [OneEntry.OneEntryAdmin] {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $EffectfulProp
   final public var generalTypes: [OneEntry.OneEntryGeneralType] {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func test404() async throws
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func test500() async throws
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func menu(with marker: Swift.String) async throws -> OneEntry.OneEntryMenu
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func uploadFile(file url: Foundation.URL, type: Swift.String, entity: Swift.String, id: Swift.Int, width: Swift.Int? = nil, height: Swift.Int? = nil, compress: Swift.Bool = false) async throws -> [OneEntry.OneEntryFile]
+  #else
+  final public func uploadFile(file url: Foundation.URL, type: Swift.String, entity: Swift.String, id: Swift.Int, width: Swift.Int? = nil, height: Swift.Int? = nil, compress: Swift.Bool = false) async throws -> [OneEntry.OneEntryFile]
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func uploadFile(fileURL: Foundation.URL, type: Swift.String, entity: Swift.String, id: Swift.Int, width: Swift.Int? = nil, height: Swift.Int? = nil, compress: Swift.Bool = false) async throws -> [OneEntry.OneEntryFile]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func file(name: Swift.String, type: Swift.String, entity: Swift.String, id: Swift.Int) async throws -> Foundation.Data
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func deleteFile(name: Swift.String, type: Swift.String, entity: Swift.String, id: Swift.Int) async throws
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class FormsService {
+@_hasMissingDesignatedInitializers final public class FormsService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.FormsService
-  #if compiler(>=5.3) && $AsyncAwait
   final public func forms(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> [OneEntry.OneEntryForm]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func form(with marker: Swift.String, langCode: Swift.String) async throws -> OneEntry.OneEntryForm
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func sendData(with identifier: Swift.String, locale: Swift.String, @OneEntry.FormDataRequestBuilder data: () -> [OneEntry.OneEntryFormData]) async throws -> OneEntry.OneEntryFormDataResponse
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
+  final public func sendData(with identifier: Swift.String, locale: Swift.String, @OneEntry.ResultBuilder<OneEntry.FormData> data: () -> [OneEntry.FormData]) async throws -> OneEntry.OneEntryFormDataResponse
   final public func fetchData(langCode: Swift.String, limit: Swift.Int = 30, offset: Swift.Int = 0) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func data(with marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class CatalogService {
+@_hasMissingDesignatedInitializers final public class CatalogService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.CatalogService
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func products(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, statusMarker: Swift.String? = nil, conditionValue: Swift.String? = nil, conditionMarker: OneEntry.ConditionMarker? = nil, attributeMarker: Swift.String? = nil, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func products(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, statusMarker: Swift.String? = nil, conditionValue: Swift.String? = nil, conditionMarker: OneEntry.ConditionMarker? = nil, attributeMarker: Swift.String? = nil, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
+  final public func products(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, statusMarker: Swift.String? = nil, conditionValue: Swift.String? = nil, conditionMarker: OneEntry.ConditionMarker? = nil, attributeMarker: Swift.String? = nil, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func emptyPageProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
   final public func emptyPageProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func products(page id: Swift.Int, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func products(page id: Swift.Int, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
+  final public func products(page id: Swift.Int, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func products(page url: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func products(page url: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
+  final public func products(page url: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter] = { [] }) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  final public func relatedProducts(product id: Swift.Int, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
   final public func relatedProducts(product id: Swift.Int, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortKey: Swift.String? = nil, sortOrder: OneEntry.SortDirection? = nil) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func product(with id: Swift.Int, langCode: Swift.String) async throws -> OneEntry.OneEntryProduct
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func blocks(for id: Swift.Int) async throws -> [OneEntry.OneEntryBlock]
+  #if compiler(>=5.3) && $NoncopyableGenerics
+  @available(*, deprecated, renamed: "products", message: "This method is outdated and will be replaced by products with the filters parameter")
+  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
+  #else
+  @available(*, deprecated, renamed: "products", message: "This method is outdated and will be replaced by products with the filters parameter")
+  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.ResultBuilder<OneEntry.OneEntryFilter> filters: @_Concurrency.MainActor @Sendable () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
   #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func filterProducts(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String, sortOrder: OneEntry.SortDirection? = nil, sortKey: Swift.String? = nil, @OneEntry.FilterBuilder builder: () -> [OneEntry.OneEntryFilter]) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func quickSearch(_ name: Swift.String, langCode: Swift.String) async throws -> [OneEntry.OneEntrySearchProduct]
-  #endif
-  #if compiler(>=5.3) && $EffectfulProp
   final public var productStatuses: [OneEntry.OneEntryProductStatus] {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func productStatus(with id: Swift.Int) async throws -> OneEntry.OneEntryProductStatus
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func productStatus(with marker: Swift.String) async throws -> OneEntry.OneEntryProductStatus
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func productStatusMarkerValidation(_ marker: Swift.String) async throws -> Swift.Bool
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class BlocksService {
+@_hasMissingDesignatedInitializers final public class BlocksService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.BlocksService
-  #if compiler(>=5.3) && $AsyncAwait
   final public func similarProducts(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func products(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryProduct>
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
-  final public func blocks(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> [OneEntry.OneEntryBlock]
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
+  final public func blocks(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryBlock>
   final public func block(_ marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> OneEntry.OneEntryBlock
-  #endif
   @objc deinit
 }
-@_hasMissingDesignatedInitializers final public class TemplatesService {
+@_hasMissingDesignatedInitializers final public class TemplatesService : @unchecked Swift.Sendable {
   public static let shared: OneEntry.TemplatesService
-  #if compiler(>=5.3) && $EffectfulProp
   final public var templates: OneEntry.OneEntryAllTemplates {
     get async throws
   }
-  #endif
-  #if compiler(>=5.3) && $AsyncAwait
   final public func templates(with type: Swift.String) async throws -> [OneEntry.OneEntryTemplate]
-  #endif
   @objc deinit
 }
-public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable {
+public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable, Swift.Sendable {
   case integer
   case date
   case file
@@ -636,7 +950,11 @@ public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable {
   case textWithHeader
   case groupOfImages
   case radioButton
+  #if compiler(>=5.3) && $NoncopyableGenerics
   public init?(rawValue: Swift.String)
+  #else
+  public init?(rawValue: Swift.String)
+  #endif
   public typealias AllCases = [OneEntry.AttributeType]
   public typealias RawValue = Swift.String
   public static var allCases: [OneEntry.AttributeType] {
@@ -653,6 +971,7 @@ public struct OneEntryTemplate : Swift.Identifiable, Swift.Decodable, OneEntry.L
   public let generalTypeName: Swift.String
   public let position: Swift.Int?
   public let localizeInfos: [Swift.String : OneEntry.LocalizeInfo]?
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -716,9 +1035,46 @@ extension OneEntry.OneEntryAllTemplates {
     get
   }
 }
+@dynamicMemberLookup public struct FormData : Swift.Sendable {
+  public var marker: Swift.String
+  public var attribute: OneEntry.OneEntryAttribute
+  public init(marker: Swift.String, value: Swift.String)
+  public init<Element>(type: Swift.KeyPath<OneEntry.FormData.DataType, Element>, marker: Swift.String, value: Element) where Element : Swift.Decodable, Element : Swift.Encodable, Element : Swift.Sendable
+}
+extension OneEntry.FormData {
+  public subscript<T>(dynamicMember keyPath: Swift.KeyPath<OneEntry.OneEntryAttribute, T>) -> T {
+    get
+  }
+}
+extension OneEntry.FormData : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension OneEntry.FormData {
+  public struct DataType {
+    public let integer: Swift.String
+    public let date: OneEntry.OneEntryDate
+    public let file: OneEntry.OneEntryFile
+    public let list: OneEntry.OneEntryList
+    public let real: Swift.String
+    public let text: OneEntry.OneEntryText
+    public let time: OneEntry.OneEntryDate
+    public let float: Swift.String
+    public let image: [OneEntry.OneEntryImage]
+    public let string: Swift.String
+    public let dateTime: OneEntry.OneEntryDate
+    public let textWithHeader: OneEntry.OneEntryTextWithHeader
+    public let groupOfImages: [OneEntry.OneEntryImage]
+  }
+}
 extension OneEntry.ConditionMarker : Swift.Equatable {}
 extension OneEntry.ConditionMarker : Swift.Hashable {}
 extension OneEntry.ConditionMarker : Swift.RawRepresentable {}
+extension OneEntry.KeychainItemAccessibility : Swift.Equatable {}
+extension OneEntry.KeychainItemAccessibility : Swift.Hashable {}
+extension OneEntry.AuthError : Swift.Equatable {}
+extension OneEntry.AuthError : Swift.Hashable {}
+extension OneEntry.AuthError : Swift.RawRepresentable {}
 extension OneEntry.SortDirection : Swift.Equatable {}
 extension OneEntry.SortDirection : Swift.Hashable {}
 extension OneEntry.SortDirection : Swift.RawRepresentable {}

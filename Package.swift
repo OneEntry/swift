@@ -1,4 +1,4 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -30,18 +30,18 @@ let package = Package(
         ),
         .binaryTarget(
             name: "OneEntry",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.0/XCFrameworks.zip",
-            checksum: "8abd06bf5971e2d1417672940e3630671cd7dd929561751d6a008ba9dfe49b4c"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.1/XCFrameworks.zip",
+            checksum: "33070c2ee910be176809d38ee1dcd6e1a71cd342f3202a0045520cf1c68b6828"
         ),
         .binaryTarget(
             name: "Alamofire",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.0/Alamofire.zip",
-            checksum: "634e0a0ac06a95aecaba2083be8026af8b46a344384b0827f0e131dc2864a0d0"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.1/Alamofire.zip",
+            checksum: "b8435c0d2e41f64d049ac161d59d3cefcebeea6f16e88709ad19080689e0260c"
         ),
         .binaryTarget(
             name: "HMNetworking",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.0/HMNetworking.zip",
-            checksum: "164650b2ca978edeb49ac4f2475a840655b64d8187ef271382c5206638d9bd35"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.1/HMNetworking.zip",
+            checksum: "c054d0163c1c120e8b72d394d4b6d7e7ea118f8d4a77636815bdfea9fe09dc96"
         ),
         .testTarget(
             name: "OneEntryTests",

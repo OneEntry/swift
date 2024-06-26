@@ -1,4 +1,11 @@
 framework module OneEntry {
+  umbrella header "OneEntry.h"
+  export *
+
+  module * { export * }
+}
+
+module OneEntry.Swift {
   header "OneEntry-Swift.h"
   requires objc
 }

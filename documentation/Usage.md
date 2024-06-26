@@ -15,6 +15,20 @@ The full use of the entire sdk is described here
         - [Using the built-in certificate](#using-the-built-in-certificate)
         - [Generation of your .p12 certificate](#generation-of-your-p12-certificate)
   - [Using OneEntry Swift SDK](#using-oneentry-swift-sdk)
+    - [Code generation](#code-generation)
+      - [Overview](#overview)
+      - [Code generation](#code-generation-1)
+      - [Code verification](#code-verification)
+    - [User authorization and management](#user-authorization-and-management)
+      - [Overview](#overview-1)
+      - [Authorization](#authorization)
+      - [Getting a user](#getting-a-user)
+      - [Logout](#logout)
+      - [Changing user data](#changing-user-data)
+    - [User registration and activation](#user-registration-and-activation)
+      - [Overview](#overview-2)
+      - [New user registration](#new-user-registration)
+      - [User activation](#user-activation)
     - [AttributesService](#attributesservice)
       - [Getting all attributes within the set](#getting-all-attributes-within-the-set)
       - [Getting a single attribute within a set](#getting-a-single-attribute-within-a-set)
@@ -22,11 +36,10 @@ The full use of the entire sdk is described here
       - [Getting a block by its marker](#getting-a-block-by-its-marker)
       - [Getting all block objects with pagination](#getting-all-block-objects-with-pagination)
     - [FormsService](#formsservice)
-      - [Getting all forms](#getting-all-forms)
-      - [Getting a form by its marker](#getting-a-form-by-its-marker)
+      - [Overview](#overview-3)
+      - [Forms](#forms)
       - [Sending data to the form](#sending-data-to-the-form)
-      - [Getting all form data](#getting-all-form-data)
-      - [Getting form data from its marker](#getting-form-data-from-its-marker)
+      - [Receiving data](#receiving-data)
     - [Attributes](#attributes)
       - [Introduction](#introduction)
       - [Available data types](#available-data-types)
@@ -214,6 +227,194 @@ OneEntryCore.initializeApp(domain, credentials: credential)
 
 ## Using OneEntry Swift SDK
 
+### Code generation
+
+Sending and checking verification codes
+
+#### Overview
+
+OneEntry supports sending verification codes.
+Three scenarios are supported for this:
+
+- Password change
+- Registration
+- User code
+
+You can customize the message template in the event settings in your personal account
+
+![Events](oneentry-code-event.png)
+
+#### Code generation
+
+After setting up the necessary event, we can start code generation. 
+
+```swift
+let email = "oneentry@sample.com"
+try await AuthService.shared.generateCode(email, event: "send_code", with: "email")
+```
+
+#### Code verification
+
+Password or registration codes are checked by ``AuthService/changePassword(user:code:password:confirmation:with:)`` and ``AuthService/activate(user:code:with:)`` methods, respectively.
+
+To check the user code, use the ``AuthService/check(_:code:with:)`` method
+
+```swift
+let email = "oneentry@sample.com"
+let code = "123456"
+let success = try await AuthService.shared.check(email, code: code, with: "email")
+
+### Changing the password in case of loss of access to the account
+
+Changing the password in case the user has forgotten it
+
+#### Overview
+
+To change the password in case of its loss, you should follow a few steps:
+
+1. Send verification code by user ID
+2. Change the password using the activation code
+
+> ImPortant: Use this instruction only if you lose access to your account. Otherwise, you should use ``AuthService/changeUser(form:langCode:data:)``
+
+#### Password change
+
+```swift
+let email = "oneentry@sample.com"
+let code = "123456"
+let success = try await AuthService.shared.changePassword(
+    user: email,
+    code: code,
+    password: "password",
+    confirmation: "password",
+    with: "email"
+)
+```
+
+### User authorization and management
+
+Management of user data such as password, names, etc.
+
+#### Overview
+
+User authorization works on the principle of token exchange.
+For the sake of simplicity, hide this process under the hood of the sdk. On
+You always have the opportunity to get all the data for more detailed configuration.
+Tokens are automatically saved in a keychain to implement auto login.
+
+#### Authorization
+
+```swift
+let email = "oneentry@sample.com"
+try await AuthService.shared.auth("email") {
+    AuthData(marker: "email_auth", value: email)
+    AuthData(marker: "pass_auth", value: "password")
+}
+```
+
+This method performs obtaining authorization tokens. SDK independently monitor their relevance.
+
+#### Getting a user
+
+> Important: The method for obtaining user information is available only after successful authorization via sdk
+
+```swift
+let user = try await AuthService.shared.user
+```
+
+#### Logout
+
+In fact, the output can be implemented in different ways and without this method.
+However, its call is necessary to cancel authorization tokens
+
+> Important: The method for obtaining user information is available only after successful authorization via sdk
+
+```swift
+let success = try await AuthService.shared.logout()
+```
+
+#### Changing user data
+
+The method helps to change any data, including the password.
+
+> Important: The method for obtaining user information is available only after successful authorization via sdk
+
+```swift
+let success = try await service.changeUser(form: "email_auth", langCode: "en_US") {
+    AuthDataContainer {
+        AuthData(
+            marker: "pass_auth",
+            value: "password"
+        )
+    }
+    
+    FormDataContainer {
+        FormData(
+            marker: "name_auth",
+            value: "Arthur"
+        )
+    }
+}
+```
+
+### User registration and activation
+
+Registration and activation of new users. Verification using activation code.
+
+#### Overview
+
+OneEntry users can be created through your personal account on the website, or using our sdk.
+In both cases, you must first configure the authentication provider. 
+There you can configure many parameters, such as seret phrases, token formats, etc.
+But the most important thing is the authorization form.
+
+#### New user registration
+
+After setting up the authorization provider, we can proceed to user registration.
+For this purpose, the method ``AuthService/signUp(marker:form:langCode:data:)`` is used.
+
+> Note: User registration supports sending data to an additional form using the `form` and ``AuthDataContainer`` parameters
+
+```swift
+let email = "oneentry@sample.com"
+let phone = "+0000000000"
+let user = try await AuthService.shared.signUp(
+    marker: "email",
+    form: "email_auth",
+    langCode: "en_US"
+) {
+    AuthDataContainer {
+        AuthData(marker: "email_auth", value: email)
+        AuthData(marker: "pass_auth", value: "password")
+        AuthData(marker: "email_notification", value: email)
+    }
+    
+    FormDataContainer {
+        FormData(marker: "name_auth", value: name)
+    }
+    
+    NotificationData(email: email, phonePush: "<device_token>", phoneSMS: phone)
+}
+```
+
+- ``AuthDataContainer`` - is responsible for the authorization data we configured above
+- ``FormDataContainer`` - sends data to the `email_auth` form
+- ``NotificationData`` - sends information to the registration
+
+> Important: After a successful registration request, a confirmation code will be automatically sent to the selected address
+
+#### User activation
+
+User activation is needed to verify the authenticity of his data.
+
+> Important: Without user activation, methods of working with him, such as authorization, will not work
+
+```swift
+let email = "oneentry@sample.com"
+let otp = "123456"
+let success = try await AuthService.shared.activate(user: email, code: otp, with: "email")
+```
+
 ### AttributesService
 
 Sometimes you need to be able to get information about an attribute. Most often, this requires to get all the elements of the list: all colors, stickers, etc. This service will help to solve this problem
@@ -259,115 +460,58 @@ let blocks = try await BlocksService.shared.blocks(langCode: "en_US")
 
 ### FormsService
 
-OneEntry forms allow you to send all kinds of data to the admin application
+#### Overview
 
-#### Getting all forms
+OneEntry Forms is a tool that allows you to store, receive and send user data.
+This can be applied in many scenarios, such as users, orders, etc.
+
+#### Forms
+
+In your personal account, you can configure the template of the received data by creating a form and attaching attributes to it.
+
+![Creating a form in your personal account](oneentry-delivery-form@4x.png)
+
+You may need to get information about the form. To do this, you can request information about all forms:
 
 ```swift
 let forms = try await FormsService.shared.forms(langCode: "en_US")
 ```
 
-`OneEntryForm` array will return as a result`
+Or some specific one according to her identifier:
 
 ```swift
-/// OneEntry form model
-public struct OneEntryForm: Identifiable, Decodable, LocalizeContent {
-    public let id: Int
-    public let localizeInfos: [String : LocalizeInfo]?
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
-    public let version: Int
-    public let identifier: String
-    public let processingType: String?
-}
-```
-
-#### Getting a form by its marker
-
-```swift
-let form = try await FormsService.shared.form(with: "auth", langCode: "en_US")
-```
-
-`OneEntryForm` will return as a result`
-
-```swift
-/// OneEntry form model
-public struct OneEntryForm: Identifiable, Decodable, LocalizeContent {
-    public let id: Int
-    public let localizeInfos: [String : LocalizeInfo]?
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
-    public let version: Int
-    public let identifier: String
-    public let processingType: String?
-}
+let form = try await FormsService.shared.form(with: "delivery", langCode: "en_US")
 ```
 
 #### Sending data to the form
 
+The main idea of the forms is to send data to them. This can be done using the method ``FormsService/sendData(with:locale:data:)``
+
 ```swift
-let response = try await FormsService.shared..sendData(with: identifier, locale: "en_US") {
-    OneEntryFormData(marker: "address", value: "San Francisco, California, USA")
-    OneEntryFormData(marker: "comment", value: "Comment")
+let response = try await FormsService.shared.sendData(with: "delivery", locale: "en_US") {
+    FormData(marker: "address", value: "London")
+    FormData(marker: "comment", value: "Comment")
+    FormData(type: \.integer, marker: "entrance", value: "1")
 }
 ```
 
-``OneEntryFormDataResponse`` will return as a response
+> It is worth noting that by default the ``FormData`` object initializes the `String` data type.
+> If you need to use another one, you can change the `type` parameter, the compiler will tell you what the value should be
+
+#### Receiving data
+
+The functionality of receiving and processing the sent data may also be useful. 
+
+You can get all the data sent:
 
 ```swift
-/// Represents a response containing form data for a single entry with an identity and time.
-public struct OneEntryFormDataResponse: Identifiable, Decodable {
-    /// Unique identifier for the form data response.
-    public let id: Int
-    /// Time when the form data was submitted.
-    public let time: String
-    /// Identifier for the form.
-    public let formIdentifier: String
-    /// Form data organized as a dictionary of arrays of OneEntryFormData.
-    public let formData: [String : [OneEntryFormData]]
-}
+let data = try await FormsService.shared.fetchData(langCode: "en_US")
 ```
 
-#### Getting all form data
+Or request the data of a specific form by its identifier:
 
 ```swift
-let data = try await FormsService.shared.data
-```
-
-`OneEntryFormDataResponse` array will return as a response
-
-```swift
-/// Represents a response containing form data for a single entry with an identity and time.
-public struct OneEntryFormDataResponse: Identifiable, Decodable {
-    /// Unique identifier for the form data response.
-    public let id: Int
-    /// Time when the form data was submitted.
-    public let time: String
-    /// Identifier for the form.
-    public let formIdentifier: String
-    /// Form data organized as a dictionary of arrays of OneEntryFormData.
-    public let formData: [String : [OneEntryFormData]]
-}
-```
-
-#### Getting form data from its marker
-
-```swift
-let data = try await FormsService.shared.data(with: "marker")
-```
-
-`OneEntryResult<OneEntryFormDataResponse>` will return as a response
-
-```swift
-/// Represents a response containing form data for a single entry with an identity and time.
-public struct OneEntryFormDataResponse: Identifiable, Decodable {
-    /// Unique identifier for the form data response.
-    public let id: Int
-    /// Time when the form data was submitted.
-    public let time: String
-    /// Identifier for the form.
-    public let formIdentifier: String
-    /// Form data organized as a dictionary of arrays of OneEntryFormData.
-    public let formData: [String : [OneEntryFormData]]
-}
+let data = try await FormsService.shared.data(with: "delivery")
 ```
 
 ### Attributes
