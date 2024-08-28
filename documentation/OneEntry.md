@@ -31,6 +31,10 @@ All the tools we've developed are aimed to improve the processes of project mana
 
 - <doc:OneEntryProductsUsage>
 
+### Orders and Payment
+
+- <doc:OrdersPayments>
+
 ### Working with pages
 
 - <doc:OneEntryPagesUsage>

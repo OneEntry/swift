@@ -64,9 +64,15 @@
 <li><a href="#code-verification">Code verification</a></li>
 </ul>
 </li>
-<li><a href="#user-authorization-and-management">User authorization and management</a>
+<li><a href="#changing-the-password-in-case-of-loss-of-access-to-the-account">Changing the password in case of loss of access to the account</a>
 <ul>
 <li><a href="#overview-1">Overview</a></li>
+<li><a href="#password-change">Password change</a></li>
+</ul>
+</li>
+<li><a href="#user-authorization-and-management">User authorization and management</a>
+<ul>
+<li><a href="#overview-2">Overview</a></li>
 <li><a href="#authorization">Authorization</a></li>
 <li><a href="#getting-a-user">Getting a user</a></li>
 <li><a href="#logout">Logout</a></li>
@@ -75,7 +81,7 @@
 </li>
 <li><a href="#user-registration-and-activation">User registration and activation</a>
 <ul>
-<li><a href="#overview-2">Overview</a></li>
+<li><a href="#overview-3">Overview</a></li>
 <li><a href="#new-user-registration">New user registration</a></li>
 <li><a href="#user-activation">User activation</a></li>
 </ul>
@@ -94,7 +100,7 @@
 </li>
 <li><a href="#formsservice">FormsService</a>
 <ul>
-<li><a href="#overview-3">Overview</a></li>
+<li><a href="#overview-4">Overview</a></li>
 <li><a href="#forms">Forms</a></li>
 <li><a href="#sending-data-to-the-form">Sending data to the form</a></li>
 <li><a href="#receiving-data">Receiving data</a></li>
@@ -102,8 +108,7 @@
 </li>
 <li><a href="#attributes">Attributes</a>
 <ul>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#available-data-types">Available data types</a></li>
+<li><a href="#overview-5">Overview</a></li>
 <li><a href="#receiving-attributes">Receiving attributes</a>
 <ul>
 <li><a href="#custom-processing">Custom processing</a></li>
@@ -320,24 +325,19 @@ Three scenarios are supported for this:</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"oneentry@sample.com"</span></span>
 <span class="token keyword keyword-let">let</span> code <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"123456"</span></span>
 <span class="token keyword keyword-let">let</span> success <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">check</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> code<span class="token punctuation">:</span> code<span class="token punctuation">,</span> with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"email"</span></span><span class="token punctuation">)</span>
-
-### <span class="token class-name">Changing</span> the password <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-case">case</span> of loss of access to the account
-
-<span class="token class-name">Changing</span> the password <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-case">case</span> the user has forgotten it
-
-#### <span class="token class-name">Overview</span>
-
-<span class="token class-name">To</span> change the password <span class="token keyword keyword-in">in</span> <span class="token keyword keyword-case">case</span> of its loss<span class="token punctuation">,</span> you should follow a few steps<span class="token punctuation">:</span>
-
-<span class="token number">1</span><span class="token punctuation">.</span> <span class="token class-name">Send</span> verification code by user <span class="token constant">ID</span>
-<span class="token number">2</span><span class="token punctuation">.</span> <span class="token class-name">Change</span> the password using the activation code
-
-<span class="token operator">&gt;</span> <span class="token class-name">ImPortant</span><span class="token punctuation">:</span> <span class="token class-name">Use</span> this instruction only <span class="token keyword keyword-if">if</span> you lose access to your account<span class="token punctuation">.</span> <span class="token class-name">Otherwise</span><span class="token punctuation">,</span> you should use ``<span class="token class-name">AuthService</span><span class="token operator">/</span><span class="token function">changeUser</span><span class="token punctuation">(</span>form<span class="token punctuation">:</span>langCode<span class="token punctuation">:</span>data<span class="token punctuation">:</span><span class="token punctuation">)</span>``
-
-#### <span class="token class-name">Password</span> change
-
-```swift
-<span class="token keyword keyword-let">let</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"oneentry@sample.com"</span></span>
+</code></pre><h3 id="changing-the-password-in-case-of-loss-of-access-to-the-account">Changing the password in case of loss of access to the account </h3>
+<p>Changing the password in case the user has forgotten it</p>
+<h4 id="overview-1">Overview </h4>
+<p>To change the password in case of its loss, you should follow a few steps:</p>
+<ol>
+<li>Send verification code by user ID</li>
+<li>Change the password using the activation code</li>
+</ol>
+<blockquote>
+<p>Important: Use this instruction only if you lose access to your account. Otherwise, you should use <code>AuthService/changeUser(form:langCode:data:)</code></p>
+</blockquote>
+<h4 id="password-change">Password change </h4>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"oneentry@sample.com"</span></span>
 <span class="token keyword keyword-let">let</span> code <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"123456"</span></span>
 <span class="token keyword keyword-let">let</span> success <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">changePassword</span><span class="token punctuation">(</span>
     user<span class="token punctuation">:</span> email<span class="token punctuation">,</span>
@@ -346,33 +346,33 @@ Three scenarios are supported for this:</p>
     confirmation<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"password"</span></span><span class="token punctuation">,</span>
     with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"email"</span></span>
 <span class="token punctuation">)</span>
-</code></pre><h3>User authorization and management</h3>
+</code></pre><h3 id="user-authorization-and-management">User authorization and management </h3>
 <p>Management of user data such as password, names, etc.</p>
-<h4>Overview</h4>
+<h4 id="overview-2">Overview </h4>
 <p>User authorization works on the principle of token exchange.<br>
 For the sake of simplicity, hide this process under the hood of the sdk. On<br>
 You always have the opportunity to get all the data for more detailed configuration.<br>
 Tokens are automatically saved in a keychain to implement auto login.</p>
-<h4>Authorization</h4>
+<h4 id="authorization">Authorization </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"oneentry@sample.com"</span></span>
 <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"email"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">AuthData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"email_auth"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> email<span class="token punctuation">)</span>
     <span class="token class-name">AuthData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"pass_auth"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"password"</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre><p>This method performs obtaining authorization tokens. SDK independently monitor their relevance.</p>
-<h4>Getting a user</h4>
+<h4 id="getting-a-user">Getting a user </h4>
 <blockquote>
 <p>Important: The method for obtaining user information is available only after successful authorization via sdk</p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> user <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>user
-</code></pre><h4>Logout</h4>
+</code></pre><h4 id="logout">Logout </h4>
 <p>In fact, the output can be implemented in different ways and without this method.<br>
 However, its call is necessary to cancel authorization tokens</p>
 <blockquote>
 <p>Important: The method for obtaining user information is available only after successful authorization via sdk</p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> success <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre><h4>Changing user data</h4>
+</code></pre><h4 id="changing-user-data">Changing user data </h4>
 <p>The method helps to change any data, including the password.</p>
 <blockquote>
 <p>Important: The method for obtaining user information is available only after successful authorization via sdk</p>
@@ -392,14 +392,14 @@ However, its call is necessary to cancel authorization tokens</p>
         <span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre><h3>User registration and activation</h3>
+</code></pre><h3 id="user-registration-and-activation">User registration and activation </h3>
 <p>Registration and activation of new users. Verification using activation code.</p>
-<h4>Overview</h4>
+<h4 id="overview-3">Overview </h4>
 <p>OneEntry users can be created through your personal account on the website, or using our sdk.<br>
 In both cases, you must first configure the authentication provider.<br>
 There you can configure many parameters, such as seret phrases, token formats, etc.<br>
 But the most important thing is the authorization form.</p>
-<h4>New user registration</h4>
+<h4 id="new-user-registration">New user registration </h4>
 <p>After setting up the authorization provider, we can proceed to user registration.<br>
 For this purpose, the method <code>AuthService/signUp(marker:form:langCode:data:)</code> is used.</p>
 <blockquote>
@@ -432,7 +432,7 @@ For this purpose, the method <code>AuthService/signUp(marker:form:langCode:data:
 <blockquote>
 <p>Important: After a successful registration request, a confirmation code will be automatically sent to the selected address</p>
 </blockquote>
-<h4>User activation</h4>
+<h4 id="user-activation">User activation </h4>
 <p>User activation is needed to verify the authenticity of his data.</p>
 <blockquote>
 <p>Important: Without user activation, methods of working with him, such as authorization, will not work</p>
@@ -440,40 +440,40 @@ For this purpose, the method <code>AuthService/signUp(marker:form:langCode:data:
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> email <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"oneentry@sample.com"</span></span>
 <span class="token keyword keyword-let">let</span> otp <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"123456"</span></span>
 <span class="token keyword keyword-let">let</span> success <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">activate</span><span class="token punctuation">(</span>user<span class="token punctuation">:</span> email<span class="token punctuation">,</span> code<span class="token punctuation">:</span> otp<span class="token punctuation">,</span> with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"email"</span></span><span class="token punctuation">)</span>
-</code></pre><h3>AttributesService</h3>
+</code></pre><h3 id="attributesservice">AttributesService </h3>
 <p>Sometimes you need to be able to get information about an attribute. Most often, this requires to get all the elements of the list: all colors, stickers, etc. This service will help to solve this problem</p>
-<h4>Getting all attributes within the set</h4>
+<h4 id="getting-all-attributes-within-the-set">Getting all attributes within the set </h4>
 <p>This method allows you to get all the attributes within the set. Sets are tied to OneEntry entities (products, blocks, pages, etc.)</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attributes <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AttributesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">attributes</span><span class="token punctuation">(</span>from<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"all"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h4>Getting a single attribute within a set</h4>
+</code></pre><h4 id="getting-a-single-attribute-within-a-set">Getting a single attribute within a set </h4>
 <p>This method can be useful if you know where to look for the necessary attribute and need to get information about it</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AttributesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">attribute</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"list"</span></span><span class="token punctuation">,</span> from<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"all"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h3>BlocksService</h3>
+</code></pre><h3 id="blocksservice">BlocksService </h3>
 <p>Controllers for working with block objects</p>
-<h4>Getting a block by its marker</h4>
+<h4 id="getting-a-block-by-its-marker">Getting a block by its marker </h4>
 <blockquote>
 <p>This method automatically detects the type and loads the data of the product blocks.<br>
 If you need manual control to get products, use <code>BlocksService/products(_:offset:limit:langCode:)</code> or <code>BlocksService/similarProducts(_:offset:limit:langCode:)</code></p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> block <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">BlocksService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">block</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p><code>OneEntryBlock</code> will return as a result</p>
-<h4>Getting all block objects with pagination</h4>
+<h4 id="getting-all-block-objects-with-pagination">Getting all block objects with pagination </h4>
 <blockquote>
 <p>The result of this method does not include the content of product blocks</p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> blocks <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">BlocksService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">blocks</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h3>FormsService</h3>
-<h4>Overview</h4>
+</code></pre><h3 id="formsservice">FormsService </h3>
+<h4 id="overview-4">Overview </h4>
 <p>OneEntry Forms is a tool that allows you to store, receive and send user data.<br>
 This can be applied in many scenarios, such as users, orders, etc.</p>
-<h4>Forms</h4>
+<h4 id="forms">Forms </h4>
 <p>In your personal account, you can configure the template of the received data by creating a form and attaching attributes to it.</p>
 <p><img src="oneentry-delivery-form@4x.png" alt="Creating a form in your personal account"></p>
 <p>You may need to get information about the form. To do this, you can request information about all forms:</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> forms <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">forms</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>Or some specific one according to her identifier:</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> form <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">form</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h4>Sending data to the form</h4>
+</code></pre><h4 id="sending-data-to-the-form">Sending data to the form </h4>
 <p>The main idea of the forms is to send data to them. This can be done using the method <code>FormsService/sendData(with:locale:data:)</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> response <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">sendData</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span> locale<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">FormData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"address"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"London"</span></span><span class="token punctuation">)</span>
@@ -484,62 +484,29 @@ This can be applied in many scenarios, such as users, orders, etc.</p>
 <p>It is worth noting that by default the <code>FormData</code> object initializes the <code>String</code> data type.<br>
 If you need to use another one, you can change the <code>type</code> parameter, the compiler will tell you what the value should be</p>
 </blockquote>
-<h4>Receiving data</h4>
+<h4 id="receiving-data">Receiving data </h4>
 <p>The functionality of receiving and processing the sent data may also be useful.</p>
 <p>You can get all the data sent:</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> data <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">fetchData</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>Or request the data of a specific form by its identifier:</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> data <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">)</span>
-</code></pre><h3>Attributes</h3>
-<h4>Introduction</h4>
-<p>The <code>OneEntryAttribute</code> data structure is provided to work with attributes in OneEntry</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry entity attribute</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">:</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>
-    <span class="token comment">/// Type of attribute</span>
-    <span class="token keyword keyword-let">let</span> type<span class="token punctuation">:</span> <span class="token class-name">AttributeType</span>
-    <span class="token comment">/// Value of attribute</span>
-    <span class="token keyword keyword-let">let</span> value<span class="token punctuation">:</span> <span class="token keyword keyword-Any">Any</span><span class="token operator">?</span>
-<span class="token punctuation">}</span>
-</code></pre><p><code>value</code> - Attribute value<br>
-<code>type</code> - Attribute data type</p>
-<h4>Available data types</h4>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Type of attribute</span>
-<span class="token keyword keyword-enum">enum</span> <span class="token class-name">AttributeType</span><span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>
-    <span class="token comment">/// Integer attribute</span>
-    <span class="token keyword keyword-case">case</span> integer
-    <span class="token comment">/// Date attribute without time</span>
-    <span class="token keyword keyword-case">case</span> date
-    <span class="token comment">/// File attribute</span>
-    <span class="token keyword keyword-case">case</span> file
-    <span class="token comment">/// Attribute with floating point</span>
-    <span class="token keyword keyword-case">case</span> real
-    <span class="token comment">/// Text attribute</span>
-    <span class="token keyword keyword-case">case</span> text
-    <span class="token comment">/// Time attribute without date</span>
-    <span class="token keyword keyword-case">case</span> time
-    <span class="token comment">/// Attribute with floating point</span>
-    <span class="token keyword keyword-case">case</span> float
-    <span class="token comment">/// Image attribute</span>
-    <span class="token keyword keyword-case">case</span> image
-    <span class="token comment">/// String attribute</span>
-    <span class="token keyword keyword-case">case</span> string
-    <span class="token comment">/// Date &amp; time attribute</span>
-    <span class="token keyword keyword-case">case</span> dateTime
-    <span class="token comment">/// Text attribute with header</span>
-    <span class="token keyword keyword-case">case</span> textWithHeader
-    <span class="token comment">/// Group of image attribute</span>
-    <span class="token keyword keyword-case">case</span> groupOfImages    
-<span class="token punctuation">}</span>
-</code></pre><h4>Receiving attributes</h4>
+</code></pre><h3 id="attributes">Attributes </h3>
+<p>Attributes can be added to all OneEntry entities. This is an important tool that allows you to transfer custom data</p>
+<h4 id="overview-5">Overview </h4>
+<p>OneEntry attributes are used everywhere. All data types that can be processed using the <code>OneEntry</code> module can be found here <code>AttributeType</code>.</p>
+<blockquote>
+<p>Important: For a more readable syntax, sdk uses <code>dynamicMember</code>. Therefore, do not be afraid of the absence of hints from autocompletion, the main thing is to specify the correct names of the attributes that coincide with the admin panel</p>
+</blockquote>
+<h4 id="receiving-attributes">Receiving attributes </h4>
 <p>Let's try to get the attributes from the page, for products and other entities the process will be similar</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> page <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-<span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"int"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h5>Custom processing</h5>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> page <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">OneEntryPages</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
+<span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token operator">..</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>int
+</code></pre><h5 id="custom-processing">Custom processing </h5>
 <p>If you are sure that your attribute has accepted a specific data type, you can process <code>value</code> yourself</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> value <span class="token operator">=</span> attribute<span class="token operator">?</span><span class="token punctuation">.</span>value <span class="token keyword keyword-as">as</span><span class="token operator">?</span> <span class="token class-name">Int</span>
-</code></pre><h5>Processing of numerical values</h5>
+</code></pre><h5 id="processing-of-numerical-values">Processing of numerical values </h5>
 <p>All numeric OneEntry values (<code>real</code>, <code>integer</code>, <code>float</code>) can be easily converted to Swift data types</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"int"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>int
 <span class="token keyword keyword-let">let</span> intAttribute <span class="token operator">=</span> attribute<span class="token operator">?</span><span class="token punctuation">.</span>intValue
 <span class="token keyword keyword-let">let</span> doubleAttribute <span class="token operator">=</span> attribute<span class="token operator">?</span><span class="token punctuation">.</span>doubleValue
 <span class="token keyword keyword-let">let</span> stringAttribute <span class="token operator">=</span> attribute<span class="token operator">?</span><span class="token punctuation">.</span>stringValue
@@ -547,7 +514,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <span class="token function">print</span><span class="token punctuation">(</span>intAttribute<span class="token punctuation">)</span> <span class="token comment">// 500</span>
 <span class="token function">print</span><span class="token punctuation">(</span>doubleAttribute<span class="token punctuation">)</span> <span class="token comment">// 500.0</span>
 <span class="token function">print</span><span class="token punctuation">(</span>stringAttribute<span class="token punctuation">)</span> <span class="token comment">// "500"</span>
-</code></pre><h5>Date and time processing</h5>
+</code></pre><h5 id="date-and-time-processing">Date and time processing </h5>
 <p>OneEntry has several types of date and time data:</p>
 <ul>
 <li><code>Date</code></li>
@@ -555,74 +522,35 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <li><code>DateTime</code></li>
 </ul>
 <p>All of them will eventually be converted to a Swift <code>Date</code> object</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> date <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"date"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>dateValue
-<span class="token keyword keyword-let">let</span> time <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"time"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>dateValue
-<span class="token keyword keyword-let">let</span> dateTime <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"date_time"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>dateValue
-</code></pre><h5>Files processing</h5>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"file"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> langCode<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>fileValues
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> date <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>date<span class="token operator">?</span><span class="token punctuation">.</span>dateValue
+<span class="token keyword keyword-let">let</span> time <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>time<span class="token operator">?</span><span class="token punctuation">.</span>dateValue
+<span class="token keyword keyword-let">let</span> dateTime <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>date_time<span class="token operator">?</span><span class="token punctuation">.</span>dateValue
+</code></pre><h5 id="files-processing">Files processing </h5>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>file<span class="token operator">?</span><span class="token punctuation">.</span>fileValues
 </code></pre><p>The <code>OneEntryFile</code> array will be returned as a response</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Represents a file associated with a single entry.</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">OneEntryFile</span><span class="token punctuation">:</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>
-    <span class="token comment">/// The name of the file.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> filename<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">/// The download link or URL for accessing the file.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> downloadLink<span class="token punctuation">:</span> <span class="token class-name">String</span>    
-    <span class="token comment">/// The size of the file in bytes.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> size<span class="token punctuation">:</span> <span class="token class-name">Int</span>
-<span class="token punctuation">}</span>
-</code></pre><h5>Images processing</h5>
+<h5 id="images-processing">Images processing </h5>
 <p>Attribute types such as <code>image</code> and <code>groupOfImages</code> are treated by sdk in the same way</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attributes <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"imagegroup"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> langCode<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>imageValues
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attributes <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>image_group<span class="token operator">?</span><span class="token punctuation">.</span>imageValues
 </code></pre><p>The <code>OneEntryImage</code> array will be returned as an answer</p>
-<h5>List with extended values</h5>
+<h5 id="list-with-extended-values">List with extended values </h5>
 <p>OneEntry has a list attribute. It allows you to create a drop-down list in the admin panel and select some basic product settings (color sticker, etc.). For ease of use, any element of the list can be expanded with an additional parameter.</p>
 <blockquote>
 <p>You can get the element that expands the list through the model field <code>OneEntryList/extended</code></p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute<span class="token punctuation">:</span> <span class="token class-name">OneEntryList</span> <span class="token operator">=</span> <span class="token operator">...</span>
 <span class="token keyword keyword-let">let</span> extended<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span> <span class="token operator">=</span> attribute<span class="token punctuation">.</span>extended<span class="token operator">?</span><span class="token punctuation">.</span>stringValue
-</code></pre><pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry image model</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">OneEntryImage</span><span class="token punctuation">:</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>
-    <span class="token comment">/// Image size</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> size<span class="token punctuation">:</span> <span class="token class-name">Int</span>
-    <span class="token comment">// Full path to image</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> filename<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">// Preview link</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> previewLink<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">/// Link to download the image</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> downloadLink<span class="token punctuation">:</span> <span class="token class-name">String</span>
-<span class="token punctuation">}</span>
-</code></pre><h5>Text data types</h5>
-<h6>String</h6>
+</code></pre><h5 id="text-data-types">Text data types </h5>
+<h6 id="string">String </h6>
 <p>Most types of attributes can be obtained as a string</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> value <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"string"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>stringValue
-</code></pre><h6>Text</h6>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"text"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> langCode<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>textValues
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> value <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>string<span class="token operator">?</span><span class="token punctuation">.</span>stringValue
+</code></pre><h6 id="text">Text </h6>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>text<span class="token operator">?</span><span class="token punctuation">.</span>textValues
 </code></pre><p>The <code>OneEntryText</code> structure will be returned as an answer</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Object of text</span>
-<span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">OneEntryText</span><span class="token punctuation">:</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>
-    <span class="token comment">/// The HTML value associated with the object.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> htmlValue<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">/// The plain text value associated with the object.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> plainValue<span class="token punctuation">:</span> <span class="token class-name">String</span>
-<span class="token punctuation">}</span>
-</code></pre><h6>Text with header</h6>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token punctuation">.</span><span class="token function">localizeAttribute</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"header_text"</span></span><span class="token punctuation">,</span> languageCode<span class="token punctuation">:</span> langCode<span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">.</span>textWithHeaderValues
+<h6 id="text-with-header">Text with header </h6>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> attribute <span class="token operator">=</span> page<span class="token operator">..</span>attributeValues<span class="token operator">?</span><span class="token punctuation">.</span>en_US<span class="token punctuation">.</span>header_text<span class="token operator">?</span><span class="token punctuation">.</span>textWithHeaderValues
 </code></pre><p>The array of <code>OneEntryTextWithHeader</code> structures will return as an answer</p>
-<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-public">public</span> <span class="token keyword keyword-struct">struct</span> <span class="token class-name">OneEntryTextWithHeader</span><span class="token punctuation">:</span> <span class="token class-name">Identifiable</span><span class="token punctuation">,</span> <span class="token class-name">Decodable</span> <span class="token punctuation">{</span>    
-    <span class="token comment">/// The unique identifier for the object</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-var">var</span> id<span class="token punctuation">:</span> <span class="token constant">UUID</span> <span class="token punctuation">{</span> index <span class="token punctuation">}</span>
-    <span class="token comment">/// The unique identifier for the object</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> index<span class="token punctuation">:</span> <span class="token constant">UUID</span>
-    <span class="token comment">/// The header information for the object.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> header<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">/// The HTML value associated with the object.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> htmlValue<span class="token punctuation">:</span> <span class="token class-name">String</span>
-    <span class="token comment">/// The plain text value associated with the object.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> plainValue<span class="token punctuation">:</span> <span class="token class-name">String</span>
-<span class="token punctuation">}</span>
-</code></pre><h3>CatalogService</h3>
-<h4>Receiving all products with pagination</h4>
+<h3 id="catalogservice">CatalogService </h3>
+<h4 id="receiving-all-products-with-pagination">Receiving all products with pagination </h4>
 <table>
 <thead>
 <tr>
@@ -678,7 +606,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of products</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all products uncategorized, with pagination</h4>
+</code></pre><h4 id="getting-all-products-uncategorized-with-pagination">Getting all products uncategorized, with pagination </h4>
 <table>
 <thead>
 <tr>
@@ -718,7 +646,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of products</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all products in the category by its id, with pagination</h4>
+</code></pre><h4 id="getting-all-products-in-the-category-by-its-id-with-pagination">Getting all products in the category by its id, with pagination </h4>
 <table>
 <thead>
 <tr>
@@ -762,7 +690,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of products</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all products in the category by its url, with pagination</h4>
+</code></pre><h4 id="getting-all-products-in-the-category-by-its-url-with-pagination">Getting all products in the category by its url, with pagination </h4>
 <table>
 <thead>
 <tr>
@@ -806,7 +734,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of products</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting related products for another product by its id</h4>
+</code></pre><h4 id="getting-related-products-for-another-product-by-its-id">Getting related products for another product by its id </h4>
 <table>
 <thead>
 <tr>
@@ -850,7 +778,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of products</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting a product by its id</h4>
+</code></pre><h4 id="getting-a-product-by-its-id">Getting a product by its id </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> product <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">product</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> id<span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The answer will return <code>OneEntryProduct</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry catalog products</span>
@@ -860,21 +788,21 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Product price</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> price<span class="token punctuation">:</span> <span class="token class-name">Double</span><span class="token operator">?</span>
     <span class="token comment">/// Product localize info</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// ID of related products for this product</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> relatedIds<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">Int</span><span class="token punctuation">]</span>
     <span class="token comment">/// Product template ID</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Product attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Receiving blocks linked to the product</h4>
+</code></pre><h4 id="receiving-blocks-linked-to-the-product">Receiving blocks linked to the product </h4>
 <blockquote>
 <p>To get blocks tied to the product, you should use the method <code>CatalogService/blocks(for:)</code>, as indicated in the example</p>
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> blocks <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">blocks</span><span class="token punctuation">(</span><span class="token keyword keyword-for">for</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">)</span>
 </code></pre><p>The answer will return <code>OneEntryBlock</code> array</p>
-<h4>Product filter</h4>
+<h4 id="product-filter">Product filter </h4>
 <p>The OneEntry filter allows you to get products that meet the specified parameters. Our sdk uses DSL to build the filter. All you need to do is use the right set of filters in <code>@resultBuilder</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> result <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">filterProducts</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">OneEntryFilter</span><span class="token punctuation">(</span>attributeMarker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"price"</span></span><span class="token punctuation">,</span> conditionMarker<span class="token punctuation">:</span> <span class="token punctuation">.</span>mth<span class="token punctuation">,</span> conditionValue<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span> pageId<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">)</span>
@@ -892,7 +820,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Number of items</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> total<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Quick search</h4>
+</code></pre><h4 id="quick-search">Quick search </h4>
 <p>All you need to quickly find products is a search string and <code>langCode</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> results <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">quickSearch</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"iPhone"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The answer will be the <code>OneEntrySearchProduct</code> array</p>
@@ -904,8 +832,8 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Id of the page to which the product is linked</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> pageId<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Product statuses</h4>
-<h5>All statuses</h5>
+</code></pre><h4 id="product-statuses">Product statuses </h4>
+<h5 id="all-statuses">All statuses </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> statuses<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryProductStatus</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>productStatuses
 </code></pre><p>The answer will be the <code>OneEntryProductStatus</code> array</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry Product Status</span>
@@ -919,9 +847,9 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Product status marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Product status marker localize info</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h5>Status by id</h5>
+</code></pre><h5 id="status-by-id">Status by id </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> status<span class="token punctuation">:</span> <span class="token class-name">OneEntryProductStatus</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">productStatus</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">)</span>
 </code></pre><p>The answer will be the <code>OneEntryProductStatus</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry Product Status</span>
@@ -935,9 +863,9 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Product status marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Product status marker localize info</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h5>Status by marker</h5>
+</code></pre><h5 id="status-by-marker">Status by marker </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> status<span class="token punctuation">:</span> <span class="token class-name">OneEntryProductStatus</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">productStatus</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"storage"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The answer will be the <code>OneEntryProductStatus</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry Product Status</span>
@@ -951,20 +879,20 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Product status marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Product status marker localize info</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h5>Status marker validation</h5>
+</code></pre><h5 id="status-marker-validation">Status marker validation </h5>
 <p>You can check the validation of the token either using the appropriate method</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> valid<span class="token punctuation">:</span> <span class="token class-name">Bool</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">CatalogService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">productStatusMarkerValidation</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"marker"</span></span><span class="token punctuation">)</span>
 </code></pre><p>Or, if you have already received the status of a product, call the property</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> status<span class="token punctuation">:</span> <span class="token class-name">OneEntryProductStatus</span> <span class="token operator">=</span> <span class="token operator">...</span>
 <span class="token keyword keyword-let">let</span> valid<span class="token punctuation">:</span> <span class="token class-name">Bool</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> status<span class="token punctuation">.</span>markerValidation
 </code></pre><p>The answer will be the <code>true</code> or <code>false</code></p>
-<h3>PagesService</h3>
-<h4>Getting all the blocks tied to the page</h4>
+<h3 id="pagesservice">PagesService </h3>
+<h4 id="getting-all-the-blocks-tied-to-the-page">Getting all the blocks tied to the page </h4>
 <p>To get all the blocks, you should use the <code>PagesService/blocks(page:langCode:)</code> method. To use it, you need to know the page address and language code. The <code>OneEntryBlock</code> array will return as the answer.</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> blocks <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">blocks</span><span class="token punctuation">(</span>page<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"url"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
-</code></pre><h4>Getting child pages</h4>
+</code></pre><h4 id="getting-child-pages">Getting child pages </h4>
 <p>In OneEntry it is possible to position pages in a flash style, which means that it is possible to get a list of child pages for the main entity</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> rootURL <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"dev"</span></span>
 <span class="token keyword keyword-let">let</span> children<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryPage</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">children</span><span class="token punctuation">(</span><span class="token keyword keyword-for">for</span><span class="token punctuation">:</span> rootURL<span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
@@ -988,11 +916,11 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting the root pages</h4>
+</code></pre><h4 id="getting-the-root-pages">Getting the root pages </h4>
 <p>Getting top-level pages. These are the pages whose <code>parentId</code> is equal to <code>nil</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> root<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryPage</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">rootPages</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryPage</code> array will be returned as an answer</p>
@@ -1015,11 +943,11 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all pages within the catalog</h4>
+</code></pre><h4 id="getting-all-pages-within-the-catalog">Getting all pages within the catalog </h4>
 <p>All pages that are contained in the 'catalog' tab. In other words, the categories of products.</p>
 <table>
 <thead>
@@ -1064,11 +992,11 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all the pages</h4>
+</code></pre><h4 id="getting-all-the-pages">Getting all the pages </h4>
 <p>Getting all OneEntry pages</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> pages<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryPage</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">pages</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryPage</code> array will be returned as an answer</p>
@@ -1091,12 +1019,12 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting one page with all the information</h4>
-<h5>Receiving by id</h5>
+</code></pre><h4 id="getting-one-page-with-all-the-information">Getting one page with all the information </h4>
+<h5 id="receiving-by-id">Receiving by id </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> page<span class="token punctuation">:</span> <span class="token class-name">OneEntryPage</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryPage</code> will be returned as an answer</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry page object</span>
@@ -1118,11 +1046,11 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h5>Receiving by URL</h5>
+</code></pre><h5 id="receiving-by-url">Receiving by URL </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> page<span class="token punctuation">:</span> <span class="token class-name">OneEntryPage</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">page</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryPage</code> will be returned as an answer</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry page object</span>
@@ -1144,12 +1072,12 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page template marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> templateIdentifier<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token operator">?</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Page attributes</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">OneEntryAttribute</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> attributeValues<span class="token punctuation">:</span> <span class="token class-name">LocalizedAttributeCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting a page config</h4>
-<h5>Receiving by URL</h5>
+</code></pre><h4 id="getting-a-page-config">Getting a page config </h4>
+<h5 id="receiving-by-url-1">Receiving by URL </h5>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> config<span class="token punctuation">:</span> <span class="token class-name">OneEntryPageConfig</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryPageConfig</code> will be returned as an answer</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Page config</span>
@@ -1159,7 +1087,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Products value per row</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> productsPerRow<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Quick search</h4>
+</code></pre><h4 id="quick-search-1">Quick search </h4>
 <p>This method searches for pages by keywords</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> result<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntrySearchPage</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">PagesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">quickSearch</span><span class="token punctuation">(</span><span class="token string-literal"><span class="token string">"Development"</span></span><span class="token punctuation">,</span> langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntrySearchPage</code> array will be returned as an answer</p>
@@ -1170,8 +1098,8 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page title</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> title<span class="token punctuation">:</span> <span class="token class-name">String</span>
 <span class="token punctuation">}</span>
-</code></pre><h3>ProjectService</h3>
-<h4>File uploading</h4>
+</code></pre><h3 id="projectservice">ProjectService </h3>
+<h4 id="file-uploading">File uploading </h4>
 <p>OneEntry supports the ability to save your files to storage. To do this, you need to specify additional information about the file.</p>
 <p>|  Field   | Description                                                                                         |<br>
 | :: |  |<br>
@@ -1195,7 +1123,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// The size of the file in bytes.</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> size<span class="token punctuation">:</span> <span class="token class-name">Int</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Deleting files</h4>
+</code></pre><h4 id="deleting-files">Deleting files </h4>
 <p>This SDK method allows you to delete saved files. Additional fields must also be specified for it.</p>
 <p>| Field  | Description                                                                                         |<br>
 | :-: |  |<br>
@@ -1206,7 +1134,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> name <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"dev.png"</span></span>
 
 <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">deleteFile</span><span class="token punctuation">(</span>name<span class="token punctuation">:</span> name<span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"page"</span></span><span class="token punctuation">,</span> entity<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"test"</span></span><span class="token punctuation">,</span> id<span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">)</span>
-</code></pre><h4>Getting all administrators</h4>
+</code></pre><h4 id="getting-all-administrators">Getting all administrators </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> admins <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>admins
 </code></pre><p>The answer will be array of <code>OneEntryAdmin</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Admin model</span>
@@ -1218,7 +1146,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Admin position</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> position<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all active locales</h4>
+</code></pre><h4 id="getting-all-active-locales">Getting all active locales </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> locales <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>activeLocales
 </code></pre><p>The answer will be array of <code>OneEntryLocale</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Localization model</span>
@@ -1240,7 +1168,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Locale position</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> position<span class="token punctuation">:</span> <span class="token class-name">Int</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting all general types</h4>
+</code></pre><h4 id="getting-all-general-types">Getting all general types </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> types <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>generalTypes
 </code></pre><p>The answer will be array of <code>OneEntryGeneralType</code></p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// OneEntry general type</span>
@@ -1250,7 +1178,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// General type string value</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> type<span class="token punctuation">:</span> <span class="token class-name">String</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting a menu item by its marker</h4>
+</code></pre><h4 id="getting-a-menu-item-by-its-marker">Getting a menu item by its marker </h4>
 <p>The menu is a very important essence of OneEntry. It allows you to group pages by features. These pages will be returned as a tree, and you can easily get all the subpages (children) of each page</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> menu <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">menu</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"dev"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The answer will be the <code>OneEntryMenu</code> structure</p>
@@ -1261,7 +1189,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Menu marker</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Menu localize info</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Pages inside the menu item</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> pages<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryMenuPage</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
@@ -1275,11 +1203,11 @@ If you need to use another one, you can change the <code>type</code> parameter, 
     <span class="token comment">/// Page position</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> position<span class="token punctuation">:</span> <span class="token class-name">Int</span>
     <span class="token comment">/// Page localize content</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
     <span class="token comment">/// Child pages</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-var">var</span> children<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">OneEntryMenuPage</span><span class="token punctuation">]</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Testing error 404</h4>
+</code></pre><h4 id="testing-error-404">Testing error 404 </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-do">do</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">test404</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token keyword keyword-let">let</span> error <span class="token keyword keyword-as">as</span> <span class="token class-name">OneEntryError</span> <span class="token keyword keyword-where">where</span> error<span class="token punctuation">.</span>statusCode <span class="token operator">==</span> <span class="token number">404</span> <span class="token punctuation">{</span>
@@ -1287,7 +1215,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">{</span>
     <span class="token comment">// Other errors</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Testing error 500</h4>
+</code></pre><h4 id="testing-error-500">Testing error 500 </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-do">do</span> <span class="token punctuation">{</span>
     <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">ProjectService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">test500</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token keyword keyword-let">let</span> error <span class="token keyword keyword-as">as</span> <span class="token class-name">OneEntryError</span> <span class="token keyword keyword-where">where</span> error<span class="token punctuation">.</span>statusCode <span class="token operator">==</span> <span class="token number">500</span> <span class="token punctuation">{</span>
@@ -1295,8 +1223,8 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <span class="token punctuation">}</span> <span class="token keyword keyword-catch">catch</span> <span class="token punctuation">{</span>
     <span class="token comment">// Other errors</span>
 <span class="token punctuation">}</span>
-</code></pre><h3>TemplatesService</h3>
-<h4>Getting all templates</h4>
+</code></pre><h3 id="templatesservice">TemplatesService </h3>
+<h4 id="getting-all-templates">Getting all templates </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> templates <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>templates
 </code></pre><p>This property returns an array of <code>OneEntryAllTemplates</code>. This model contains the <code>asDisctionary</code> field, which stores the data of all templates by key.</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> templates <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>templates
@@ -1304,7 +1232,7 @@ template<span class="token punctuation">.</span>asDictionary<span class="token p
 </code></pre><p>There are also have properties to quickly get basic templates</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> templates <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>templates
 templates<span class="token punctuation">.</span>forCatalogProducts <span class="token comment">// forCatalogProducts templates as array of OneEntryTemplate</span>
-</code></pre><h5>Available types by properties</h5>
+</code></pre><h5 id="available-types-by-properties">Available types by properties </h5>
 <ul>
 <li>forCatalogProducts</li>
 <li>forBasketPage</li>
@@ -1326,11 +1254,11 @@ templates<span class="token punctuation">.</span>forCatalogProducts <span class=
 <li>forSlider</li>
 <li>service</li>
 </ul>
-<h4>Request templates by type</h4>
+<h4 id="request-templates-by-type">Request templates by type </h4>
 <p>In order not to request all the templates from the server and search for the right one among them, you can immediately send the data according to the desired type.</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> templates <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatesService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">templates</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"forCatalogProducts"</span></span><span class="token punctuation">)</span> 
-</code></pre><h3>TemplatePreviewsService</h3>
-<h4>Getting all preview templates</h4>
+</code></pre><h3 id="templatepreviewsservice">TemplatePreviewsService </h3>
+<h4 id="getting-all-preview-templates">Getting all preview templates </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> previews <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatePreviewsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span>templates
 </code></pre><p>The <code>OneEntryTemplatePreview</code> array will be responsed</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Represents a template preview for a single entry, with support for localization.</span>
@@ -1342,9 +1270,9 @@ templates<span class="token punctuation">.</span>forCatalogProducts <span class=
     <span class="token comment">/// Identifier for the template.</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Localization information organized as a dictionary of LocalizeInfo objects, if available.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting a preview template by its id</h4>
+</code></pre><h4 id="getting-a-preview-template-by-its-id">Getting a preview template by its id </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> preview <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatePreviewsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryTemplatePreview</code> model will be responsed</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Represents a template preview for a single entry, with support for localization.</span>
@@ -1356,9 +1284,9 @@ templates<span class="token punctuation">.</span>forCatalogProducts <span class=
     <span class="token comment">/// Identifier for the template.</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Localization information organized as a dictionary of LocalizeInfo objects, if available.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
-</code></pre><h4>Getting a preview template by its marker</h4>
+</code></pre><h4 id="getting-a-preview-template-by-its-marker">Getting a preview template by its marker </h4>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> preview <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">TemplatePreviewsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">template</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"preview"</span></span><span class="token punctuation">)</span>
 </code></pre><p>The <code>OneEntryTemplatePreview</code> model will be responsed</p>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token comment">/// Represents a template preview for a single entry, with support for localization.</span>
@@ -1370,7 +1298,7 @@ templates<span class="token punctuation">.</span>forCatalogProducts <span class=
     <span class="token comment">/// Identifier for the template.</span>
     <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> identifier<span class="token punctuation">:</span> <span class="token class-name">String</span>
     <span class="token comment">/// Localization information organized as a dictionary of LocalizeInfo objects, if available.</span>
-    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token class-name">String</span> <span class="token punctuation">:</span> <span class="token class-name">LocalizeInfo</span><span class="token punctuation">]</span><span class="token operator">?</span>
+    <span class="token keyword keyword-public">public</span> <span class="token keyword keyword-let">let</span> localizeInfos<span class="token punctuation">:</span> <span class="token class-name">LocalizedInfoCollection</span><span class="token operator">?</span>
 <span class="token punctuation">}</span>
 </code></pre>
       </div>

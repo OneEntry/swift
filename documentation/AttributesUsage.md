@@ -2,13 +2,40 @@
 
 Attributes can be added to all OneEntry entities. This is an important tool that allows you to transfer custom data
 
+## Overview
+
+OneEntry attributes are used everywhere. All data types that can be processed using the ``OneEntry`` module can be found here ``AttributeType``.
+
+> Important: For a more readable syntax, sdk uses `dynamicMember`. Therefore, do not be afraid of the absence of hints from autocompletion, the main thing is to specify the correct names of the attributes that coincide with the admin panel
+
+@Row {
+    @Column(size: 2) {
+        ![Attributes](oneentry-attributes)
+    }
+    
+    @Column {
+        For example, there is such a set of attributes. And we are interested in the release date field
+
+        Then getting it will look like this:
+    }
+}
+
+```swift
+let release = product.attributeValues?.en_US.release?.dateValue
+```
+
+> Tip: If you don't like this setting, there is an outdated method of obtaining an attribute. ``LocalizeContent/localizeAttribute(_:languageCode:)-zuyk``
+> ```swift
+> let release = product.localizeAttribute("release", languageCode: "en_US")?.dateValue
+> ```
+
 ## Receiving attributes
 
 Let's try to get the attributes from the page, for products and other entities the process will be similar
 
 ```swift
 let page = try await OneEntryPages.shared.page(with: "dev", langCode: "en_US")
-let attribute = page.localizeAttribute("int", languageCode: "en_US")
+let attribute = page..attributeValues?.en_US.int
 ```
 
 ### Custom processing
@@ -24,7 +51,7 @@ let value = attribute?.value as? Int
 All numeric OneEntry values (`real`, `integer`, `float`) can be easily converted to Swift data types
 
 ```swift
-let attribute = page.localizeAttribute("int", languageCode: "en_US")
+let attribute = page.attributeValues?.en_US.int
 let intAttribute = attribute?.intValue
 let doubleAttribute = attribute?.doubleValue
 let stringAttribute = attribute?.stringValue
@@ -45,15 +72,15 @@ OneEntry has several types of date and time data:
 All of them will eventually be converted to a Swift `Date` object
 
 ```swift
-let date = page.localizeAttribute("date", languageCode: "en_US")?.dateValue
-let time = page.localizeAttribute("time", languageCode: "en_US")?.dateValue
-let dateTime = page.localizeAttribute("date_time", languageCode: "en_US")?.dateValue
+let date = page.attributeValues?.en_US.date?.dateValue
+let time = page.attributeValues?.en_US.time?.dateValue
+let dateTime = page.attributeValues?.en_US.date_time?.dateValue
 ```
 
 ### Files processing
 
 ```swift
-let attribute = page.localizeAttribute("file", languageCode: langCode)?.fileValues
+let attribute = page.attributeValues?.en_US.file?.fileValues
 ```
 
 The ``OneEntryFile`` array will be returned as a response
@@ -63,7 +90,7 @@ The ``OneEntryFile`` array will be returned as a response
 Attribute types such as `image` and `groupOfImages` are treated by sdk in the same way
 
 ```swift
-let attributes = page.localizeAttribute("imagegroup", languageCode: langCode)?.imageValues
+let attributes = page.attributeValues?.en_US.image_group?.imageValues
 ```
 
 The ``OneEntryImage`` array will be returned as an answer
@@ -86,13 +113,13 @@ let extended: String? = attribute.extended?.stringValue
 Most types of attributes can be obtained as a string
 
 ```swift
-let value = page.localizeAttribute("string", languageCode: "en_US")?.stringValue
+let value = page.attributeValues?.en_US.string?.stringValue
 ```
 
 #### Text
 
 ```swift
-let attribute = page.localizeAttribute("text", languageCode: langCode)?.textValues
+let attribute = page.attributeValues?.en_US.text?.textValues
 ```
 
 The ``OneEntryText`` structure will be returned as an answer
@@ -100,7 +127,7 @@ The ``OneEntryText`` structure will be returned as an answer
 #### Text with header
 
 ```swift
-let attribute = page.localizeAttribute("header_text", languageCode: langCode)?.textWithHeaderValues
+let attribute = page..attributeValues?.en_US.header_text?.textWithHeaderValues
 ```
 
 The array of ``OneEntryTextWithHeader`` structures will return as an answer

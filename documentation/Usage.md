@@ -19,14 +19,17 @@ The full use of the entire sdk is described here
       - [Overview](#overview)
       - [Code generation](#code-generation-1)
       - [Code verification](#code-verification)
-    - [User authorization and management](#user-authorization-and-management)
+    - [Changing the password in case of loss of access to the account](#changing-the-password-in-case-of-loss-of-access-to-the-account)
       - [Overview](#overview-1)
+      - [Password change](#password-change)
+    - [User authorization and management](#user-authorization-and-management)
+      - [Overview](#overview-2)
       - [Authorization](#authorization)
       - [Getting a user](#getting-a-user)
       - [Logout](#logout)
       - [Changing user data](#changing-user-data)
     - [User registration and activation](#user-registration-and-activation)
-      - [Overview](#overview-2)
+      - [Overview](#overview-3)
       - [New user registration](#new-user-registration)
       - [User activation](#user-activation)
     - [AttributesService](#attributesservice)
@@ -36,13 +39,12 @@ The full use of the entire sdk is described here
       - [Getting a block by its marker](#getting-a-block-by-its-marker)
       - [Getting all block objects with pagination](#getting-all-block-objects-with-pagination)
     - [FormsService](#formsservice)
-      - [Overview](#overview-3)
+      - [Overview](#overview-4)
       - [Forms](#forms)
       - [Sending data to the form](#sending-data-to-the-form)
       - [Receiving data](#receiving-data)
     - [Attributes](#attributes)
-      - [Introduction](#introduction)
-      - [Available data types](#available-data-types)
+      - [Overview](#overview-5)
       - [Receiving attributes](#receiving-attributes)
         - [Custom processing](#custom-processing)
         - [Processing of numerical values](#processing-of-numerical-values)
@@ -263,6 +265,7 @@ To check the user code, use the ``AuthService/check(_:code:with:)`` method
 let email = "oneentry@sample.com"
 let code = "123456"
 let success = try await AuthService.shared.check(email, code: code, with: "email")
+```
 
 ### Changing the password in case of loss of access to the account
 
@@ -275,7 +278,7 @@ To change the password in case of its loss, you should follow a few steps:
 1. Send verification code by user ID
 2. Change the password using the activation code
 
-> ImPortant: Use this instruction only if you lose access to your account. Otherwise, you should use ``AuthService/changeUser(form:langCode:data:)``
+> Important: Use this instruction only if you lose access to your account. Otherwise, you should use ``AuthService/changeUser(form:langCode:data:)``
 
 #### Password change
 
@@ -516,62 +519,21 @@ let data = try await FormsService.shared.data(with: "delivery")
 
 ### Attributes
 
-#### Introduction
+Attributes can be added to all OneEntry entities. This is an important tool that allows you to transfer custom data
 
-The `OneEntryAttribute` data structure is provided to work with attributes in OneEntry
+#### Overview
 
-```swift
-/// OneEntry entity attribute
-public struct OneEntryAttribute: Decodable {
-    /// Type of attribute
-    let type: AttributeType
-    /// Value of attribute
-    let value: Any?
-}
-```
+OneEntry attributes are used everywhere. All data types that can be processed using the ``OneEntry`` module can be found here ``AttributeType``.
 
-`value` - Attribute value
-`type` - Attribute data type
-
-#### Available data types
-
-```swift
-/// Type of attribute
-enum AttributeType: String, Decodable {
-    /// Integer attribute
-    case integer
-    /// Date attribute without time
-    case date
-    /// File attribute
-    case file
-    /// Attribute with floating point
-    case real
-    /// Text attribute
-    case text
-    /// Time attribute without date
-    case time
-    /// Attribute with floating point
-    case float
-    /// Image attribute
-    case image
-    /// String attribute
-    case string
-    /// Date & time attribute
-    case dateTime
-    /// Text attribute with header
-    case textWithHeader
-    /// Group of image attribute
-    case groupOfImages    
-}
-```
+> Important: For a more readable syntax, sdk uses `dynamicMember`. Therefore, do not be afraid of the absence of hints from autocompletion, the main thing is to specify the correct names of the attributes that coincide with the admin panel
 
 #### Receiving attributes
 
 Let's try to get the attributes from the page, for products and other entities the process will be similar
 
 ```swift
-let page = try await PagesService.shared.page(with: "dev", langCode: "en_US")
-let attribute = page.localizeAttribute("int", languageCode: "en_US")
+let page = try await OneEntryPages.shared.page(with: "dev", langCode: "en_US")
+let attribute = page..attributeValues?.en_US.int
 ```
 
 ##### Custom processing
@@ -587,7 +549,7 @@ let value = attribute?.value as? Int
 All numeric OneEntry values (`real`, `integer`, `float`) can be easily converted to Swift data types
 
 ```swift
-let attribute = page.localizeAttribute("int", languageCode: "en_US")
+let attribute = page.attributeValues?.en_US.int
 let intAttribute = attribute?.intValue
 let doubleAttribute = attribute?.doubleValue
 let stringAttribute = attribute?.stringValue
@@ -608,40 +570,28 @@ OneEntry has several types of date and time data:
 All of them will eventually be converted to a Swift `Date` object
 
 ```swift
-let date = page.localizeAttribute("date", languageCode: "en_US")?.dateValue
-let time = page.localizeAttribute("time", languageCode: "en_US")?.dateValue
-let dateTime = page.localizeAttribute("date_time", languageCode: "en_US")?.dateValue
+let date = page.attributeValues?.en_US.date?.dateValue
+let time = page.attributeValues?.en_US.time?.dateValue
+let dateTime = page.attributeValues?.en_US.date_time?.dateValue
 ```
 
 ##### Files processing
 
 ```swift
-let attribute = page.localizeAttribute("file", languageCode: langCode)?.fileValues
+let attribute = page.attributeValues?.en_US.file?.fileValues
 ```
 
-The `OneEntryFile` array will be returned as a response
-
-```swift
-/// Represents a file associated with a single entry.
-public struct OneEntryFile: Decodable {
-    /// The name of the file.
-    public let filename: String
-    /// The download link or URL for accessing the file.
-    public let downloadLink: String    
-    /// The size of the file in bytes.
-    public let size: Int
-}
-```
+The ``OneEntryFile`` array will be returned as a response
 
 ##### Images processing
 
 Attribute types such as `image` and `groupOfImages` are treated by sdk in the same way
 
 ```swift
-let attributes = page.localizeAttribute("imagegroup", languageCode: langCode)?.imageValues
+let attributes = page.attributeValues?.en_US.image_group?.imageValues
 ```
 
-The `OneEntryImage` array will be returned as an answer
+The ``OneEntryImage`` array will be returned as an answer
 
 ##### List with extended values
 
@@ -654,20 +604,6 @@ let attribute: OneEntryList = ...
 let extended: String? = attribute.extended?.stringValue
 ```
 
-```swift
-/// OneEntry image model
-public struct OneEntryImage: Decodable {
-    /// Image size
-    public let size: Int
-    // Full path to image
-    public let filename: String
-    // Preview link
-    public let previewLink: String
-    /// Link to download the image
-    public let downloadLink: String
-}
-```
-
 ##### Text data types
 
 ###### String
@@ -675,49 +611,24 @@ public struct OneEntryImage: Decodable {
 Most types of attributes can be obtained as a string
 
 ```swift
-let value = page.localizeAttribute("string", languageCode: "en_US")?.stringValue
+let value = page.attributeValues?.en_US.string?.stringValue
 ```
 
 ###### Text
 
 ```swift
-let attribute = page.localizeAttribute("text", languageCode: langCode)?.textValues
+let attribute = page.attributeValues?.en_US.text?.textValues
 ```
 
-The `OneEntryText` structure will be returned as an answer
-
-```swift
-/// Object of text
-public struct OneEntryText: Decodable {
-    /// The HTML value associated with the object.
-    public let htmlValue: String
-    /// The plain text value associated with the object.
-    public let plainValue: String
-}
-```
+The ``OneEntryText`` structure will be returned as an answer
 
 ###### Text with header
 
 ```swift
-let attribute = page.localizeAttribute("header_text", languageCode: langCode)?.textWithHeaderValues
+let attribute = page..attributeValues?.en_US.header_text?.textWithHeaderValues
 ```
 
-The array of `OneEntryTextWithHeader` structures will return as an answer
-
-```swift
-public struct OneEntryTextWithHeader: Identifiable, Decodable {    
-    /// The unique identifier for the object
-    public var id: UUID { index }
-    /// The unique identifier for the object
-    public let index: UUID
-    /// The header information for the object.
-    public let header: String
-    /// The HTML value associated with the object.
-    public let htmlValue: String
-    /// The plain text value associated with the object.
-    public let plainValue: String
-}
-```
+The array of ``OneEntryTextWithHeader`` structures will return as an answer
 
 ### CatalogService
 
@@ -874,13 +785,13 @@ public struct OneEntryProduct: Identifiable, Decodable, LocalizeContent {
     /// Product price
     public let price: Double?
     /// Product localize info
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// ID of related products for this product
     public let relatedIds: [Int]
     /// Product template ID
     public let templateIdentifier: String?
     /// Product attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -963,7 +874,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
     /// Product status marker
     public let identifier: String
     /// Product status marker localize info
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
@@ -987,7 +898,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
     /// Product status marker
     public let identifier: String
     /// Product status marker localize info
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
@@ -1011,7 +922,7 @@ public struct OneEntryProductStatus: Identifiable, Decodable, LocalizeContent {
     /// Product status marker
     public let identifier: String
     /// Product status marker localize info
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
@@ -1072,9 +983,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1108,9 +1019,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1150,9 +1061,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1186,9 +1097,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1222,9 +1133,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1256,9 +1167,9 @@ public struct OneEntryPage: Identifiable, Decodable, LocalizeContent {
     /// Page template marker
     public let templateIdentifier: String?
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Page attributes
-    public let attributeValues: [String : [String : OneEntryAttribute]]?
+    public let attributeValues: LocalizedAttributeCollection?
 }
 ```
 
@@ -1436,7 +1347,7 @@ public struct OneEntryMenu: Identifiable, Decodable, LocalizeContent {
     /// Menu marker
     public let identifier: String
     /// Menu localize info
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Pages inside the menu item
     public let pages: [OneEntryMenuPage]
 }
@@ -1453,7 +1364,7 @@ public struct OneEntryMenuPage: Identifiable, Decodable, LocalizeContent, Treeli
     /// Page position
     public let position: Int
     /// Page localize content
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
     /// Child pages
     public var children: [OneEntryMenuPage]?
 }
@@ -1552,7 +1463,7 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
     /// Identifier for the template.
     public let identifier: String
     /// Localization information organized as a dictionary of LocalizeInfo objects, if available.
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
@@ -1574,7 +1485,7 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
     /// Identifier for the template.
     public let identifier: String
     /// Localization information organized as a dictionary of LocalizeInfo objects, if available.
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
@@ -1596,7 +1507,7 @@ public struct OneEntryTemplatePreview: Identifiable, Decodable, LocalizeContent 
     /// Identifier for the template.
     public let identifier: String
     /// Localization information organized as a dictionary of LocalizeInfo objects, if available.
-    public let localizeInfos: [String : LocalizeInfo]?
+    public let localizeInfos: LocalizedInfoCollection?
 }
 ```
 
