@@ -15,21 +15,28 @@ The full use of the entire sdk is described here
         - [Using the built-in certificate](#using-the-built-in-certificate)
         - [Generation of your .p12 certificate](#generation-of-your-p12-certificate)
   - [Using OneEntry Swift SDK](#using-oneentry-swift-sdk)
-    - [Code generation](#code-generation)
+    - [Payment for created orders](#payment-for-created-orders)
       - [Overview](#overview)
+        - [Creating a payment session](#creating-a-payment-session)
+    - [Creating and modification orders](#creating-and-modification-orders)
+      - [Overview](#overview-1)
+        - [Order creation](#order-creation)
+        - [Order updating](#order-updating)
+    - [Code generation](#code-generation)
+      - [Overview](#overview-2)
       - [Code generation](#code-generation-1)
       - [Code verification](#code-verification)
     - [Changing the password in case of loss of access to the account](#changing-the-password-in-case-of-loss-of-access-to-the-account)
-      - [Overview](#overview-1)
+      - [Overview](#overview-3)
       - [Password change](#password-change)
     - [User authorization and management](#user-authorization-and-management)
-      - [Overview](#overview-2)
+      - [Overview](#overview-4)
       - [Authorization](#authorization)
       - [Getting a user](#getting-a-user)
       - [Logout](#logout)
       - [Changing user data](#changing-user-data)
     - [User registration and activation](#user-registration-and-activation)
-      - [Overview](#overview-3)
+      - [Overview](#overview-5)
       - [New user registration](#new-user-registration)
       - [User activation](#user-activation)
     - [AttributesService](#attributesservice)
@@ -39,12 +46,12 @@ The full use of the entire sdk is described here
       - [Getting a block by its marker](#getting-a-block-by-its-marker)
       - [Getting all block objects with pagination](#getting-all-block-objects-with-pagination)
     - [FormsService](#formsservice)
-      - [Overview](#overview-4)
+      - [Overview](#overview-6)
       - [Forms](#forms)
       - [Sending data to the form](#sending-data-to-the-form)
       - [Receiving data](#receiving-data)
     - [Attributes](#attributes)
-      - [Overview](#overview-5)
+      - [Overview](#overview-7)
       - [Receiving attributes](#receiving-attributes)
         - [Custom processing](#custom-processing)
         - [Processing of numerical values](#processing-of-numerical-values)
@@ -228,6 +235,89 @@ OneEntryCore.initializeApp(domain, credentials: credential)
     ```
 
 ## Using OneEntry Swift SDK
+
+### Payment for created orders
+
+#### Overview
+
+Most often, the user wants to pay for online orders immediately by card, without resorting to cash.
+The `Payment Service` module has been created for this purpose.
+
+You can connect payment services such as Stripe or PayPal and create a payment session
+
+The payment session is the OneEntry entity that shows the available payment information.
+
+The creation of a payment session implies the user's desire to pay for the order online, after its registration
+
+##### Creating a payment session
+
+> To create a session, you need to know the ID of the order that the user wants to pay for
+
+```swift
+let session = try await service.createSession(order: 27, type: .session)
+```
+
+The session information contains all the necessary information for further payment. You can combine the result with the sdk of payment services and pay for orders
+
+
+### Creating and modification orders
+
+#### Overview
+
+With the help of sdk you can create, modify and receive orders.
+
+> Important: For many operations, you need to have an authorized client through ``AuthService``.
+
+##### Order creation
+
+To successfully create an order, you need to set up an order storage in your personal account.
+It will allow you to configure and group data correctly
+
+```swift
+let ids = [24, 20, 18]
+let products = ids.map { OrderProduct(id: $0, quantity: .random(in: 1...4)) }
+
+let address = "51 Cottage Lane Clifton New York NEW YORK 07012"
+let comment = "Order unit tests"
+
+let order = try await OrdersService.shared.create(
+    storage: "delivery",
+    form: "delivery",
+    payment: "cash",
+    langCode: "en_US"
+) {
+    FormDataContainer {
+        FormData(marker: "address", value: address)
+        FormData(marker: "comment", value: comment)
+    }
+    
+    ProductsContainer(products)
+}
+```
+
+##### Order updating
+
+OneEntry supports updates of an already created order.
+
+```swift
+let address = "California, San Francisco, 24a"
+let ids = [24, 20]
+let products = ids.map { OrderProduct(id: $0, quantity: .random(in: 1...4)) }
+
+let order = try await service.update(
+    order: 26,
+    storage: "delivery",
+    form: "delivery",
+    payment: "cash",
+    langCode: "en_US") {
+        FormDataContainer {
+            FormData(marker: "address", value: address)
+        }
+        
+        ProductsContainer(products)
+    }
+```
+
 
 ### Code generation
 

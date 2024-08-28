@@ -57,22 +57,41 @@
 </li>
 <li><a href="#using-oneentry-swift-sdk">Using OneEntry Swift SDK</a>
 <ul>
+<li><a href="#payment-for-created-orders">Payment for created orders</a>
+<ul>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#creating-a-payment-session">Creating a payment session</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#creating-and-modification-orders">Creating and modification orders</a>
+<ul>
+<li><a href="#overview-1">Overview</a>
+<ul>
+<li><a href="#order-creation">Order creation</a></li>
+<li><a href="#order-updating">Order updating</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#code-generation">Code generation</a>
 <ul>
-<li><a href="#overview">Overview</a></li>
+<li><a href="#overview-2">Overview</a></li>
 <li><a href="#code-generation-1">Code generation</a></li>
 <li><a href="#code-verification">Code verification</a></li>
 </ul>
 </li>
 <li><a href="#changing-the-password-in-case-of-loss-of-access-to-the-account">Changing the password in case of loss of access to the account</a>
 <ul>
-<li><a href="#overview-1">Overview</a></li>
+<li><a href="#overview-3">Overview</a></li>
 <li><a href="#password-change">Password change</a></li>
 </ul>
 </li>
 <li><a href="#user-authorization-and-management">User authorization and management</a>
 <ul>
-<li><a href="#overview-2">Overview</a></li>
+<li><a href="#overview-4">Overview</a></li>
 <li><a href="#authorization">Authorization</a></li>
 <li><a href="#getting-a-user">Getting a user</a></li>
 <li><a href="#logout">Logout</a></li>
@@ -81,7 +100,7 @@
 </li>
 <li><a href="#user-registration-and-activation">User registration and activation</a>
 <ul>
-<li><a href="#overview-3">Overview</a></li>
+<li><a href="#overview-5">Overview</a></li>
 <li><a href="#new-user-registration">New user registration</a></li>
 <li><a href="#user-activation">User activation</a></li>
 </ul>
@@ -100,7 +119,7 @@
 </li>
 <li><a href="#formsservice">FormsService</a>
 <ul>
-<li><a href="#overview-4">Overview</a></li>
+<li><a href="#overview-6">Overview</a></li>
 <li><a href="#forms">Forms</a></li>
 <li><a href="#sending-data-to-the-form">Sending data to the form</a></li>
 <li><a href="#receiving-data">Receiving data</a></li>
@@ -108,7 +127,7 @@
 </li>
 <li><a href="#attributes">Attributes</a>
 <ul>
-<li><a href="#overview-5">Overview</a></li>
+<li><a href="#overview-7">Overview</a></li>
 <li><a href="#receiving-attributes">Receiving attributes</a>
 <ul>
 <li><a href="#custom-processing">Custom processing</a></li>
@@ -303,9 +322,68 @@ Otherwise there will be an error</p>
 </code></pre></li>
 </ol>
 <h2 id="using-oneentry-swift-sdk">Using OneEntry Swift SDK </h2>
-<h3 id="code-generation">Code generation </h3>
-<p>Sending and checking verification codes</p>
+<h3 id="payment-for-created-orders">Payment for created orders </h3>
 <h4 id="overview">Overview </h4>
+<p>Most often, the user wants to pay for online orders immediately by card, without resorting to cash.<br>
+The <code>Payment Service</code> module has been created for this purpose.</p>
+<p>You can connect payment services such as Stripe or PayPal and create a payment session</p>
+<p>The payment session is the OneEntry entity that shows the available payment information.</p>
+<p>The creation of a payment session implies the user's desire to pay for the order online, after its registration</p>
+<h5 id="creating-a-payment-session">Creating a payment session </h5>
+<blockquote>
+<p>To create a session, you need to know the ID of the order that the user wants to pay for</p>
+</blockquote>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> session <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> service<span class="token punctuation">.</span><span class="token function">createSession</span><span class="token punctuation">(</span>order<span class="token punctuation">:</span> <span class="token number">27</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token punctuation">.</span>session<span class="token punctuation">)</span>
+</code></pre><p>The session information contains all the necessary information for further payment. You can combine the result with the sdk of payment services and pay for orders</p>
+<h3 id="creating-and-modification-orders">Creating and modification orders </h3>
+<h4 id="overview-1">Overview </h4>
+<p>With the help of sdk you can create, modify and receive orders.</p>
+<blockquote>
+<p>Important: For many operations, you need to have an authorized client through <code>AuthService</code>.</p>
+</blockquote>
+<h5 id="order-creation">Order creation </h5>
+<p>To successfully create an order, you need to set up an order storage in your personal account.<br>
+It will allow you to configure and group data correctly</p>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> ids <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-let">let</span> products <span class="token operator">=</span> ids<span class="token punctuation">.</span>map <span class="token punctuation">{</span> <span class="token class-name">OrderProduct</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> <span class="token short-argument">$0</span><span class="token punctuation">,</span> quantity<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token keyword keyword-in">in</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token operator">...</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+
+<span class="token keyword keyword-let">let</span> address <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"51 Cottage Lane Clifton New York NEW YORK 07012"</span></span>
+<span class="token keyword keyword-let">let</span> comment <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"Order unit tests"</span></span>
+
+<span class="token keyword keyword-let">let</span> order <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">OrdersService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+    storage<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span>
+    form<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span>
+    payment<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"cash"</span></span><span class="token punctuation">,</span>
+    langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">FormDataContainer</span> <span class="token punctuation">{</span>
+        <span class="token class-name">FormData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"address"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> address<span class="token punctuation">)</span>
+        <span class="token class-name">FormData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"comment"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> comment<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token class-name">ProductsContainer</span><span class="token punctuation">(</span>products<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre><h5 id="order-updating">Order updating </h5>
+<p>OneEntry supports updates of an already created order.</p>
+<pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> address <span class="token operator">=</span> <span class="token string-literal"><span class="token string">"California, San Francisco, 24a"</span></span>
+<span class="token keyword keyword-let">let</span> ids <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">]</span>
+<span class="token keyword keyword-let">let</span> products <span class="token operator">=</span> ids<span class="token punctuation">.</span>map <span class="token punctuation">{</span> <span class="token class-name">OrderProduct</span><span class="token punctuation">(</span>id<span class="token punctuation">:</span> <span class="token short-argument">$0</span><span class="token punctuation">,</span> quantity<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token keyword keyword-in">in</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token operator">...</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+
+<span class="token keyword keyword-let">let</span> order <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> service<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>
+    order<span class="token punctuation">:</span> <span class="token number">26</span><span class="token punctuation">,</span>
+    storage<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span>
+    form<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">,</span>
+    payment<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"cash"</span></span><span class="token punctuation">,</span>
+    langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">FormDataContainer</span> <span class="token punctuation">{</span>
+            <span class="token class-name">FormData</span><span class="token punctuation">(</span>marker<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"address"</span></span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> address<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token class-name">ProductsContainer</span><span class="token punctuation">(</span>products<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+</code></pre><h3 id="code-generation">Code generation </h3>
+<p>Sending and checking verification codes</p>
+<h4 id="overview-2">Overview </h4>
 <p>OneEntry supports sending verification codes.<br>
 Three scenarios are supported for this:</p>
 <ul>
@@ -327,7 +405,7 @@ Three scenarios are supported for this:</p>
 <span class="token keyword keyword-let">let</span> success <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">AuthService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">check</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> code<span class="token punctuation">:</span> code<span class="token punctuation">,</span> with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"email"</span></span><span class="token punctuation">)</span>
 </code></pre><h3 id="changing-the-password-in-case-of-loss-of-access-to-the-account">Changing the password in case of loss of access to the account </h3>
 <p>Changing the password in case the user has forgotten it</p>
-<h4 id="overview-1">Overview </h4>
+<h4 id="overview-3">Overview </h4>
 <p>To change the password in case of its loss, you should follow a few steps:</p>
 <ol>
 <li>Send verification code by user ID</li>
@@ -348,7 +426,7 @@ Three scenarios are supported for this:</p>
 <span class="token punctuation">)</span>
 </code></pre><h3 id="user-authorization-and-management">User authorization and management </h3>
 <p>Management of user data such as password, names, etc.</p>
-<h4 id="overview-2">Overview </h4>
+<h4 id="overview-4">Overview </h4>
 <p>User authorization works on the principle of token exchange.<br>
 For the sake of simplicity, hide this process under the hood of the sdk. On<br>
 You always have the opportunity to get all the data for more detailed configuration.<br>
@@ -394,7 +472,7 @@ However, its call is necessary to cancel authorization tokens</p>
 <span class="token punctuation">}</span>
 </code></pre><h3 id="user-registration-and-activation">User registration and activation </h3>
 <p>Registration and activation of new users. Verification using activation code.</p>
-<h4 id="overview-3">Overview </h4>
+<h4 id="overview-5">Overview </h4>
 <p>OneEntry users can be created through your personal account on the website, or using our sdk.<br>
 In both cases, you must first configure the authentication provider.<br>
 There you can configure many parameters, such as seret phrases, token formats, etc.<br>
@@ -463,7 +541,7 @@ If you need manual control to get products, use <code>BlocksService/products(_:o
 </blockquote>
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> blocks <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">BlocksService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">blocks</span><span class="token punctuation">(</span>langCode<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"en_US"</span></span><span class="token punctuation">)</span>
 </code></pre><h3 id="formsservice">FormsService </h3>
-<h4 id="overview-4">Overview </h4>
+<h4 id="overview-6">Overview </h4>
 <p>OneEntry Forms is a tool that allows you to store, receive and send user data.<br>
 This can be applied in many scenarios, such as users, orders, etc.</p>
 <h4 id="forms">Forms </h4>
@@ -492,7 +570,7 @@ If you need to use another one, you can change the <code>type</code> parameter, 
 <pre data-role="codeBlock" data-info="swift" class="language-swift swift"><code><span class="token keyword keyword-let">let</span> data <span class="token operator">=</span> <span class="token keyword keyword-try">try</span> <span class="token keyword keyword-await">await</span> <span class="token class-name">FormsService</span><span class="token punctuation">.</span>shared<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>with<span class="token punctuation">:</span> <span class="token string-literal"><span class="token string">"delivery"</span></span><span class="token punctuation">)</span>
 </code></pre><h3 id="attributes">Attributes </h3>
 <p>Attributes can be added to all OneEntry entities. This is an important tool that allows you to transfer custom data</p>
-<h4 id="overview-5">Overview </h4>
+<h4 id="overview-7">Overview </h4>
 <p>OneEntry attributes are used everywhere. All data types that can be processed using the <code>OneEntry</code> module can be found here <code>AttributeType</code>.</p>
 <blockquote>
 <p>Important: For a more readable syntax, sdk uses <code>dynamicMember</code>. Therefore, do not be afraid of the absence of hints from autocompletion, the main thing is to specify the correct names of the attributes that coincide with the admin panel</p>
