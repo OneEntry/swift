@@ -23,8 +23,8 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .binaryTarget(
             name: "OneEntry",
-            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.2/XCFrameworks.zip",
-            checksum: "5c21aeeb066aeac642cb283650804246f2aec5ecd57e7c9cb291258d261a35db"
+            url: "https://oneentry.s3.amazonaws.com/SWIFT/XCFrameworks/1.2.3/XCFrameworks.zip",
+            checksum: "15429553900fd2f5d14a2c8d5d2277508e5743316adef0bd39a36fd15048bdcc"
         ),
         .testTarget(
             name: "OneEntryTests",

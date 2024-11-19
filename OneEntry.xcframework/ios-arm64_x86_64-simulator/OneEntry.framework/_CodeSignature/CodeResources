@@ -6,7 +6,7 @@
 	<dict>
 		<key>Alamofire.bundle/Info.plist</key>
 		<data>
-		moFhHABQXRri+dCwj1SjhUMKaqo=
+		qrQUuTVQZMzl6ivtZuK1rk+znjs=
 		</data>
 		<key>Alamofire.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/OneEntry-Swift.h</key>
 		<data>
-		mtntW4fUgKzR02Fl9fyVbJYBLhA=
+		h5hTYxGTIk6MqWt7WzWY9mniYa8=
 		</data>
 		<key>Headers/OneEntry.h</key>
 		<data>
@@ -22,51 +22,59 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		R+rriMHUUOZh2l08X0Lo/17MHJ4=
+		kpkWS/ZQy9CVdBPOq+uQqmUHTgc=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		t6+RCQhZgP+VYK/mJRQNd7R45f8=
+		vnkM1ICVgpdqJ1C3XlyvgGljXR4=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		JZyPTUhbV65lRbAUrB/2bCv6R9A=
+		pkhweeucsWJEolwNXJK5hgUQYnY=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ZtFEljv70AWnNn4JH2JcBoPTYPs=
+		IivaaeAuRh4xAR6pfHt8gKvqNyg=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		JZyPTUhbV65lRbAUrB/2bCv6R9A=
+		pkhweeucsWJEolwNXJK5hgUQYnY=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		VQloeDlbCrkSl15OoKYN/OI9reE=
+		8JEViWZfX56RJKOI+7aR6II84gI=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		t6+RCQhZgP+VYK/mJRQNd7R45f8=
+		vnkM1ICVgpdqJ1C3XlyvgGljXR4=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		sheAWC3N3g715nwNO8Bt1GIfP1s=
+		qncqHL/RYLC53v19+bas/Xhi3pw=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		kM3sTEYxMFY6xk7lqWcBt48wNoA=
+		W7fJpIStD8aST5BTsyPCWLR3RR8=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		sheAWC3N3g715nwNO8Bt1GIfP1s=
+		qncqHL/RYLC53v19+bas/Xhi3pw=
 		</data>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Fuys/0tZlcxhpVff5UDNxukiXYM=
+		K6hyR4pzno1SzCu5eiJf4hNauGQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		N626xaxe7RcPZ3ViD0HMCmN9FL8=
+		</data>
+		<key>Starscream_Privacy.bundle/Info.plist</key>
+		<data>
+		w1KbupNniJ7o59k9s8A19aCkftU=
+		</data>
+		<key>Starscream_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		J3jCDET/Yn1lAQbrw44v61PrV7c=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -75,7 +83,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			oCPv8VBA9vqYJeBxw6tH8quDtzZgElfrC918ee8vJfs=
+			qQuR8jrop+amc7HAy5IC1S/Z6Lzk7km+Am+YswGBP5k=
 			</data>
 		</dict>
 		<key>Alamofire.bundle/PrivacyInfo.xcprivacy</key>
@@ -89,7 +97,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0FDG2CmIICYPlyn7O9vhby9G8YNVCCZwPrUH4RF5x9s=
+			Te+ardLgjEq+J3zmnsPoStVY277H32ZmvVV3Wl1+FPY=
 			</data>
 		</dict>
 		<key>Headers/OneEntry.h</key>
@@ -103,70 +111,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			opZVu15j3iMQg9eiIlnjYI74QA2R3604QlX4cSyAacc=
+			GaYxqoBDpJ9XrGl4xCiOrUOWJvVHXBtES2tzpM03XEo=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GsMBx6dPpJyehhyVMQVOsL6ql5pe6ivz4dKNaMcIAMo=
+			uwlwFqU096fzi1CNvj3LvM4jwqTzTBdCfcI7VSfAHAI=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5RSH/AQ7muNYb3TN40zmkEQiA5w3xIuclCadRLJ9kH8=
+			XvnjiHQ4WTvERjORxJHhz+yA3dvWLnv7FL3AB2yEiI0=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GsMBx6dPpJyehhyVMQVOsL6ql5pe6ivz4dKNaMcIAMo=
+			uwlwFqU096fzi1CNvj3LvM4jwqTzTBdCfcI7VSfAHAI=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			z3PXQmZILiw7HwhyWI7jsjnoLeRkGA36BXMBJ3vGKwA=
+			r4u+dSa0DXT/Rr8/zuIjsrNhlQL2UXzCqqa91bhaBNA=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			opZVu15j3iMQg9eiIlnjYI74QA2R3604QlX4cSyAacc=
+			GaYxqoBDpJ9XrGl4xCiOrUOWJvVHXBtES2tzpM03XEo=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			U3/EOKKv/A1i7mnQ4dFg+Uiz7yF/mFQvXbokM4og1js=
+			UszkLAM+CzBoUkuZjRskybY2McKqCTVSl2Xs3iKfYU4=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UyRkhCd/MgjeudRsxsD3jkTq2XCeSUG7aqtfmHeY5mY=
+			yD6PSYJ1GukDwCQ8scBoxHClwUkrTJJP8s8pWSTkzGg=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			U3/EOKKv/A1i7mnQ4dFg+Uiz7yF/mFQvXbokM4og1js=
+			UszkLAM+CzBoUkuZjRskybY2McKqCTVSl2Xs3iKfYU4=
 			</data>
 		</dict>
 		<key>Modules/OneEntry.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			epMVxgCVo7mwCNGUdEOtHv60nrWXlwUAOXge/WOYjq4=
+			u+csYGA8+HPy2xLlDsH4ynspxj91lSVWOrKvnjRWXK8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -174,6 +182,20 @@
 			<key>hash2</key>
 			<data>
 			HhukDH29jz8UzvPu9C6v8/D8e+N8ThpeJOKrmj5B7Oo=
+			</data>
+		</dict>
+		<key>Starscream_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hODTcDYPY+hOi84oqB9XnsSsCfWcCK8XpZ39wOR01wM=
+			</data>
+		</dict>
+		<key>Starscream_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Uoqz/KkQ0qwvPvJW1epMIycwOnpKXvuSNph/MBjjEfM=
 			</data>
 		</dict>
 	</dict>

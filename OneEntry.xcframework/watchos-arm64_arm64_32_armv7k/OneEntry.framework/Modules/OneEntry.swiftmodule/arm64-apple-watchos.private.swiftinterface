@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0 (swiftlang-6.0.0.5.15 clang-1600.0.22.6)
+// swift-compiler-version: Apple Swift version 6.0.2 (swiftlang-6.0.2.1.2 clang-1600.0.26.4)
 // swift-module-flags: -target arm64-apple-watchos6.0 -enable-objc-interop -enable-library-evolution -swift-version 6 -enforce-exclusivity=checked -O -module-name OneEntry
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import Foundation
@@ -9,14 +9,19 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 import os.log
 import os
-public struct User : Swift.Identifiable, Swift.Sendable, Swift.Decodable {
+public struct EmptyState : Swift.Codable, Swift.Sendable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public typealias EmptyStateUser = OneEntry.User<OneEntry.EmptyState>
+public struct User<State> : Swift.Identifiable, Swift.Sendable, Swift.Decodable where State : Swift.Decodable, State : Swift.Sendable {
   public let id: Swift.Int
   public let identifier: Swift.String
   public let formIdentifier: Swift.String
   public let authProviderIdentifier: Swift.String
   public let groups: [Swift.String]
   public let formData: OneEntry.LocalizedFormDataCollection
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public let state: State
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -28,7 +33,7 @@ public struct OneEntryImage : Swift.Codable, Swift.Sendable {
   public let size: Swift.Int
   public let filename: Swift.String
   public let previewLink: Swift.String
-  public let downloadLink: Swift.String
+  public let downloadLink: Foundation.URL
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -51,7 +56,6 @@ public struct OneEntryImage : Swift.Codable, Swift.Sendable {
 public protocol LocalizeContent {
   var localizeInfos: OneEntry.LocalizedInfoCollection? { get }
   var attributeValues: OneEntry.LocalizedAttributeCollection? { get }
-  func localizeAttribute(_ marker: Swift.String, languageCode: Swift.String) -> OneEntry.OneEntryAttribute?
 }
 extension OneEntry.LocalizeContent {
   @available(*, deprecated, message: "This method is outdated, use subscript[dynamicMember: String] instead")
@@ -65,7 +69,21 @@ extension OneEntry.LocalizeContent {
     get
   }
 }
-public struct OneEntryLocale : Swift.Identifiable, Swift.Decodable {
+@_hasMissingDesignatedInitializers final public class EventsService : @unchecked Swift.Sendable {
+  public static let shared: OneEntry.EventsService
+  @objc deinit
+}
+extension OneEntry.EventsService {
+  final public func registerForPushNotifications(fcm token: Swift.String)
+  final public func setFCMToken(_ token: Swift.String) async throws
+  final public func deleteFCMToken(_ token: Swift.String) async throws
+  final public func subscribe(event marker: Swift.String, product id: Swift.Int, locale: Swift.String = "en_US", threshold: Swift.Double? = nil) async throws
+  final public func unsubscribe(event marker: Swift.String, product id: Swift.Int, locale: Swift.String = "en_US", threshold: Swift.Double? = nil) async throws
+  final public var notifications: _Concurrency.AsyncStream<OneEntry.ProductNotification> {
+    get
+  }
+}
+public struct OneEntryLocale : Swift.Identifiable, Swift.Decodable, Swift.Sendable {
   public let id: Swift.Int
   public let shortCode: Swift.String
   public let code: Swift.String
@@ -74,7 +92,6 @@ public struct OneEntryLocale : Swift.Identifiable, Swift.Decodable {
   public let isActive: Swift.Bool
   public let image: Swift.String?
   public let position: Swift.Int?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -88,9 +105,22 @@ public struct OneEntryBlock : Swift.Identifiable, Swift.Decodable, OneEntry.Loca
   public var localizeInfos: OneEntry.LocalizedInfoCollection?
   public var attributeValues: OneEntry.LocalizedAttributeCollection?
   public var products: [OneEntry.OneEntryProduct]?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public var customSettings: OneEntry.OneEntryBlock.CustomSettings
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.OneEntryBlock {
+  public struct CustomSettings : Swift.Decodable, Swift.Sendable {
+    public var condition: OneEntry.OneEntryBlock.CustomSettings.Condition
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension OneEntry.OneEntryBlock.CustomSettings {
+  public struct Condition : Swift.Decodable, Swift.Sendable {
+    public var ids: [Swift.Int]?
+    public var name: Swift.String?
+    public init(from decoder: any Swift.Decoder) throws
+  }
 }
 public protocol OrderDataType : Swift.Sendable {
   var formData: [OneEntry.FormData] { get }
@@ -121,11 +151,12 @@ extension OneEntry.AuthService {
   final public var isAuthorized: Swift.Bool {
     get
   }
-  final public var user: OneEntry.User {
+  final public var user: OneEntry.EmptyStateUser {
     get async throws
   }
+  final public func user<State>(state type: State.Type = EmptyState.self) async throws -> OneEntry.User<State> where State : Swift.Decodable, State : Swift.Sendable
   @discardableResult
-  final public func changeUser(form identifier: Swift.String, langCode: Swift.String, @OneEntry.ResultBuilder<any OneEntry.AuthDataType> data: @_Concurrency.MainActor @Sendable () -> [any OneEntry.AuthDataType]) async throws -> Swift.Bool
+  final public func changeUser<State>(form identifier: Swift.String, langCode: Swift.String, type: State.Type = EmptyState.self, state: State? = nil, @OneEntry.ResultBuilder<any OneEntry.AuthDataType> data: @_Concurrency.MainActor @Sendable () -> [any OneEntry.AuthDataType] = { [] }) async throws -> Swift.Bool where State : Swift.Encodable
   @discardableResult
   final public func changePassword(user identifier: Swift.String, code: Swift.String, password: Swift.String, confirmation: Swift.String, with marker: Swift.String) async throws -> Swift.Bool
   @discardableResult
@@ -146,6 +177,8 @@ extension OneEntry.AuthService {
   final public func generateCode(_ user: Swift.String, event: Swift.String, with marker: Swift.String) async throws
   @discardableResult
   final public func check(_ user: Swift.String, code: Swift.String, with marker: Swift.String) async throws -> Swift.Bool
+  final public func providers(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> [OneEntry.AuthProvider]
+  final public func provider(with marker: Swift.String, langCode: Swift.String) async throws -> OneEntry.AuthProvider
 }
 public struct FormDataContainer : OneEntry.AuthDataType, OneEntry.OrderDataType {
   public var formData: [OneEntry.FormData]
@@ -175,8 +208,6 @@ public struct Order : Swift.Codable, Swift.Sendable, Swift.Identifiable {
   public let createdDate: Swift.String
   public let paymentAccountIdentifier: Swift.String
   public let paymentAccountLocalizeInfos: OneEntry.LocalizedInfoCollection
-  public let isHistory: Swift.Bool
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -189,7 +220,6 @@ extension OneEntry.Order {
     public let price: Swift.Double
     public let quantity: Swift.Int
     public let previewImage: [OneEntry.OneEntryImage]?
-    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
     public typealias ID = Swift.Int
     public func encode(to encoder: any Swift.Encoder) throws
     public init(from decoder: any Swift.Decoder) throws
@@ -203,7 +233,6 @@ public struct OneEntryTextWithHeader : Swift.Identifiable, Swift.Codable, Swift.
   public let header: Swift.String
   public let htmlValue: Swift.String
   public let plainValue: Swift.String
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Foundation.UUID
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -285,7 +314,6 @@ public struct OneEntryPage : Swift.Identifiable, Swift.Decodable, OneEntry.Local
   public let templateIdentifier: Swift.String?
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
   public let attributeValues: OneEntry.LocalizedAttributeCollection?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -296,14 +324,13 @@ public struct OneEntryMenuPage : Swift.Identifiable, Swift.Decodable, OneEntry.L
   public let position: Swift.Int
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
   public var children: [OneEntry.OneEntryMenuPage]?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public var attributeValues: OneEntry.LocalizedAttributeCollection?
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntrySearchPage : Swift.Identifiable, Swift.Decodable, Swift.Sendable {
   public let id: Swift.Int
   public let title: Swift.String
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -327,15 +354,14 @@ extension OneEntry.OrderProduct : Swift.Identifiable {
   public var id: Swift.Int {
     get
   }
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
 }
 public struct OneEntryFilter : Swift.Encodable, Swift.Sendable {
   public let attributeMarker: Swift.String
   public let conditionMarker: OneEntry.ConditionMarker
   public let conditionValue: (any Swift.Encodable & Swift.Sendable)
-  public let pageUrl: [Swift.String]
-  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: some (Encodable & Sendable), pageUrl: [Swift.String] = [])
+  public let pageUrls: [Swift.String]
+  public init(attributeMarker: Swift.String, conditionMarker: OneEntry.ConditionMarker, conditionValue: some (Encodable & Sendable), pageUrls: [Swift.String] = [])
   public func encode(to encoder: any Swift.Encoder) throws
 }
 public struct OneEntryResult<T> : Swift.Decodable, Swift.Sendable where T : Swift.Decodable, T : Swift.Sendable {
@@ -353,7 +379,6 @@ public struct ContentOrderStorage : Swift.Identifiable, Swift.Codable, OneEntry.
   public let generalTypeId: Swift.Int
   public let formIdentifier: Swift.String
   public let paymentAccountIdentifiers: [OneEntry.ContentOrderStorage.PaymentAccountIdentifier]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -368,13 +393,13 @@ extension OneEntry.ContentOrderStorage {
 public struct OneEntryGeneralType : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let type: Swift.String
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct OneEntryText : Swift.Codable, Swift.Sendable {
   public let htmlValue: Swift.String
   public let plainValue: Swift.String
+  public init(html: Swift.String, plain: Swift.String)
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -382,7 +407,6 @@ public struct OneEntryAdmin : Swift.Identifiable, Swift.Decodable {
   public let id: Swift.Int
   public let identifier: Swift.String
   public let position: Swift.Int?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -413,7 +437,6 @@ public struct OneEntryProduct : Swift.Identifiable, Swift.Decodable, OneEntry.Lo
   public let relatedIds: [Swift.Int]?
   public let templateIdentifier: Swift.String?
   public let attributeValues: OneEntry.LocalizedAttributeCollection?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -421,7 +444,6 @@ public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable, Swift
   public let id: Swift.Int
   public let title: Swift.String
   public let pageId: Swift.Int
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -431,7 +453,7 @@ public struct OneEntrySearchProduct : Swift.Identifiable, Swift.Decodable, Swift
   final public func attribute(with marker: Swift.String, from set: Swift.String, langCode: Swift.String) async throws -> OneEntry.AttributeSet
   @objc deinit
 }
-public struct CreatedOrderDto : Swift.Decodable, Swift.Identifiable {
+public struct CreatedOrderDto : Swift.Decodable, Swift.Identifiable, Swift.Sendable {
   public let id: Swift.Int
   public let formIdentifier: Swift.String
   public let paymentAccountIdentifier: Swift.String
@@ -441,7 +463,6 @@ public struct CreatedOrderDto : Swift.Decodable, Swift.Identifiable {
   public let createdDate: Swift.String?
   public let currency: Swift.String
   public let totalSum: Swift.Double?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -462,7 +483,7 @@ public struct CreatedUserDto : Swift.Codable, Swift.Sendable {
   public let isActive: Swift.Bool
   public let authProviderId: Swift.Int?
   public let formData: [Swift.String : [OneEntry.FormData]]
-  public let notificationData: OneEntry.NotificationData
+  public let notificationData: OneEntry.NotificationData?
   public let locale: Swift.String
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
@@ -479,21 +500,29 @@ extension OneEntry.OneEntryFile {
     get
   }
 }
-public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent {
+public struct OneEntryForm : Swift.Identifiable, Swift.Decodable, OneEntry.LocalizeContent, Swift.Sendable {
   public let id: Swift.Int
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
   public let identifier: Swift.String
   public let attributes: [OneEntry.FormAttribute]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct FormAttribute : Swift.Decodable {
+public struct FormAttribute : Swift.Decodable, Swift.Sendable {
   public let type: Swift.String
   public let marker: Swift.String
   public let isVisible: Swift.Bool
   public var localizeInfos: OneEntry.LocalizeInfo
+  public var settings: OneEntry.FormAttribute.Settings
   public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.FormAttribute {
+  public struct Settings : Swift.Decodable, Swift.Sendable {
+    public var captchaKey: Swift.String?
+    public var captchaKeyName: Swift.String?
+    public var captchaKeyDomain: Swift.String?
+    public init(from decoder: any Swift.Decoder) throws
+  }
 }
 public struct OneEntryPageConfig : Swift.Decodable {
   public let rowsPerPage: Swift.Int?
@@ -541,6 +570,29 @@ public enum KeychainItemAccessibility : Swift.Sendable {
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
+  }
+}
+public struct ProductNotification : Swift.Decodable, Swift.Sendable {
+  public var message: Swift.String
+  public var attributes: OneEntry.AttributeCollection
+  public var product: OneEntry.ProductNotification.Product
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.ProductNotification {
+  public struct Product : Swift.Identifiable, Swift.Decodable, Swift.Sendable {
+    public var id: Swift.Int
+    public var status: OneEntry.ProductNotification.Product.Status
+    public var info: OneEntry.LocalizeInfo
+    public var attributes: OneEntry.AttributeCollection
+    public typealias ID = Swift.Int
+    public init(from decoder: any Swift.Decoder) throws
+  }
+}
+extension OneEntry.ProductNotification.Product {
+  public struct Status : Swift.Decodable, Swift.Sendable {
+    public var identifier: Swift.String
+    public var info: OneEntry.LocalizeInfo
+    public init(from decoder: any Swift.Decoder) throws
   }
 }
 public struct LocalizeInfo : Swift.Codable, Swift.Sendable {
@@ -638,7 +690,7 @@ extension OneEntry.OneEntryAttribute {
   public var fileValues: [OneEntry.OneEntryFile]? {
     get
   }
-  public var listValues: OneEntry.OneEntryList? {
+  public var listValues: [OneEntry.OneEntryList]? {
     get
   }
 }
@@ -648,7 +700,6 @@ public struct PaymentAccount : Swift.Identifiable, Swift.Decodable, OneEntry.Loc
   public let identifier: Swift.String
   public let type: Swift.String
   public let isVisible: Swift.Bool
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -740,7 +791,6 @@ public struct OneEntryTemplate : Swift.Identifiable, Swift.Decodable, OneEntry.L
   public let generalTypeName: Swift.String
   public let position: Swift.Int?
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -808,17 +858,22 @@ public struct OneEntryDate : Swift.Codable, Swift.Sendable {
   public var fullDate: Swift.String
   public var formatString: Swift.String
   public var formattedValue: Swift.String
+  public init(fullDate: Swift.String, formatString: Swift.String, formattedValue: Swift.String)
+  public init(_ date: Foundation.Date, format: Swift.String = "DD-MM-YYYY")
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
 extension OneEntry.OneEntryDate {
-  public func date(format: Swift.String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Foundation.Date?
+  public var date: Foundation.Date? {
+    get
+  }
+  public func formatted(format: Swift.String = "yyyy-MM-dd'T'HH:mm:ss.SSSZ") -> Foundation.Date?
 }
 public struct NotificationData : Swift.Codable, Swift.Sendable {
   public var email: Swift.String
-  public var phonePush: Swift.String
+  public var phonePush: [Swift.String]
   public var phoneSMS: Swift.String
-  public init(email: Swift.String, phonePush: Swift.String, phoneSMS: Swift.String)
+  public init(email: Swift.String, phonePush: [Swift.String], phoneSMS: Swift.String)
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -843,7 +898,6 @@ public struct OneEntryFormDataResponse : Swift.Identifiable, Swift.Decodable, Sw
   public let time: Swift.String
   public let formIdentifier: Swift.String
   public let formData: OneEntry.LocalizedFormDataCollection
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -852,7 +906,6 @@ public struct OneEntryTemplatePreview : Swift.Identifiable, Swift.Decodable, One
   public let version: Swift.Int?
   public let identifier: Swift.String
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -870,7 +923,6 @@ public struct OneEntryProductStatus : Swift.Identifiable, Swift.Decodable, OneEn
   public let version: Swift.Int
   public let identifier: Swift.String
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
   public typealias ID = Swift.Int
   public init(from decoder: any Swift.Decoder) throws
 }
@@ -879,12 +931,46 @@ extension OneEntry.OneEntryProductStatus {
     get async throws
   }
 }
+public struct AuthProvider : Swift.Identifiable, Swift.Codable, OneEntry.LocalizeContent, Swift.Sendable {
+  public let id: Swift.Int
+  public let localizeInfos: OneEntry.LocalizedInfoCollection?
+  public let version: Swift.Int
+  public let identifier: Swift.String
+  public let isActive: Swift.Bool
+  public let isCheckCode: Swift.Bool
+  public let type: OneEntry.AuthProvider.ProviderType
+  public let formIdentifier: Swift.String?
+  public let config: OneEntry.UsersAuthProviderConfigType?
+  public typealias ID = Swift.Int
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension OneEntry.AuthProvider {
+  public enum ProviderType : Swift.String, Swift.Codable, Swift.Sendable {
+    case email
+    case phone
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public struct UsersAuthProviderConfigType : Swift.Codable, Swift.Sendable {
+  public let deleteNoneActiveUsersAfterDays: Swift.Int
+  public let systemCodeTlsSec: Swift.Int
+  public let systemCodeLength: Swift.Int
+  public let systemCodeOnlyNumbers: Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension OneEntry.UsersAuthProviderConfigType {
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct OneEntryMenu : Swift.Identifiable, OneEntry.LocalizeContent {
   public let id: Swift.Int
   public let identifier: Swift.String
   public let localizeInfos: OneEntry.LocalizedInfoCollection?
-  public let pages: [OneEntry.OneEntryMenuPage]
-  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+  public var pages: [OneEntry.OneEntryMenuPage]
   public typealias ID = Swift.Int
 }
 extension OneEntry.OneEntryMenu : Swift.Decodable, Swift.Sendable {
@@ -925,7 +1011,7 @@ extension OneEntry.OneEntryMenu : Swift.Decodable, Swift.Sendable {
   }
   final public func test404() async throws
   final public func test500() async throws
-  final public func menu(with marker: Swift.String) async throws -> OneEntry.OneEntryMenu
+  final public func menu(with marker: Swift.String, langCode: Swift.String) async throws -> OneEntry.OneEntryMenu
   final public func uploadFile(file url: Foundation.URL, type: Swift.String, entity: Swift.String, id: Swift.Int, width: Swift.Int? = nil, height: Swift.Int? = nil, compress: Swift.Bool = false) async throws -> [OneEntry.OneEntryFile]
   final public func file(name: Swift.String, type: Swift.String, entity: Swift.String, id: Swift.Int) async throws -> Foundation.Data
   final public func deleteFile(name: Swift.String, type: Swift.String, entity: Swift.String, id: Swift.Int) async throws
@@ -948,6 +1034,7 @@ extension OneEntry.OneEntryMenu : Swift.Decodable, Swift.Sendable {
   public static let shared: OneEntry.FormsService
   final public func forms(offset: Swift.Int = 0, limit: Swift.Int = 30, langCode: Swift.String) async throws -> [OneEntry.OneEntryForm]
   final public func form(with marker: Swift.String, langCode: Swift.String) async throws -> OneEntry.OneEntryForm
+  @discardableResult
   final public func sendData(with identifier: Swift.String, locale: Swift.String, @OneEntry.ResultBuilder<OneEntry.FormData> data: @_Concurrency.MainActor @Sendable () -> [OneEntry.FormData]) async throws -> OneEntry.OneEntryFormDataResponse
   final public func fetchData(langCode: Swift.String, limit: Swift.Int = 30, offset: Swift.Int = 0) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
   final public func data(with marker: Swift.String, offset: Swift.Int = 0, limit: Swift.Int = 30) async throws -> OneEntry.OneEntryResult<OneEntry.OneEntryFormDataResponse>
@@ -989,7 +1076,7 @@ extension OneEntry.OneEntryMenu : Swift.Decodable, Swift.Sendable {
   final public func templates(with type: Swift.String) async throws -> [OneEntry.OneEntryTemplate]
   @objc deinit
 }
-public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable, Swift.Sendable {
+public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable, Swift.Sendable, Swift.Hashable {
   case integer
   case date
   case file
@@ -1006,10 +1093,12 @@ public enum AttributeType : Swift.String, Swift.CaseIterable, Swift.Decodable, S
   case textWithHeader
   case groupOfImages
   case radioButton
+  case entity
+  case unexpected
   public init?(rawValue: Swift.String)
   public typealias AllCases = [OneEntry.AttributeType]
   public typealias RawValue = Swift.String
-  public static var allCases: [OneEntry.AttributeType] {
+  nonisolated public static var allCases: [OneEntry.AttributeType] {
     get
   }
   public var rawValue: Swift.String {
@@ -1060,9 +1149,9 @@ extension OneEntry.FormData {
     public let integer: Swift.String
     public let date: OneEntry.OneEntryDate
     public let file: OneEntry.OneEntryFile
-    public let list: OneEntry.OneEntryList
+    public let list: [OneEntry.OneEntryList]
     public let real: Swift.String
-    public let text: OneEntry.OneEntryText
+    public let text: [OneEntry.OneEntryText]
     public let time: OneEntry.OneEntryDate
     public let float: Swift.String
     public let image: [OneEntry.OneEntryImage]
@@ -1121,12 +1210,13 @@ extension OneEntry.ConditionMarker : Swift.RawRepresentable {}
 extension OneEntry.AuthError : Swift.Equatable {}
 extension OneEntry.AuthError : Swift.Hashable {}
 extension OneEntry.AuthError : Swift.RawRepresentable {}
+extension OneEntry.AuthProvider.ProviderType : Swift.Equatable {}
+extension OneEntry.AuthProvider.ProviderType : Swift.Hashable {}
+extension OneEntry.AuthProvider.ProviderType : Swift.RawRepresentable {}
 extension OneEntry.AttributeCollection : Swift.Sendable {}
 extension OneEntry.AttributeCollection : Swift.Encodable {}
 extension OneEntry.AttributeCollection : Swift.Decodable {}
 extension OneEntry.AttributeCollection : Swift.Collection {}
-extension OneEntry.AttributeType : Swift.Equatable {}
-extension OneEntry.AttributeType : Swift.Hashable {}
 extension OneEntry.AttributeType : Swift.RawRepresentable {}
 extension OneEntry.FormDataCollection : Swift.Sendable {}
 extension OneEntry.FormDataCollection : Swift.Encodable {}
